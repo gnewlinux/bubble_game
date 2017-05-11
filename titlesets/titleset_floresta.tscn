@@ -1,11 +1,27 @@
-[gd_scene load_steps=3 format=1]
+[gd_scene load_steps=7 format=1]
 
 [ext_resource path="res://imgs/titles.tex" type="Texture" id=1]
+[ext_resource path="res://imgs/spike.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
 extents = Vector2( 8, 8 )
+
+[sub_resource type="ConvexPolygonShape2D" id=2]
+
+custom_solver_bias = 0.0
+points = Vector2Array( -8, -1, 8, -1, 8, 8, -8, 8 )
+
+[sub_resource type="ConvexPolygonShape2D" id=3]
+
+custom_solver_bias = 0.0
+points = Vector2Array( -8, -1, 8, -1, 8, 8, -8, 8 )
+
+[sub_resource type="ConvexPolygonShape2D" id=4]
+
+custom_solver_bias = 0.0
+points = Vector2Array( -8, -1, 8, -1, 8, 8, -8, 8 )
 
 [node name="titleset" type="Node"]
 
@@ -13,6 +29,7 @@ extents = Vector2( 8, 8 )
 
 [node name="bloco_padrao_1" type="Sprite" parent="."]
 
+editor/display_folded = true
 transform/pos = Vector2( 8, 8 )
 texture = ExtResource( 1 )
 region = true
@@ -862,7 +879,7 @@ region_rect = Rect2( 336, 144, 16, 16 )
 [node name="bloco_corpo" type="StaticBody2D" parent="agua_gelo"]
 
 input/pickable = false
-shapes/0/shape = SubResource( 1 )
+shapes/0/shape = SubResource( 2 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 collision/layers = 1
@@ -872,15 +889,15 @@ constant_angular_velocity = 0.0
 friction = 1.0
 bounce = 0.0
 
-[node name="shape" type="CollisionShape2D" parent="agua_gelo/bloco_corpo"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="agua_gelo/bloco_corpo"]
 
-shape = SubResource( 1 )
+build_mode = 0
+polygon = Vector2Array( -8, -1, 8, -1, 8, 8, -8, 8 )
+shape_range = Vector2( 0, 0 )
 trigger = false
-_update_shape_index = 0
 
 [node name="agua_gelo1" type="Sprite" parent="."]
 
-editor/display_folded = true
 transform/pos = Vector2( 136, 88 )
 texture = ExtResource( 1 )
 region = true
@@ -907,7 +924,6 @@ _update_shape_index = 0
 
 [node name="agua_gelo2" type="Sprite" parent="."]
 
-editor/display_folded = true
 transform/pos = Vector2( 136, 72 )
 texture = ExtResource( 1 )
 region = true
@@ -916,7 +932,7 @@ region_rect = Rect2( 336, 112, 16, 16 )
 [node name="bloco_corpo" type="StaticBody2D" parent="agua_gelo2"]
 
 input/pickable = false
-shapes/0/shape = SubResource( 1 )
+shapes/0/shape = SubResource( 3 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 collision/layers = 1
@@ -926,15 +942,15 @@ constant_angular_velocity = 0.0
 friction = 1.0
 bounce = 0.0
 
-[node name="shape" type="CollisionShape2D" parent="agua_gelo2/bloco_corpo"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="agua_gelo2/bloco_corpo"]
 
-shape = SubResource( 1 )
+build_mode = 0
+polygon = Vector2Array( -8, -1, 8, -1, 8, 8, -8, 8 )
+shape_range = Vector2( 0, 0 )
 trigger = false
-_update_shape_index = 0
 
 [node name="agua_gelo3" type="Sprite" parent="."]
 
-editor/display_folded = true
 transform/pos = Vector2( 136, 56 )
 texture = ExtResource( 1 )
 region = true
@@ -1329,5 +1345,31 @@ bounce = 0.0
 shape = SubResource( 1 )
 trigger = false
 _update_shape_index = 0
+
+[node name="spike" type="Sprite" parent="."]
+
+transform/pos = Vector2( 136, 8 )
+texture = ExtResource( 2 )
+region_rect = Rect2( 320, 48, 16, 16 )
+
+[node name="bloco_corpo" type="StaticBody2D" parent="spike"]
+
+input/pickable = false
+shapes/0/shape = SubResource( 4 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="spike/bloco_corpo"]
+
+build_mode = 0
+polygon = Vector2Array( -8, -1, 8, -1, 8, 8, -8, 8 )
+shape_range = Vector2( 0, 0 )
+trigger = false
 
 

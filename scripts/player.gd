@@ -25,9 +25,15 @@ var prev_jump_pressed = false
 var estava_chao = "false"
 var nova_anim = ""
 var animacao = ""
+var life = 3
+var contador = 0
+var shape = 0
 
 
 func _fixed_process(delta):
+	if life <= 0:
+		get_node("anim_morte").play("die")
+		yield(get_node("anim_morte"), "finished")
 	# Create forces
 	var force = Vector2(0, GRAVITY)
 	
@@ -119,8 +125,7 @@ func _fixed_process(delta):
 	var chao = get_node("rayChao").is_colliding()
 	if chao && !estava_chao:
 		get_node("animFX").play("caiu")
-		#yield(get_node("animFX"), "finished")
-		pass
+
 	estava_chao = chao
 	
 	#### TESTES SE ESTIVER ANDANDO
@@ -132,7 +137,9 @@ func _fixed_process(delta):
 			get_node("sprite").set_flip_h(false)
 		else:
 			get_node("sprite").set_flip_h(true)
-	if velocity.y < 30: # ta no chao
+	#print(velocity.y)
+	print(velocity.y)
+	if velocity.y == 0: # ta no chao
 		if andando:
 			nova_anim = "walking"
 		else:
@@ -145,11 +152,28 @@ func _fixed_process(delta):
 	if animacao != nova_anim:
 		get_node("anim").play(nova_anim)
 		animacao = nova_anim
+		print(nova_anim)
+		pass
 
 func _ready():
 	set_fixed_process(true)
+	pass
 	
 func pula():
 	get_node("animFX").play("pulou")
 	velocity.y = -JUMP_SPEED
 	jumping = true
+	pass
+	
+func dano():
+	life -= 1
+	get_node("anim_morte").play("morrendo")
+	pass
+	
+func die():
+	get_tree().change_scene("res://cenas/gameover.tscn")
+	pass
+
+func _on_Area2D_body_enter( body ):
+	get_tree().change_scene("res://cenas/finish.tscn")
+	pass # replace with function body
