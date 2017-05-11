@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=1]
+
+[ext_resource path="res://titlesets/titleset_floresta.tres" type="TileSet" id=1]
+[ext_resource path="res://players/player.tscn" type="PackedScene" id=2]
+
+[node name="main" type="Node2D"]
+
+[node name="titlemap_bg" type="TileMap" parent="."]
+
+mode = 0
+tile_set = ExtResource( 1 )
+cell/size = Vector2( 16, 16 )
+cell/quadrant_size = 16
+cell/custom_transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+cell/half_offset = 2
+cell/tile_origin = 0
+cell/y_sort = false
+collision/use_kinematic = false
+collision/friction = 1.0
+collision/bounce = 0.0
+collision/layers = 2
+collision/mask = 1
+occluder/light_mask = 1
+tile_data = IntArray( 393230, 4, 393231, 6, 393232, 7, 524295, 4, 524296, 6, 524297, 6, 524298, 6, 524299, 6, 524300, 6, 524301, 7, 524305, 4, 524306, 6, 524307, 6, 524308, 6, 524309, 6, 524310, 6, 524311, 7 )
+
+[node name="player" parent="." instance=ExtResource( 2 )]
+
+transform/pos = Vector2( 166.238, 102.199 )
+
+
