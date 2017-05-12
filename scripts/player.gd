@@ -138,7 +138,6 @@ func _fixed_process(delta):
 		else:
 			get_node("sprite").set_flip_h(true)
 	#print(velocity.y)
-	print(velocity.y)
 	if velocity.y == 0: # ta no chao
 		if andando:
 			nova_anim = "walking"
@@ -152,7 +151,7 @@ func _fixed_process(delta):
 	if animacao != nova_anim:
 		get_node("anim").play(nova_anim)
 		animacao = nova_anim
-		print(nova_anim)
+		#print(nova_anim)
 		pass
 
 func _ready():
