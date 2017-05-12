@@ -1,15 +1,9 @@
 extends Area2D
 
-var segundos = 0
-
 func _ready():
-	set_process(true)
 	pass
 	
-func _process(delta):
-	var rot = get_node("sprite").get_rot()
-	segundos += 1
-	print(segundos)
-	get_node("sprite").set_rot(segundos)
-	get_node("sprite").edit_set_pivot(Vector2(0,50))
-	pass
+
+func _on_rotor_body_enter( body ):
+	get_tree().get_root().get_node("main/player").dano(1)
+	pass # replace with function body

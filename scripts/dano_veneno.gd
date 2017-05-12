@@ -13,7 +13,7 @@ func _process(delta):
 
 		#conta um segundo e dano!
 		if segundos >= 1:
-			get_node("../../player").dano()
+			get_node("../../player").dano(1)
 			segundos = 0
 			pass
 
@@ -23,7 +23,7 @@ func _process(delta):
 
 func _on_Area2D_body_enter( body ):
 	if !encosta:
-		get_node("../../player").dano()
+		get_node("../../player").dano(1)
 		encosta = true
 	pass
 

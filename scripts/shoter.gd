@@ -11,5 +11,5 @@ func _ready():
 
 
 func _on_shooter_body_enter( body ):
-	get_tree().get_root().get_node("main/player").dano()
+	get_tree().get_root().get_node("main/player").dano(1)
 	pass # replace with function body

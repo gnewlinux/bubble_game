@@ -164,8 +164,8 @@ func pula():
 	jumping = true
 	pass
 	
-func dano():
-	life -= 1
+func dano(dan):
+	life -= dan
 	get_node("anim_morte").play("morrendo")
 	pass
 	
