@@ -1,16 +1,24 @@
-[gd_scene load_steps=12 format=1]
+[gd_scene load_steps=20 format=1]
 
 [ext_resource path="res://scripts/player.gd" type="Script" id=1]
 [ext_resource path="res://imgs/Sprite-0002.tex" type="Texture" id=2]
+[ext_resource path="res://imgs/dano.png" type="Texture" id=3]
+[ext_resource path="res://sounds/jump.smp" type="Sample" id=4]
+[ext_resource path="res://sounds/Jump17.wav" type="Sample" id=5]
+[ext_resource path="res://sounds/step.smp" type="Sample" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
-extents = Vector2( 6.58102, 6.79441 )
+extents = Vector2( 5.62117, 6.79441 )
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="RectangleShape2D" id=2]
 
-resource/name = "falling"
+custom_solver_bias = 0.0
+extents = Vector2( 8.07733, 10 )
+
+[sub_resource type="Animation" id=3]
+
 length = 1.0
 loop = false
 step = 0.1
@@ -25,9 +33,8 @@ tracks/0/keys = {
 "values": [ 5 ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=4]
 
-resource/name = "jumping"
 length = 1.0
 loop = false
 step = 0.1
@@ -41,10 +48,19 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 4 ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("sample:play/play")
+tracks/1/interp = 1
+tracks/1/imported = false
+tracks/1/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 2,
+"values": [ "jump" ]
+}
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=5]
 
-resource/name = "stopped"
 length = 0.4
 loop = false
 step = 0.1
@@ -59,9 +75,8 @@ tracks/0/keys = {
 "values": [ 0 ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=6]
 
-resource/name = "walking"
 length = 0.4
 loop = true
 step = 0.1
@@ -75,10 +90,19 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 0, 1, 2, 3 ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("sample:play/play")
+tracks/1/interp = 1
+tracks/1/imported = false
+tracks/1/keys = {
+"times": FloatArray( 0, 0.2 ),
+"transitions": FloatArray( 1, 1 ),
+"update": 2,
+"values": [ "step", "step" ]
+}
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=7]
 
-resource/name = "caiu"
 length = 1.0
 loop = false
 step = 0.1
@@ -93,9 +117,45 @@ tracks/0/keys = {
 "values": [ Vector2( 0.9, 0.6 ), Vector2( 0.7, 0.7 ) ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=8]
 
-resource/name = "pulou"
+resource/name = "dano"
+length = 0.5
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("sprite:texture")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = {
+"times": FloatArray( 0, 0.1, 0.5 ),
+"transitions": FloatArray( 1, 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 2 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("sprite:vframes")
+tracks/1/interp = 1
+tracks/1/imported = false
+tracks/1/keys = {
+"times": FloatArray( 0, 0.1, 0.5 ),
+"transitions": FloatArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 2, 1, 2 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("sprite:hframes")
+tracks/2/interp = 1
+tracks/2/imported = false
+tracks/2/keys = {
+"times": FloatArray( 0, 0.1, 0.5 ),
+"transitions": FloatArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 3, 1, 3 ]
+}
+
+[sub_resource type="Animation" id=9]
+
 length = 1.0
 loop = false
 step = 0.1
@@ -112,7 +172,6 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=10]
 
-resource/name = "die"
 length = 2.0
 loop = false
 step = 0.1
@@ -169,7 +228,7 @@ tracks/4/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=11]
 
 length = 1.0
 loop = false
@@ -185,9 +244,36 @@ tracks/0/keys = {
 "values": [ Color( 1, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
 }
 
+[sub_resource type="SampleLibrary" id=12]
+
+samples/jump = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 4 )
+}
+samples/jump3 = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 5 )
+}
+samples/step = {
+"db": -5.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 6 )
+}
+
+[sub_resource type="RectangleShape2D" id=13]
+
+custom_solver_bias = 0.0
+extents = Vector2( 6.97586, 1.94417 )
+
 [node name="player" type="KinematicBody2D"]
 
 transform/pos = Vector2( 163.729, 79.9733 )
+transform/scale = Vector2( 0.9, 0.9 )
 input/pickable = false
 shapes/0/shape = SubResource( 1 )
 shapes/0/transform = Matrix32( 1.35176, 0, 0, 1.44243, 0.13945, 0.313393 )
@@ -196,6 +282,26 @@ collision/layers = 1
 collision/mask = 2
 collision/margin = 0.01
 script/script = ExtResource( 1 )
+
+[node name="direita" type="Area2D" parent="."]
+
+input/pickable = true
+shapes/0/shape = SubResource( 2 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0.0787811, -0.0420151 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+collision/layers = 4
+collision/mask = 4
+
+[node name="shape" type="CollisionShape2D" parent="direita"]
+
+transform/pos = Vector2( 0.0787811, -0.0420151 )
+shape = SubResource( 2 )
+trigger = false
+_update_shape_index = 0
 
 [node name="camera" type="Camera2D" parent="."]
 
@@ -211,10 +317,10 @@ drag_margin/h_enabled = false
 drag_margin/v_enabled = false
 smoothing/enable = true
 smoothing/speed = 5.0
-drag_margin/left = 0.2
-drag_margin/top = 0.2
-drag_margin/right = 0.2
-drag_margin/bottom = 0.2
+drag_margin/left = 0.0
+drag_margin/top = 0.0
+drag_margin/right = 0.0
+drag_margin/bottom = 0.0
 
 [node name="sprite" type="Sprite" parent="."]
 
@@ -224,7 +330,7 @@ texture = ExtResource( 2 )
 offset = Vector2( 0.0430952, -14.7612 )
 vframes = 2
 hframes = 3
-frame = 5
+frame = 4
 
 [node name="shape" type="CollisionShape2D" parent="."]
 
@@ -236,10 +342,10 @@ _update_shape_index = 0
 
 [node name="rayChao" type="RayCast2D" parent="."]
 
-transform/pos = Vector2( 0, 9.53797 )
+transform/pos = Vector2( 0, 10.4034 )
 enabled = true
-cast_to = Vector2( 0, 1 )
-layer_mask = 1
+cast_to = Vector2( 0, 3 )
+layer_mask = 2
 type_mask = 15
 
 [node name="anim" type="AnimationPlayer" parent="."]
@@ -247,10 +353,10 @@ type_mask = 15
 playback/process_mode = 1
 playback/default_blend_time = 0.0
 root/root = NodePath("..")
-anims/falling = SubResource( 2 )
-anims/jumping = SubResource( 3 )
-anims/stopped = SubResource( 4 )
-anims/walking = SubResource( 5 )
+anims/falling = SubResource( 3 )
+anims/jumping = SubResource( 4 )
+anims/stopped = SubResource( 5 )
+anims/walking = SubResource( 6 )
 playback/active = true
 playback/speed = 1.0
 blend_times = [  ]
@@ -261,8 +367,9 @@ autoplay = ""
 playback/process_mode = 1
 playback/default_blend_time = 0.0
 root/root = NodePath("..")
-anims/caiu = SubResource( 6 )
-anims/pulou = SubResource( 7 )
+anims/caiu = SubResource( 7 )
+anims/dano = SubResource( 8 )
+anims/pulou = SubResource( 9 )
 playback/active = true
 playback/speed = 1.0
 blend_times = [  ]
@@ -274,10 +381,45 @@ playback/process_mode = 1
 playback/default_blend_time = 0.0
 root/root = NodePath("..")
 anims/die = SubResource( 10 )
-anims/morrendo = SubResource( 9 )
+anims/morrendo = SubResource( 11 )
 playback/active = true
 playback/speed = 1.0
 blend_times = [  ]
 autoplay = ""
+
+[node name="sample" type="SamplePlayer2D" parent="."]
+
+params/volume_db = -2.0
+params/pitch_scale = 1.0
+params/attenuation/min_distance = 1.0
+params/attenuation/max_distance = 2048.0
+params/attenuation/distance_exp = 1.0
+config/polyphony = 1
+config/samples = SubResource( 12 )
+config/pitch_random = 0.0
+
+[node name="pes" type="Area2D" parent="."]
+
+input/pickable = true
+shapes/0/shape = SubResource( 13 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0.183884, 10.0316 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+collision/layers = 4
+collision/mask = 4
+
+[node name="shape" type="CollisionShape2D" parent="pes"]
+
+transform/pos = Vector2( 0.183884, 10.0316 )
+shape = SubResource( 13 )
+trigger = false
+_update_shape_index = 0
+
+[connection signal="body_enter" from="direita" to="." method="_on_direita_body_enter"]
+
+[connection signal="body_enter" from="pes" to="." method="_on_pes_body_enter"]
 
 

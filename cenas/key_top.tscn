@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=1]
+
+[ext_resource path="res://imgs/key.png" type="Texture" id=1]
+
+[node name="key_top" type="CanvasLayer"]
+
+layer = 1
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+
+[node name="key" type="Sprite" parent="."]
+
+visibility/opacity = 0.0
+transform/pos = Vector2( 60, 14 )
+transform/scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 1 )
+
+

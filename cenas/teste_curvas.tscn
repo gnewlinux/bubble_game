@@ -1,0 +1,101 @@
+[gd_scene load_steps=9 format=1]
+
+[ext_resource path="res://addons/platform2d/thin_platform.gd" type="Script" id=1]
+[ext_resource path="res://addons/platform2d/thin_platform_icon.png" type="Texture" id=2]
+[ext_resource path="res://imgs/esquerdat.png" type="Texture" id=3]
+[ext_resource path="res://imgs/meio.png" type="Texture" id=4]
+[ext_resource path="res://imgs/direitat.png" type="Texture" id=5]
+[ext_resource path="res://imgs/rotor.png" type="Texture" id=6]
+
+[sub_resource type="Curve2D" id=16]
+
+bake_interval = 50.0
+_data = {
+"points": Vector2Array( 0, 0, -39.475, 1213.71, -179.977, 45.5791, 46.943, 1186.87, 424.932, 483.638, 1376.23, 72.0123 )
+}
+
+[sub_resource type="CircleShape2D" id=61]
+
+custom_solver_bias = 0.0
+radius = 16.0
+
+[node name="Node2D" type="Node2D"]
+
+[node name="ThinPlatform" type="StaticBody2D" parent="."]
+
+material/material = {
+"BakeInterval": 50,
+"LeftTexture": "res://imgs/esquerdat.png",
+"MidTexture": "res://imgs/meio.png",
+"Position": 0.5,
+"RightTexture": "res://imgs/direitat.png",
+"Thickness": 100
+}
+transform/pos = Vector2( 92.3, 44.7 )
+transform/scale = Vector2( 0.115625, 0.115625 )
+input/pickable = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+script/script = ExtResource( 1 )
+__meta__ = {
+"_editor_icon": ExtResource( 2 )
+}
+MovingPlatform = false
+Curve = SubResource( 16 )
+BakeInterval = 50
+LeftTexture = ExtResource( 3 )
+MidTexture = ExtResource( 4 )
+RightTexture = ExtResource( 5 )
+LeftOverflow = 0.0
+RightOverflow = 0.0
+Thickness = 100
+Position = 0.5
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ThinPlatform"]
+
+visibility/visible = false
+build_mode = 0
+polygon = Vector2Array( -179.977, 45.5791, -180.656, 95.7167, -179.368, 145.609, -175.987, 195.636, -170.461, 245.014, -162.627, 294.252, -152.294, 343.477, -139.554, 391.644, -124.189, 439.183, -106.214, 485.661, -85.583, 530.93, -61.9982, 575.301, -35.7985, 617.89, -6.85619, 658.784, 24.4927, 697.443, 58.3424, 733.962, 94.8157, 768.382, 133.288, 800.09, 174.023, 829.314, 216.509, 855.687, 260.811, 879.272, 306.351, 899.804, 353.179, 917.36, 401.129, 931.897, 449.801, 943.327, 499.249, 951.683, 548.827, 956.887, 598.818, 958.992, 649.041, 957.953, 699.076, 953.756, 748.738, 946.402, 797.839, 935.893, 845.748, 922.371, 892.963, 905.67, 938.86, 885.948, 983.275, 863.249, 1026.25, 837.489, 1067.41, 808.814, 1106.43, 777.426, 1143.18, 743.412, 1177.56, 706.857, 1209.17, 668.245, 1238.11, 627.53, 1264.23, 585.06, 1287.52, 540.994, 1308.01, 495.488, 1325.72, 448.695, 1340.62, 401.04, 1352.81, 352.705, 1362.42, 303.737, 1369.52, 254.408, 1374.27, 204.62, 1376.75, 154.789, 1377.1, 104.72, 1376.23, 72.0123, 1376.23, 122.012, 1377.1, 154.72, 1376.75, 204.789, 1374.27, 254.62, 1369.52, 304.408, 1362.42, 353.737, 1352.81, 402.705, 1340.62, 451.04, 1325.72, 498.695, 1308.01, 545.488, 1287.52, 590.994, 1264.23, 635.06, 1238.11, 677.53, 1209.17, 718.245, 1177.56, 756.857, 1143.18, 793.412, 1106.43, 827.426, 1067.41, 858.814, 1026.25, 887.489, 983.275, 913.249, 938.86, 935.948, 892.963, 955.67, 845.748, 972.371, 797.839, 985.893, 748.738, 996.402, 699.076, 1003.76, 649.041, 1007.95, 598.818, 1008.99, 548.827, 1006.89, 499.249, 1001.68, 449.801, 993.327, 401.129, 981.897, 353.179, 967.36, 306.351, 949.804, 260.811, 929.272, 216.509, 905.687, 174.023, 879.314, 133.288, 850.09, 94.8157, 818.382, 58.3424, 783.962, 24.4927, 747.443, -6.85619, 708.784, -35.7985, 667.89, -61.9982, 625.301, -85.583, 580.93, -106.214, 535.661, -124.189, 489.183, -139.554, 441.644, -152.294, 393.477, -162.627, 344.252, -170.461, 295.014, -175.987, 245.636, -179.368, 195.609, -180.656, 145.717, -179.977, 95.5791 )
+shape_range = Vector2( -1, -1 )
+trigger = false
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+
+transform/pos = Vector2( 91, -932 )
+input/pickable = false
+shapes/0/shape = SubResource( 61 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+mode = 0
+mass = 1.02041
+friction = 0.2
+bounce = 0.2
+gravity_scale = 1.0
+custom_integrator = false
+continuous_cd = 0
+contacts_reported = 0
+contact_monitor = false
+sleeping = false
+can_sleep = true
+velocity/linear = Vector2( 0, 0 )
+velocity/angular = 0.0
+damp_override/linear = -1.0
+damp_override/angular = -1.0
+
+[node name="Sprite" type="Sprite" parent="RigidBody2D"]
+
+texture = ExtResource( 6 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+
+shape = SubResource( 61 )
+trigger = false
+_update_shape_index = 0
+
+

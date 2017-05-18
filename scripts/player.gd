@@ -28,6 +28,7 @@ var animacao = ""
 var life = 3
 var contador = 0
 var shape = 0
+var key = false
 
 
 func _fixed_process(delta):
@@ -42,6 +43,9 @@ func _fixed_process(delta):
 	var jump = Input.is_action_pressed("jump")
 	
 	var stop = true
+	if key == true:
+		get_tree().get_root().get_node("main/key_top/key").set_opacity(1)
+
 	
 	if (walk_left):
 		if (velocity.x <= WALK_MIN_SPEED and velocity.x > -WALK_MAX_SPEED):
@@ -125,6 +129,7 @@ func _fixed_process(delta):
 	var chao = get_node("rayChao").is_colliding()
 	if chao && !estava_chao:
 		get_node("animFX").play("caiu")
+		pass
 
 	estava_chao = chao
 	
@@ -133,6 +138,7 @@ func _fixed_process(delta):
 
 	#### ANIMACOES PERSONAGEM
 	if andando:
+		#get_node("sample").play("step")
 		if velocity.x > 0:
 			get_node("sprite").set_flip_h(false)
 		else:
@@ -158,11 +164,24 @@ func _ready():
 	set_fixed_process(true)
 	pass
 	
-func pula():
+func pula(): 
 	get_node("animFX").play("pulou")
 	velocity.y = -JUMP_SPEED
 	jumping = true
 	pass
+
+func pula_dano():
+	get_node("animFX").play("pulou")
+	velocity.y = -120
+	jumping = true
+	pass
+
+func pula_morcego():
+	get_node("animFX").play("pulou")
+	velocity.y = -500
+	jumping = true
+	pass
+	
 	
 func dano(dan):
 	life -= dan
@@ -170,9 +189,26 @@ func dano(dan):
 	pass
 	
 func die():
-	get_tree().change_scene("res://cenas/gameover.tscn")
+	get_tree().reload_current_scene()
 	pass
 
 func _on_Area2D_body_enter( body ):
 	get_tree().change_scene("res://cenas/finish.tscn")
+	pass # replace with function body
+
+
+func _on_kill_body_enter( body ):
+	get_tree().reload_current_scene()
+	pass # replace with function body
+
+
+func _on_pes_body_enter( body ):
+	body.dano(1)
+	pula()
+	pass # replace with function body
+
+
+func _on_direita_body_enter( body ):
+	dano(1)
+	print("bateu")
 	pass # replace with function body

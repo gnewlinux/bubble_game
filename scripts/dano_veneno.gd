@@ -24,6 +24,7 @@ func _process(delta):
 func _on_Area2D_body_enter( body ):
 	if !encosta:
 		get_node("../../player").dano(1)
+		get_tree().get_root().get_node("main/player").pula_dano()
 		encosta = true
 	pass
 

@@ -1,0 +1,475 @@
+[gd_scene load_steps=33 format=1]
+
+[ext_resource path="res://cenas/gui_mobile.tscn" type="PackedScene" id=1]
+[ext_resource path="res://cenas/rotor.tscn" type="PackedScene" id=2]
+[ext_resource path="res://cenas/rotor_solo_grande.tscn" type="PackedScene" id=3]
+[ext_resource path="res://titlesets/titleset_floresta.tres" type="TileSet" id=4]
+[ext_resource path="res://imgs/heart3.png" type="Texture" id=5]
+[ext_resource path="res://scripts/life.gd" type="Script" id=6]
+[ext_resource path="res://imgs/heart.png" type="Texture" id=7]
+[ext_resource path="res://imgs/heart1.png" type="Texture" id=8]
+[ext_resource path="res://imgs/heart2.png" type="Texture" id=9]
+[ext_resource path="res://cenas/key_top.tscn" type="PackedScene" id=10]
+[ext_resource path="res://imgs/door.png" type="Texture" id=11]
+[ext_resource path="res://imgs/door_close.png" type="Texture" id=12]
+[ext_resource path="res://players/player.tscn" type="PackedScene" id=13]
+[ext_resource path="res://cenas/morcego.tscn" type="PackedScene" id=14]
+[ext_resource path="res://imgs/placa.png" type="Texture" id=15]
+[ext_resource path="res://imgs/placa_chave.png" type="Texture" id=16]
+[ext_resource path="res://cenas/key.tscn" type="PackedScene" id=17]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 2, 51 )
+
+[sub_resource type="GDScript" id=2]
+
+script/source = "extends Area2D
+
+# class member variables go here, for example:
+# var a = 2
+# var b = \"textvar\"
+
+func _ready():
+	# Called every time the node is added to the scene.
+	# Initialization here
+	pass
+
+
+func _on_colisao_rotores_body_enter( body ):
+	get_node(\"../rotor_grande/animacao\").play(\"correndo\")
+	get_node(\"../rotor_grande1/animacao2\").play(\"correndo\")
+	queue_free()
+	pass # replace with function body
+"
+
+[sub_resource type="Animation" id=3]
+
+resource/name = "correndo"
+length = 2.0
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:transform/pos")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = {
+"times": FloatArray( 0, 1.5 ),
+"transitions": FloatArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 547, 79 ), Vector2( 262, 79 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/imported = false
+tracks/1/keys = {
+"times": FloatArray( 1.4 ),
+"transitions": FloatArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "queue_free"
+} ]
+}
+
+[sub_resource type="Animation" id=4]
+
+resource/name = "correndo"
+length = 2.0
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:transform/pos")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = {
+"times": FloatArray( 0, 1.5 ),
+"transitions": FloatArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 552, 52 ), Vector2( 233, 52 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/imported = false
+tracks/1/keys = {
+"times": FloatArray( 1.5 ),
+"transitions": FloatArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "queue_free"
+} ]
+}
+
+[sub_resource type="Animation" id=5]
+
+length = 1.0
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 7 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+
+length = 1.0
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 8 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+
+length = 1.0
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 9 ) ]
+}
+
+[sub_resource type="Animation" id=8]
+
+length = 1.0
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 5 ) ]
+}
+
+[sub_resource type="RectangleShape2D" id=9]
+
+custom_solver_bias = 0.0
+extents = Vector2( 6.66667, 3.33333 )
+
+[sub_resource type="GDScript" id=10]
+
+script/source = "extends Area2D
+
+func _ready():
+	set_process(true)
+	pass
+	
+func _process(delta):
+	if get_tree().get_root().get_node(\"main/player\").key == true:
+		get_node(\"fechado\").set_opacity(0)
+	pass
+
+
+func _on_door_body_enter( body ):
+	if get_tree().get_root().get_node(\"main/player\").key == true:
+		get_tree().change_scene(\"res://cenas/fase_05.tscn\")
+	else:
+		print(\"fechado\")
+	
+	
+	pass # replace with function body
+"
+
+[sub_resource type="ConvexPolygonShape2D" id=11]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 695, 312, 866, 224, 869, 511 )
+
+[sub_resource type="ConvexPolygonShape2D" id=12]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 695, 312, 869, 511, -686, 506, 552, 318 )
+
+[sub_resource type="ConvexPolygonShape2D" id=13]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 264, 319, 552, 318, -686, 506, -18, 323 )
+
+[sub_resource type="ConvexPolygonShape2D" id=14]
+
+custom_solver_bias = 0.0
+points = Vector2Array( -194, 312, -18, 323, -686, 506 )
+
+[sub_resource type="ConvexPolygonShape2D" id=15]
+
+custom_solver_bias = 0.0
+points = Vector2Array( -364, 266, -194, 312, -686, 506, -686, 279 )
+
+[node name="main" type="Node2D"]
+
+[node name="gui_mobile" parent="." instance=ExtResource( 1 )]
+
+[node name="rotores" type="Node" parent="."]
+
+[node name="rotor1" parent="rotores" instance=ExtResource( 2 )]
+
+transform/pos = Vector2( 569, 91 )
+
+[node name="rotor3" parent="rotores" instance=ExtResource( 2 )]
+
+transform/pos = Vector2( 704, 91 )
+
+[node name="rotor2" parent="rotores" instance=ExtResource( 2 )]
+
+transform/pos = Vector2( 640, 21 )
+transform/rot = 179.745
+
+[node name="colisao rotores" type="Area2D" parent="rotores"]
+
+editor/display_folded = true
+transform/pos = Vector2( 397, 64 )
+input/pickable = true
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+collision/layers = 2
+script/script = SubResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="rotores/colisao rotores"]
+
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
+[node name="rotor_grande" parent="rotores" instance=ExtResource( 3 )]
+
+editor/display_folded = true
+transform/pos = Vector2( 547, 79 )
+
+[node name="animacao" type="AnimationPlayer" parent="rotores/rotor_grande"]
+
+playback/process_mode = 1
+playback/default_blend_time = 0.0
+root/root = NodePath("..")
+anims/correndo = SubResource( 3 )
+playback/active = true
+playback/speed = 1.0
+blend_times = [  ]
+autoplay = ""
+
+[node name="rotor_grande1" parent="rotores" instance=ExtResource( 3 )]
+
+editor/display_folded = true
+transform/pos = Vector2( 552, 52 )
+
+[node name="animacao2" type="AnimationPlayer" parent="rotores/rotor_grande1"]
+
+playback/process_mode = 1
+playback/default_blend_time = 0.0
+root/root = NodePath("..")
+anims/correndo = SubResource( 4 )
+playback/active = true
+playback/speed = 1.0
+blend_times = [  ]
+autoplay = ""
+
+[node name="shoters" type="Node" parent="."]
+
+[node name="titlemap_bg" type="TileMap" parent="shoters"]
+
+transform/pos = Vector2( -16, 0 )
+mode = 0
+tile_set = ExtResource( 4 )
+cell/size = Vector2( 16, 16 )
+cell/quadrant_size = 16
+cell/custom_transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+cell/half_offset = 2
+cell/tile_origin = 0
+cell/y_sort = false
+collision/use_kinematic = false
+collision/friction = 1.0
+collision/bounce = 0.0
+collision/layers = 2
+collision/mask = 1
+occluder/light_mask = 1
+tile_data = IntArray( -196595, 3, -196594, 38, -196593, 38, -196592, 38, -196591, 38, -196590, 38, -196589, 38, -196588, 38, -196587, 38, -196586, 38, -196585, 38, -196584, 38, -196583, 38, -196582, 38, -196581, 38, -196580, 38, -196579, 38, -196578, 38, -196577, 38, -196576, 38, -196575, 38, -196574, 38, -196573, 38, -196572, 38, -196571, 38, -196570, 38, -196569, 38, -196568, 38, -196567, 38, -196566, 38, -196565, 38, -196564, 38, -196563, 38, -196562, 38, -196561, 38, -196560, 38, -196559, 38, -196558, 38, -196557, 38, -196556, 38, -196555, 38, -196554, 38, -196553, 38, -196552, 38, -196551, 38, -196550, 38, -196549, 38, -196548, 38, -196547, 38, -196546, 38, -196545, 38, -196544, 38, -196543, 38, -196542, 38, -196541, 38, -196540, 38, -196539, 38, -196538, 38, -196537, 38, -131060, 3, -131059, 41, -131058, 41, -131057, 41, -131056, 41, -131055, 41, -131054, 41, -131053, 41, -131052, 41, -131051, 41, -131050, 41, -131049, 41, -131048, 41, -131047, 41, -131046, 41, -131045, 41, -131044, 41, -131043, 41, -131042, 41, -131041, 41, -131040, 41, -131039, 41, -131038, 41, -131037, 41, -131036, 41, -131035, 41, -131034, 41, -131033, 41, -131032, 41, -131031, 41, -131030, 41, -131029, 41, -131028, 41, -131027, 41, -131026, 41, -131025, 41, -131024, 41, -131023, 41, -131022, 41, -131021, 41, -131020, 41, -131019, 41, -131018, 41, -131017, 41, -131016, 41, -131015, 41, -131014, 41, -131013, 41, -131012, 41, -131011, 41, -131010, 41, -131009, 41, -131008, 41, -131007, 41, -131006, 41, -131005, 41, -131004, 41, -131003, 41, -131002, 41, -131001, 41, -65524, 40, -65523, 41, -65522, 41, -65521, 41, -65520, 41, -65519, 41, -65518, 41, -65517, 41, -65516, 41, -65515, 41, -65514, 41, -65513, 41, -65512, 41, -65511, 41, -65510, 41, -65509, 41, -65508, 41, -65507, 41, -65506, 41, -65505, 41, -65504, 41, -65503, 41, -65502, 41, -65501, 41, -65500, 41, -65499, 41, -65498, 41, -65497, 41, -65496, 41, -65495, 41, -65494, 41, -65493, 41, -65492, 41, -65491, 41, -65490, 41, -65489, 41, -65488, 41, -65487, 41, -65486, 41, -65485, 41, -65484, 41, -65483, 41, -65482, 41, -65481, 41, -65480, 41, -65479, 41, -65478, 41, -65477, 41, -65476, 41, -65475, 41, -65474, 41, -65473, 41, -65472, 41, -65471, 41, -65470, 41, -65469, 41, -65468, 41, -65467, 41, -65466, 41, -65465, 41, 11, 3, 12, 41, 13, 41, 14, 41, 15, 41, 16, 41, 17, 41, 18, 41, 19, 41, 20, 41, 21, 41, 22, 41, 23, 41, 24, 41, 25, 41, 26, 41, 27, 41, 28, 41, 29, 41, 30, 41, 31, 41, 32, 41, 33, 41, 34, 41, 35, 44, 36, 44, 37, 44, 38, 44, 39, 44, 40, 44, 41, 44, 42, 44, 43, 44, 44, 44, 45, 44, 46, 44, 47, 41, 48, 41, 49, 41, 50, 41, 51, 41, 52, 41, 53, 41, 54, 41, 55, 41, 56, 41, 57, 41, 58, 41, 59, 41, 60, 41, 61, 41, 62, 41, 63, 41, 64, 41, 65, 41, 66, 41, 67, 41, 68, 41, 69, 41, 70, 41, 71, 41, 65546, 0, 65547, 44, 65548, 44, 65549, 44, 65550, 44, 65551, 44, 65552, 44, 65553, 44, 65554, 44, 65555, 44, 65556, 44, 65557, 44, 65558, 44, 65559, 44, 65560, 44, 65561, 44, 65562, 44, 65563, 44, 65564, 44, 65565, 44, 65566, 44, 65567, 44, 65568, 44, 65569, 44, 65570, 44, 65583, 44, 65584, 44, 65585, 44, 65586, 44, 65587, 44, 65588, 44, 65589, 44, 65590, 44, 65591, 44, 65592, 44, 65593, 44, 65594, 44, 65595, 44, 65596, 44, 65597, 44, 65598, 44, 65599, 44, 65600, 44, 65601, 44, 65602, 44, 65603, 44, 65604, 44, 65605, 44, 65606, 44, 65607, 45, 327711, 3, 327712, 38, 327713, 38, 327714, 39, 393222, 29, 393226, 0, 393227, 38, 393228, 38, 393229, 38, 393230, 38, 393231, 38, 393232, 38, 393233, 38, 393234, 38, 393235, 38, 393236, 38, 393237, 38, 393238, 38, 393239, 38, 393240, 39, 393244, 3, 393245, 38, 393246, 38, 393247, 41, 393248, 41, 393249, 41, 393250, 41, 393251, 38, 393252, 38, 393253, 38, 393254, 38, 393255, 38, 393256, 38, 393257, 38, 393258, 38, 393259, 38, 393260, 38, 393261, 38, 393262, 38, 393263, 38, 393264, 38, 393265, 38, 393266, 38, 393267, 39, 393273, 0, 393274, 27, 393275, 27, 393276, 27, 393277, 28, 458763, 43, 458764, 44, 458765, 41, 458766, 41, 458767, 41, 458768, 41, 458769, 41, 458770, 41, 458771, 41, 458772, 41, 458773, 41, 458774, 41, 458775, 41, 458776, 41, 458777, 38, 458778, 38, 458779, 38, 458780, 41, 458781, 41, 458782, 41, 458783, 41, 458784, 41, 458785, 41, 458786, 41, 458787, 41, 458788, 41, 458789, 41, 458790, 41, 458791, 41, 458792, 41, 458793, 41, 458794, 41, 458795, 41, 458796, 41, 458797, 41, 458798, 41, 458799, 41, 458800, 41, 458801, 41, 458802, 41, 458803, 41, 458804, 39, 524301, 40, 524302, 41, 524303, 41, 524304, 41, 524305, 41, 524306, 36, 524307, 36, 524308, 41, 524309, 41, 524310, 41, 524311, 41, 524312, 41, 524313, 41, 524314, 41, 524315, 41, 524316, 41, 524317, 41, 524318, 41, 524319, 41, 524320, 41, 524321, 41, 524322, 41, 524323, 41, 524324, 41, 524325, 41, 524326, 41, 524327, 41, 524328, 41, 524329, 41, 524330, 41, 524331, 41, 524332, 41, 524333, 41, 524334, 41, 524335, 41, 524336, 41, 524337, 41, 524338, 41, 524339, 41, 524340, 42, 655359, 0, 589824, 27, 589825, 27, 589826, 27, 589827, 27, 589828, 28, 589836, 0, 589837, 41, 589838, 41, 589839, 41, 589840, 41, 589841, 41, 589842, 41, 589843, 41, 589844, 41, 589845, 41, 589846, 41, 589847, 41, 589848, 41, 589849, 41, 589850, 41, 589851, 41, 589852, 41, 589853, 41, 589854, 41, 589855, 41, 589856, 41, 589857, 41, 589858, 41, 589859, 41, 589860, 41, 589861, 41, 589862, 41, 589863, 41, 589864, 41, 589865, 41, 589866, 41, 589867, 41, 589868, 41, 589869, 41, 589870, 41, 589871, 41, 589872, 41, 589873, 41, 589874, 41, 589875, 41, 589876, 44, 589877, 28, 655373, 40, 655374, 41, 655375, 36, 655376, 36, 655377, 41, 655378, 41, 655379, 41, 655380, 41, 655381, 41, 655382, 41, 655383, 41, 655384, 41, 655385, 41, 655386, 41, 655387, 41, 655388, 41, 655389, 41, 655390, 41, 655391, 41, 655392, 41, 655393, 41, 655394, 41, 655395, 41, 655396, 41, 655397, 41, 655398, 41, 655399, 41, 655400, 41, 655401, 41, 655402, 41, 655403, 41, 655404, 41, 655405, 41, 655406, 41, 655407, 41, 655408, 41, 655409, 41, 655410, 41, 655411, 45, 720909, 43, 720910, 41, 720911, 41, 720912, 41, 720913, 41, 720914, 41, 720915, 41, 720916, 41, 720917, 41, 720918, 41, 720919, 41, 720920, 41, 720921, 41, 720922, 41, 720923, 41, 720924, 41, 720925, 41, 720926, 41, 720927, 41, 720928, 41, 720929, 41, 720930, 41, 720931, 41, 720932, 41, 720933, 41, 720934, 41, 720935, 41, 720936, 41, 720937, 41, 720938, 41, 720939, 41, 720940, 41, 720941, 41, 720942, 41, 720943, 41, 720944, 41, 720945, 41, 720946, 45, 720953, 29, 786446, 44, 786447, 44, 786448, 44, 786449, 44, 786450, 44, 786451, 44, 786452, 44, 786453, 44, 786454, 44, 786455, 44, 786456, 44, 786457, 44, 786458, 44, 786459, 44, 786460, 44, 786461, 44, 786462, 44, 786463, 44, 786464, 44, 786465, 44, 786466, 44, 786467, 44, 786468, 44, 786469, 44, 786470, 44, 786471, 44, 786472, 44, 786473, 44, 786474, 44, 786475, 44, 786476, 44, 786477, 44, 786478, 44, 786479, 44, 786480, 44, 786481, 45, 852029, 29 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="life" type="CanvasLayer" parent="."]
+
+editor/display_folded = true
+layer = 1
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+
+[node name="sprite" type="Sprite" parent="life"]
+
+editor/display_folded = true
+transform/pos = Vector2( 12.5981, 14.1873 )
+transform/scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 5 )
+offset = Vector2( 23.1061, -0.382342 )
+region_rect = Rect2( -0.375, -0.375, 47.875, 16 )
+script/script = ExtResource( 6 )
+
+[node name="anim" type="AnimationPlayer" parent="life/sprite"]
+
+playback/process_mode = 1
+playback/default_blend_time = 0.0
+root/root = NodePath("..")
+anims/heart = SubResource( 5 )
+anims/heart1 = SubResource( 6 )
+anims/heart2 = SubResource( 7 )
+anims/heart3 = SubResource( 8 )
+playback/active = true
+playback/speed = 1.0
+blend_times = [  ]
+autoplay = ""
+
+[node name="key_top" parent="." instance=ExtResource( 10 )]
+
+[node name="hearts" type="Node" parent="."]
+
+editor/display_folded = true
+
+[node name="Danos" type="Node" parent="."]
+
+editor/display_folded = true
+
+[node name="door" type="Area2D" parent="."]
+
+editor/display_folded = true
+transform/pos = Vector2( 933, 77 )
+transform/scale = Vector2( 0.6, 0.6 )
+input/pickable = true
+shapes/0/shape = SubResource( 9 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 25 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+script/script = SubResource( 10 )
+
+[node name="aberto" type="Sprite" parent="door"]
+
+texture = ExtResource( 11 )
+
+[node name="fechado" type="Sprite" parent="door"]
+
+texture = ExtResource( 12 )
+
+[node name="shape" type="CollisionShape2D" parent="door"]
+
+transform/pos = Vector2( 0, 25 )
+shape = SubResource( 9 )
+trigger = false
+_update_shape_index = 0
+
+[node name="player" parent="." instance=ExtResource( 13 )]
+
+transform/pos = Vector2( 14, 123 )
+
+[node name="titlemap_btop" type="TileMap" parent="."]
+
+transform/pos = Vector2( -16, 0 )
+mode = 0
+tile_set = ExtResource( 4 )
+cell/size = Vector2( 16, 16 )
+cell/quadrant_size = 16
+cell/custom_transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+cell/half_offset = 2
+cell/tile_origin = 0
+cell/y_sort = false
+collision/use_kinematic = false
+collision/friction = 1.0
+collision/bounce = 0.0
+collision/layers = 0
+collision/mask = 0
+occluder/light_mask = 1
+tile_data = IntArray( -65525, 50, 327697, 46, 327719, 46, 327729, 46, 327740, 46, 393241, 46, 524288, 46, 524300, 50 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="kill" type="Area2D" parent="."]
+
+editor/display_folded = true
+transform/pos = Vector2( 305, -6 )
+input/pickable = true
+shapes/0/shape = SubResource( 11 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 150, -5 )
+shapes/0/trigger = false
+shapes/1/shape = SubResource( 12 )
+shapes/1/transform = Matrix32( 1, 0, 0, 1, 150, -5 )
+shapes/1/trigger = false
+shapes/2/shape = SubResource( 13 )
+shapes/2/transform = Matrix32( 1, 0, 0, 1, 150, -5 )
+shapes/2/trigger = false
+shapes/3/shape = SubResource( 14 )
+shapes/3/transform = Matrix32( 1, 0, 0, 1, 150, -5 )
+shapes/3/trigger = false
+shapes/4/shape = SubResource( 15 )
+shapes/4/transform = Matrix32( 1, 0, 0, 1, 150, -5 )
+shapes/4/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+collision/layers = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="kill"]
+
+transform/pos = Vector2( 150, -5 )
+build_mode = 0
+polygon = Vector2Array( -686, 279, -364, 266, -194, 312, -18, 323, 264, 319, 552, 318, 695, 312, 866, 224, 869, 511, -686, 506 )
+shape_range = Vector2( 0, 4 )
+trigger = false
+
+[node name="morcego" parent="." instance=ExtResource( 14 )]
+
+transform/pos = Vector2( 263, 69 )
+
+[node name="Sprite" type="Sprite" parent="."]
+
+transform/pos = Vector2( 356, 81 )
+texture = ExtResource( 15 )
+
+[node name="Sprite 2" type="Sprite" parent="."]
+
+transform/pos = Vector2( 810, 81 )
+texture = ExtResource( 16 )
+
+[node name="key" parent="." instance=ExtResource( 17 )]
+
+transform/pos = Vector2( 968, 194 )
+
+[connection signal="body_enter" from="rotores/colisao rotores" to="rotores/colisao rotores" method="_on_colisao_rotores_body_enter"]
+
+[connection signal="body_enter" from="door" to="door" method="_on_door_body_enter"]
+
+[connection signal="body_enter" from="kill" to="player" method="_on_kill_body_enter"]
+
+

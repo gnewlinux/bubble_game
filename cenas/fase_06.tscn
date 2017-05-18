@@ -1,0 +1,387 @@
+[gd_scene load_steps=28 format=1]
+
+[ext_resource path="res://cenas/gui_mobile.tscn" type="PackedScene" id=1]
+[ext_resource path="res://titlesets/titleset_floresta.tres" type="TileSet" id=2]
+[ext_resource path="res://imgs/heart3.png" type="Texture" id=3]
+[ext_resource path="res://scripts/life.gd" type="Script" id=4]
+[ext_resource path="res://imgs/heart.png" type="Texture" id=5]
+[ext_resource path="res://imgs/heart1.png" type="Texture" id=6]
+[ext_resource path="res://imgs/heart2.png" type="Texture" id=7]
+[ext_resource path="res://cenas/key_top.tscn" type="PackedScene" id=8]
+[ext_resource path="res://imgs/door.png" type="Texture" id=9]
+[ext_resource path="res://imgs/door_close.png" type="Texture" id=10]
+[ext_resource path="res://players/player.tscn" type="PackedScene" id=11]
+[ext_resource path="res://cenas/heart.tscn" type="PackedScene" id=12]
+[ext_resource path="res://cenas/key.tscn" type="PackedScene" id=13]
+[ext_resource path="res://cenas/morcego.tscn" type="PackedScene" id=14]
+[ext_resource path="res://cenas/morcegov.tscn" type="PackedScene" id=15]
+
+[sub_resource type="Animation" id=1]
+
+resource/name = "heart"
+length = 1.0
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 5 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+
+resource/name = "heart1"
+length = 1.0
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 6 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+
+resource/name = "heart2"
+length = 1.0
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 7 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+
+resource/name = "heart3"
+length = 1.0
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 3 ) ]
+}
+
+[sub_resource type="RectangleShape2D" id=5]
+
+custom_solver_bias = 0.0
+extents = Vector2( 15, 5 )
+
+[sub_resource type="GDScript" id=6]
+
+script/source = "extends Area2D
+
+var segundos = 0
+var encosta = false
+
+func _ready():
+	set_process(true)
+	pass
+
+func _process(delta):
+	if encosta:
+		segundos += 1 * delta
+
+		#conta um segundo e dano!
+		if segundos >= 1:
+			get_node(\"../../player\").dano(1)
+			segundos = 0
+			pass
+
+	else:
+		segundos = 0
+		pass
+
+func _on_Area2D_body_enter( body ):
+	if !encosta:
+		get_node(\"../../player\").dano(1)
+		get_tree().get_root().get_node(\"main/player\").pula_dano()
+		encosta = true
+	pass
+
+
+func _on_poison_body_exit( body ):
+	encosta = false
+	pass # replace with function body
+"
+
+[sub_resource type="RectangleShape2D" id=7]
+
+custom_solver_bias = 0.0
+extents = Vector2( 6.66667, 3.33333 )
+
+[sub_resource type="GDScript" id=8]
+
+script/source = "extends Area2D
+
+func _ready():
+	set_process(true)
+	pass
+	
+func _process(delta):
+	if get_tree().get_root().get_node(\"main/player\").key == true:
+		get_node(\"fechado\").set_opacity(0)
+	pass
+
+
+func _on_door_body_enter( body ):
+	if get_tree().get_root().get_node(\"main/player\").key == true:
+		get_tree().change_scene(\"res://cenas/cenateste.tscn\")
+	else:
+		print(\"fechado\")
+	
+	
+	pass # replace with function body
+"
+
+[sub_resource type="ConvexPolygonShape2D" id=9]
+
+custom_solver_bias = 0.0
+points = Vector2Array( -536, 511, -539, 266, -364, 266, -183, 413 )
+
+[sub_resource type="ConvexPolygonShape2D" id=10]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 823, 513, -536, 511, -183, 413 )
+
+[sub_resource type="ConvexPolygonShape2D" id=11]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 823, 513, -183, 413, -18, 323, 264, 319, 552, 318 )
+
+[sub_resource type="ConvexPolygonShape2D" id=12]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 821, 271, 823, 513, 552, 318, 568, 267 )
+
+[node name="main" type="Node2D"]
+
+[node name="gui_mobile" parent="." instance=ExtResource( 1 )]
+
+[node name="shoters" type="Node" parent="."]
+
+[node name="titlemap_bg" type="TileMap" parent="shoters"]
+
+mode = 0
+tile_set = ExtResource( 2 )
+cell/size = Vector2( 16, 16 )
+cell/quadrant_size = 16
+cell/custom_transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+cell/half_offset = 2
+cell/tile_origin = 0
+cell/y_sort = false
+collision/use_kinematic = false
+collision/friction = 1.0
+collision/bounce = 0.0
+collision/layers = 2
+collision/mask = 1
+occluder/light_mask = 1
+tile_data = IntArray( -851970, 0, -851969, 27, -917504, 27, -917503, 28, -786428, 29, -655367, 0, -655366, 27, -655365, 27, -655364, 28, -589820, 0, -589819, 27, -589818, 27, -589817, 27, -393226, 0, -393225, 27, -393224, 28, -393206, 27, -262147, 0, -262146, 27, -262145, 27, -327680, 28, -196593, 27, -131064, 0, -131063, 27, -131062, 28, 262143, 0, 196608, 27, 196609, 28, 458759, 0, 458760, 27, 458761, 28, 720890, 27, 720891, 27, 720892, 38, 720893, 38, 720894, 38, 720895, 38, 655360, 38, 655361, 39, 655366, 3, 655367, 38, 655368, 38, 655369, 38, 655370, 38, 655371, 38, 655372, 27, 655373, 28, 786428, 43, 786429, 41, 786430, 41, 786431, 41, 720896, 41, 720897, 41, 720898, 39, 720901, 3, 720902, 41, 720903, 41, 720904, 41, 720905, 41, 720906, 41, 720907, 45, 851965, 43, 851966, 44, 851967, 41, 786432, 41, 786433, 41, 786434, 42, 786435, 50, 786436, 50, 786437, 40, 786438, 41, 786439, 41, 786440, 41, 786441, 41, 786442, 45, 917503, 43, 851968, 41, 851969, 41, 851970, 41, 851971, 41, 851972, 41, 851973, 41, 851974, 41, 851975, 41, 851976, 44, 851977, 45, 917504, 43, 917505, 44, 917506, 44, 917507, 44, 917508, 44, 917509, 44, 917510, 44, 917511, 45 )
+
+[node name="life" type="CanvasLayer" parent="."]
+
+editor/display_folded = true
+layer = 1
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+
+[node name="sprite" type="Sprite" parent="life"]
+
+editor/display_folded = true
+transform/pos = Vector2( 12.5981, 14.1873 )
+transform/scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 3 )
+offset = Vector2( 23.1061, -0.382342 )
+region_rect = Rect2( -0.375, -0.375, 47.875, 16 )
+script/script = ExtResource( 4 )
+
+[node name="anim" type="AnimationPlayer" parent="life/sprite"]
+
+playback/process_mode = 1
+playback/default_blend_time = 0.0
+root/root = NodePath("..")
+anims/heart = SubResource( 1 )
+anims/heart1 = SubResource( 2 )
+anims/heart2 = SubResource( 3 )
+anims/heart3 = SubResource( 4 )
+playback/active = true
+playback/speed = 1.0
+blend_times = [  ]
+autoplay = ""
+
+[node name="key_top" parent="." instance=ExtResource( 8 )]
+
+[node name="hearts" type="Node" parent="."]
+
+editor/display_folded = true
+
+[node name="Danos" type="Node" parent="."]
+
+[node name="poison" type="Area2D" parent="Danos"]
+
+input/pickable = true
+shapes/0/shape = SubResource( 5 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 64, 201 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+collision/layers = 2
+collision/mask = 0
+script/script = SubResource( 6 )
+
+[node name="shape" type="CollisionShape2D" parent="Danos/poison"]
+
+transform/pos = Vector2( 64, 201 )
+shape = SubResource( 5 )
+trigger = false
+_update_shape_index = 0
+
+[node name="rotores" type="Node" parent="."]
+
+[node name="door" type="Area2D" parent="."]
+
+editor/display_folded = true
+transform/pos = Vector2( -16, 142 )
+transform/scale = Vector2( 0.6, 0.6 )
+input/pickable = true
+shapes/0/shape = SubResource( 7 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 25 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+script/script = SubResource( 8 )
+
+[node name="aberto" type="Sprite" parent="door"]
+
+texture = ExtResource( 9 )
+
+[node name="fechado" type="Sprite" parent="door"]
+
+texture = ExtResource( 10 )
+
+[node name="shape" type="CollisionShape2D" parent="door"]
+
+transform/pos = Vector2( 0, 25 )
+shape = SubResource( 7 )
+trigger = false
+_update_shape_index = 0
+
+[node name="player" parent="." instance=ExtResource( 11 )]
+
+transform/pos = Vector2( 8, 145 )
+
+[node name="tilte_top" type="TileMap" parent="."]
+
+mode = 0
+tile_set = ExtResource( 2 )
+cell/size = Vector2( 16, 16 )
+cell/quadrant_size = 16
+cell/custom_transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+cell/half_offset = 2
+cell/tile_origin = 0
+cell/y_sort = false
+collision/use_kinematic = false
+collision/friction = 1.0
+collision/bounce = 0.0
+collision/layers = 1
+collision/mask = 0
+occluder/light_mask = 1
+tile_data = IntArray( -917505, 46, -655355, 46, 131073, 46, 655358, 46, 589834, 46 )
+
+[node name="kill" type="Area2D" parent="."]
+
+editor/display_folded = true
+input/pickable = true
+shapes/0/shape = SubResource( 9 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+shapes/1/shape = SubResource( 10 )
+shapes/1/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/1/trigger = false
+shapes/2/shape = SubResource( 11 )
+shapes/2/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/2/trigger = false
+shapes/3/shape = SubResource( 12 )
+shapes/3/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/3/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+collision/layers = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="kill"]
+
+build_mode = 0
+polygon = Vector2Array( -539, 266, -364, 266, -183, 413, -18, 323, 264, 319, 552, 318, 568, 267, 821, 271, 823, 513, -536, 511 )
+shape_range = Vector2( 0, 3 )
+trigger = false
+
+[node name="heart" parent="." instance=ExtResource( 12 )]
+
+transform/pos = Vector2( 248, -64 )
+
+[node name="key" parent="." instance=ExtResource( 13 )]
+
+transform/pos = Vector2( 0, -251 )
+
+[node name="morcego" parent="." instance=ExtResource( 14 )]
+
+transform/pos = Vector2( 79, 89 )
+
+[node name="morcego1" parent="." instance=ExtResource( 14 )]
+
+transform/pos = Vector2( -150, -144 )
+
+[node name="morcego2" parent="." instance=ExtResource( 14 )]
+
+transform/pos = Vector2( 67, -43 )
+
+[node name="morcego4" parent="." instance=ExtResource( 14 )]
+
+transform/pos = Vector2( 22, -252 )
+
+[node name="mocegov" parent="." instance=ExtResource( 15 )]
+
+transform/pos = Vector2( -105, -104 )
+
+[node name="mocegov1" parent="." instance=ExtResource( 15 )]
+
+transform/pos = Vector2( 89, 22 )
+
+[connection signal="body_enter" from="Danos/poison" to="Danos/poison" method="_on_Area2D_body_enter"]
+
+[connection signal="body_exit" from="Danos/poison" to="Danos/poison" method="_on_poison_body_exit"]
+
+[connection signal="body_enter" from="door" to="door" method="_on_door_body_enter"]
+
+[connection signal="body_enter" from="kill" to="player" method="_on_kill_body_enter"]
+
+
