@@ -356,7 +356,7 @@ samples/step = {
 [sub_resource type="RectangleShape2D" id=13]
 
 custom_solver_bias = 0.0
-extents = Vector2( 6.97586, 1.94417 )
+extents = Vector2( 9.76364, 3.28437 )
 
 [node name="player" type="KinematicBody2D"]
 
@@ -495,10 +495,9 @@ config/pitch_random = 0.0
 
 [node name="pes" type="Area2D" parent="."]
 
-editor/display_folded = true
 input/pickable = true
 shapes/0/shape = SubResource( 13 )
-shapes/0/transform = Matrix32( 1, 0, 0, 1, 0.183884, 10.0316 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, -0.000900269, 9.52343 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
@@ -509,7 +508,7 @@ collision/mask = 4
 
 [node name="shape" type="CollisionShape2D" parent="pes"]
 
-transform/pos = Vector2( 0.183884, 10.0316 )
+transform/pos = Vector2( -0.000900269, 9.52343 )
 shape = SubResource( 13 )
 trigger = false
 _update_shape_index = 0

@@ -16,6 +16,7 @@ scale = Vector2( 1, 1 )
 
 [node name="esquerda" type="TouchScreenButton" parent="."]
 
+visibility/visible = false
 visibility/opacity = 0.6
 transform/pos = Vector2( 21, 122 )
 transform/scale = Vector2( 0.2, 0.2 )
@@ -31,6 +32,7 @@ visibility_mode = 1
 
 [node name="direita" type="TouchScreenButton" parent="."]
 
+visibility/visible = false
 visibility/opacity = 0.6
 transform/pos = Vector2( 72, 122 )
 transform/scale = Vector2( 0.2, 0.2 )
@@ -46,6 +48,7 @@ visibility_mode = 1
 
 [node name="pulo" type="TouchScreenButton" parent="."]
 
+visibility/visible = false
 visibility/opacity = 0.6
 transform/pos = Vector2( 254, 122 )
 transform/scale = Vector2( 0.2, 0.2 )

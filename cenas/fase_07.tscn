@@ -17,7 +17,6 @@
 [ext_resource path="res://cenas/key.tscn" type="PackedScene" id=15]
 [ext_resource path="res://cenas/morcego.tscn" type="PackedScene" id=16]
 [ext_resource path="res://cenas/morcegov.tscn" type="PackedScene" id=17]
-[ext_resource path="res://cenas/rotor.tscn" type="PackedScene" id=18]
 
 [sub_resource type="Animation" id=1]
 
@@ -87,6 +86,11 @@ tracks/0/keys = {
 "values": [ ExtResource( 4 ) ]
 }
 
+[sub_resource type="RectangleShape2D" id=5]
+
+custom_solver_bias = 0.0
+extents = Vector2( 15, 5 )
+
 [sub_resource type="GDScript" id=6]
 
 script/source = "extends Area2D
@@ -130,7 +134,7 @@ func _process(delta):
 
 func _on_door_body_enter( body ):
 	if get_tree().get_root().get_node(\"main/player\").key == true:
-		get_tree().change_scene(\"res://cenas/fase_07.tscn\")
+		get_tree().change_scene(\"res://cenas/cenateste.tscn\")
 	else:
 		pass
 	
@@ -166,6 +170,8 @@ points = Vector2Array( 821, 271, 823, 513, 552, 318, 568, 267 )
 
 [node name="shoters" type="Node" parent="."]
 
+editor/display_folded = true
+
 [node name="titlemap_bg" type="TileMap" parent="shoters"]
 
 mode = 0
@@ -182,7 +188,7 @@ collision/bounce = 0.0
 collision/layers = 2
 collision/mask = 1
 occluder/light_mask = 1
-tile_data = IntArray( -262113, 41, -262112, 41, -262111, 41, -262110, 41, -262109, 41, -262108, 41, -262107, 41, -262106, 41, -262105, 41, -196578, 41, -196577, 41, -196576, 41, -196575, 41, -196574, 41, -196573, 41, -196572, 41, -196571, 41, -196570, 41, -131042, 41, -131041, 41, -131040, 41, -131039, 41, -131038, 41, -131037, 41, -131036, 41, -131035, 41, -65520, 41, -65513, 41, -65508, 41, -65507, 41, -65506, 41, -65505, 41, -65504, 41, -65503, 41, -65502, 41, 30, 41, 31, 41, 131084, 41, 327696, 41, 327703, 41, 524315, 41, 786429, 41, 786430, 41, 786431, 41, 720896, 41, 720897, 41, 720898, 41, 720899, 41, 720904, 41, 720905, 41, 720906, 41, 720907, 41, 720913, 41, 720920, 41 )
+tile_data = IntArray( -851970, 0, -851969, 27, -917504, 27, -917503, 28, -786428, 29, -655367, 0, -655366, 27, -655365, 27, -655364, 28, -589820, 0, -589819, 27, -589818, 27, -589817, 27, -393226, 0, -393225, 27, -393224, 28, -393206, 27, -262147, 0, -262146, 27, -262145, 27, -327680, 28, -196593, 27, -131064, 0, -131063, 27, -131062, 28, 262143, 0, 196608, 27, 196609, 28, 458759, 0, 458760, 27, 458761, 28, 720890, 27, 720891, 27, 720892, 38, 720893, 38, 720894, 38, 720895, 38, 655360, 38, 655361, 39, 655366, 3, 655367, 38, 655368, 38, 655369, 38, 655370, 38, 655371, 38, 655372, 27, 655373, 28, 786428, 43, 786429, 41, 786430, 41, 786431, 41, 720896, 41, 720897, 41, 720898, 39, 720901, 3, 720902, 41, 720903, 41, 720904, 41, 720905, 41, 720906, 41, 720907, 45, 851965, 43, 851966, 44, 851967, 41, 786432, 41, 786433, 41, 786434, 42, 786435, 50, 786436, 50, 786437, 40, 786438, 41, 786439, 41, 786440, 41, 786441, 41, 786442, 45, 917503, 43, 851968, 41, 851969, 41, 851970, 41, 851971, 41, 851972, 41, 851973, 41, 851974, 41, 851975, 41, 851976, 44, 851977, 45, 917504, 43, 917505, 44, 917506, 44, 917507, 44, 917508, 44, 917509, 44, 917510, 44, 917511, 45 )
 
 [node name="life" type="CanvasLayer" parent="."]
 
@@ -218,11 +224,20 @@ autoplay = ""
 
 [node name="key_top" parent="." instance=ExtResource( 9 )]
 
+[node name="hearts" type="Node" parent="."]
+
+editor/display_folded = true
+
 [node name="Danos" type="Node" parent="."]
+
+editor/display_folded = true
 
 [node name="poison" type="Area2D" parent="Danos"]
 
 input/pickable = true
+shapes/0/shape = SubResource( 5 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 64, 201 )
+shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
 linear_damp = 0.1
@@ -231,12 +246,19 @@ collision/layers = 2
 collision/mask = 0
 script/script = SubResource( 6 )
 
+[node name="shape" type="CollisionShape2D" parent="Danos/poison"]
+
+transform/pos = Vector2( 64, 201 )
+shape = SubResource( 5 )
+trigger = false
+_update_shape_index = 0
+
 [node name="rotores" type="Node" parent="."]
 
 [node name="door" type="Area2D" parent="."]
 
 editor/display_folded = true
-transform/pos = Vector2( 579.729, -82.5596 )
+transform/pos = Vector2( -16, 142 )
 transform/scale = Vector2( 0.6, 0.6 )
 input/pickable = true
 shapes/0/shape = SubResource( 7 )
@@ -272,7 +294,7 @@ transform/pos = Vector2( 8, 145 )
 [node name="tilte_top" type="TileMap" parent="."]
 
 mode = 0
-tile_set = null
+tile_set = ExtResource( 3 )
 cell/size = Vector2( 16, 16 )
 cell/quadrant_size = 16
 cell/custom_transform = Matrix32( 1, 0, 0, 1, 0, 0 )
@@ -285,7 +307,7 @@ collision/bounce = 0.0
 collision/layers = 1
 collision/mask = 0
 occluder/light_mask = 1
-tile_data = IntArray(  )
+tile_data = IntArray( -917505, 46, -655355, 46, 131073, 46, 655358, 46, 589834, 46 )
 
 [node name="kill" type="Area2D" parent="."]
 
@@ -318,23 +340,35 @@ trigger = false
 
 [node name="heart" parent="." instance=ExtResource( 14 )]
 
-transform/pos = Vector2( 37.0296, -115.817 )
+transform/pos = Vector2( 248, -64 )
 
 [node name="key" parent="." instance=ExtResource( 15 )]
 
-transform/pos = Vector2( 199.897, 15.9214 )
+transform/pos = Vector2( 0, -251 )
 
 [node name="morcego" parent="." instance=ExtResource( 16 )]
 
-transform/pos = Vector2( 374.394, 157.265 )
+transform/pos = Vector2( 79, 89 )
+
+[node name="morcego1" parent="." instance=ExtResource( 16 )]
+
+transform/pos = Vector2( -150, -144 )
+
+[node name="morcego2" parent="." instance=ExtResource( 16 )]
+
+transform/pos = Vector2( 67, -43 )
+
+[node name="morcego4" parent="." instance=ExtResource( 16 )]
+
+transform/pos = Vector2( 22, -252 )
 
 [node name="mocegov" parent="." instance=ExtResource( 17 )]
 
-transform/pos = Vector2( 295.433, -39.2249 )
+transform/pos = Vector2( -105, -104 )
 
-[node name="rotor" parent="." instance=ExtResource( 18 )]
+[node name="mocegov1" parent="." instance=ExtResource( 17 )]
 
-transform/pos = Vector2( 95.9583, 222.891 )
+transform/pos = Vector2( 89, 22 )
 
 [connection signal="body_enter" from="Danos/poison" to="Danos/poison" method="_on_Area2D_body_enter"]
 
