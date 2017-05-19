@@ -1,22 +1,24 @@
-[gd_scene load_steps=33 format=1]
+[gd_scene load_steps=35 format=1]
 
-[ext_resource path="res://cenas/gui_mobile.tscn" type="PackedScene" id=1]
-[ext_resource path="res://cenas/rotor.tscn" type="PackedScene" id=2]
-[ext_resource path="res://cenas/rotor_solo_grande.tscn" type="PackedScene" id=3]
-[ext_resource path="res://titlesets/titleset_floresta.tres" type="TileSet" id=4]
-[ext_resource path="res://imgs/heart3.png" type="Texture" id=5]
-[ext_resource path="res://scripts/life.gd" type="Script" id=6]
-[ext_resource path="res://imgs/heart.png" type="Texture" id=7]
-[ext_resource path="res://imgs/heart1.png" type="Texture" id=8]
-[ext_resource path="res://imgs/heart2.png" type="Texture" id=9]
-[ext_resource path="res://cenas/key_top.tscn" type="PackedScene" id=10]
-[ext_resource path="res://imgs/door.png" type="Texture" id=11]
-[ext_resource path="res://imgs/door_close.png" type="Texture" id=12]
-[ext_resource path="res://players/player.tscn" type="PackedScene" id=13]
-[ext_resource path="res://cenas/morcego.tscn" type="PackedScene" id=14]
-[ext_resource path="res://imgs/placa.png" type="Texture" id=15]
-[ext_resource path="res://imgs/placa_chave.png" type="Texture" id=16]
-[ext_resource path="res://cenas/key.tscn" type="PackedScene" id=17]
+[ext_resource path="res://cenas/paralax.tscn" type="PackedScene" id=1]
+[ext_resource path="res://cenas/gui_mobile.tscn" type="PackedScene" id=2]
+[ext_resource path="res://cenas/rotor.tscn" type="PackedScene" id=3]
+[ext_resource path="res://cenas/rotor_solo_grande.tscn" type="PackedScene" id=4]
+[ext_resource path="res://titlesets/titleset_floresta.tres" type="TileSet" id=5]
+[ext_resource path="res://imgs/heart3.png" type="Texture" id=6]
+[ext_resource path="res://scripts/life.gd" type="Script" id=7]
+[ext_resource path="res://imgs/heart.png" type="Texture" id=8]
+[ext_resource path="res://imgs/heart1.png" type="Texture" id=9]
+[ext_resource path="res://imgs/heart2.png" type="Texture" id=10]
+[ext_resource path="res://cenas/key_top.tscn" type="PackedScene" id=11]
+[ext_resource path="res://imgs/door.png" type="Texture" id=12]
+[ext_resource path="res://imgs/door_close.png" type="Texture" id=13]
+[ext_resource path="res://players/player.tscn" type="PackedScene" id=14]
+[ext_resource path="res://cenas/morcego.tscn" type="PackedScene" id=15]
+[ext_resource path="res://imgs/placa.png" type="Texture" id=16]
+[ext_resource path="res://imgs/placa_chave.png" type="Texture" id=17]
+[ext_resource path="res://cenas/key.tscn" type="PackedScene" id=18]
+[ext_resource path="res://cenas/anime_player.tscn" type="PackedScene" id=19]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -115,7 +117,7 @@ tracks/0/keys = {
 "times": FloatArray( 0 ),
 "transitions": FloatArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 7 ) ]
+"values": [ ExtResource( 8 ) ]
 }
 
 [sub_resource type="Animation" id=6]
@@ -131,7 +133,7 @@ tracks/0/keys = {
 "times": FloatArray( 0 ),
 "transitions": FloatArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 8 ) ]
+"values": [ ExtResource( 9 ) ]
 }
 
 [sub_resource type="Animation" id=7]
@@ -147,7 +149,7 @@ tracks/0/keys = {
 "times": FloatArray( 0 ),
 "transitions": FloatArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 9 ) ]
+"values": [ ExtResource( 10 ) ]
 }
 
 [sub_resource type="Animation" id=8]
@@ -163,7 +165,7 @@ tracks/0/keys = {
 "times": FloatArray( 0 ),
 "transitions": FloatArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 5 ) ]
+"values": [ ExtResource( 6 ) ]
 }
 
 [sub_resource type="RectangleShape2D" id=9]
@@ -222,19 +224,21 @@ points = Vector2Array( -364, 266, -194, 312, -686, 506, -686, 279 )
 
 [node name="main" type="Node2D"]
 
-[node name="gui_mobile" parent="." instance=ExtResource( 1 )]
+[node name="paralax" parent="." instance=ExtResource( 1 )]
+
+[node name="gui_mobile" parent="." instance=ExtResource( 2 )]
 
 [node name="rotores" type="Node" parent="."]
 
-[node name="rotor1" parent="rotores" instance=ExtResource( 2 )]
+[node name="rotor1" parent="rotores" instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 569, 91 )
 
-[node name="rotor3" parent="rotores" instance=ExtResource( 2 )]
+[node name="rotor3" parent="rotores" instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 704, 91 )
 
-[node name="rotor2" parent="rotores" instance=ExtResource( 2 )]
+[node name="rotor2" parent="rotores" instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 640, 21 )
 transform/rot = 179.745
@@ -260,7 +264,7 @@ shape = SubResource( 1 )
 trigger = false
 _update_shape_index = 0
 
-[node name="rotor_grande" parent="rotores" instance=ExtResource( 3 )]
+[node name="rotor_grande" parent="rotores" instance=ExtResource( 4 )]
 
 editor/display_folded = true
 transform/pos = Vector2( 547, 79 )
@@ -276,7 +280,7 @@ playback/speed = 1.0
 blend_times = [  ]
 autoplay = ""
 
-[node name="rotor_grande1" parent="rotores" instance=ExtResource( 3 )]
+[node name="rotor_grande1" parent="rotores" instance=ExtResource( 4 )]
 
 editor/display_folded = true
 transform/pos = Vector2( 552, 52 )
@@ -298,7 +302,7 @@ autoplay = ""
 
 transform/pos = Vector2( -16, 0 )
 mode = 0
-tile_set = ExtResource( 4 )
+tile_set = ExtResource( 5 )
 cell/size = Vector2( 16, 16 )
 cell/quadrant_size = 16
 cell/custom_transform = Matrix32( 1, 0, 0, 1, 0, 0 )
@@ -329,10 +333,10 @@ scale = Vector2( 1, 1 )
 editor/display_folded = true
 transform/pos = Vector2( 12.5981, 14.1873 )
 transform/scale = Vector2( 0.7, 0.7 )
-texture = ExtResource( 5 )
+texture = ExtResource( 6 )
 offset = Vector2( 23.1061, -0.382342 )
 region_rect = Rect2( -0.375, -0.375, 47.875, 16 )
-script/script = ExtResource( 6 )
+script/script = ExtResource( 7 )
 
 [node name="anim" type="AnimationPlayer" parent="life/sprite"]
 
@@ -348,7 +352,7 @@ playback/speed = 1.0
 blend_times = [  ]
 autoplay = ""
 
-[node name="key_top" parent="." instance=ExtResource( 10 )]
+[node name="key_top" parent="." instance=ExtResource( 11 )]
 
 [node name="hearts" type="Node" parent="."]
 
@@ -375,11 +379,11 @@ script/script = SubResource( 10 )
 
 [node name="aberto" type="Sprite" parent="door"]
 
-texture = ExtResource( 11 )
+texture = ExtResource( 12 )
 
 [node name="fechado" type="Sprite" parent="door"]
 
-texture = ExtResource( 12 )
+texture = ExtResource( 13 )
 
 [node name="shape" type="CollisionShape2D" parent="door"]
 
@@ -388,7 +392,7 @@ shape = SubResource( 9 )
 trigger = false
 _update_shape_index = 0
 
-[node name="player" parent="." instance=ExtResource( 13 )]
+[node name="player" parent="." instance=ExtResource( 14 )]
 
 transform/pos = Vector2( 14, 123 )
 
@@ -396,7 +400,7 @@ transform/pos = Vector2( 14, 123 )
 
 transform/pos = Vector2( -16, 0 )
 mode = 0
-tile_set = ExtResource( 4 )
+tile_set = ExtResource( 5 )
 cell/size = Vector2( 16, 16 )
 cell/quadrant_size = 16
 cell/custom_transform = Matrix32( 1, 0, 0, 1, 0, 0 )
@@ -448,23 +452,25 @@ polygon = Vector2Array( -686, 279, -364, 266, -194, 312, -18, 323, 264, 319, 552
 shape_range = Vector2( 0, 4 )
 trigger = false
 
-[node name="morcego" parent="." instance=ExtResource( 14 )]
+[node name="morcego" parent="." instance=ExtResource( 15 )]
 
 transform/pos = Vector2( 263, 69 )
 
 [node name="Sprite" type="Sprite" parent="."]
 
 transform/pos = Vector2( 356, 81 )
-texture = ExtResource( 15 )
+texture = ExtResource( 16 )
 
 [node name="Sprite 2" type="Sprite" parent="."]
 
 transform/pos = Vector2( 810, 81 )
-texture = ExtResource( 16 )
+texture = ExtResource( 17 )
 
-[node name="key" parent="." instance=ExtResource( 17 )]
+[node name="key" parent="." instance=ExtResource( 18 )]
 
 transform/pos = Vector2( 968, 194 )
+
+[node name="anime_player" parent="." instance=ExtResource( 19 )]
 
 [connection signal="body_enter" from="rotores/colisao rotores" to="rotores/colisao rotores" method="_on_colisao_rotores_body_enter"]
 

@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=1]
 
-[ext_resource path="res://sounds/POL-jungle-hideout-short.wav" type="Sample" id=1]
+[ext_resource path="res://sounds/POL-jungle-hideout-short.smp" type="Sample" id=1]
 
 [sub_resource type="SampleLibrary" id=1]
 
@@ -14,15 +14,27 @@ samples/bg = {
 [sub_resource type="GDScript" id=2]
 
 script/source = "extends SamplePlayer2D
-var n = 999
+
+# class member variables go here, for example:
+# var a = 2
+# var b = \"textvar\"
+
 func _ready():
-	#get_node(\".\").play(\"bg\")
+	print(get_tree().get_root().get_node(\".\"))
+	play(\"bg\")
 	pass
 "
 
-[node name="sample" type="SamplePlayer2D"]
+[node name="sample" type="CanvasLayer"]
 
-params/volume_db = -10.0
+layer = 1
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+
+[node name="SamplePlayer2D" type="SamplePlayer2D" parent="."]
+
+params/volume_db = 0.0
 params/pitch_scale = 1.0
 params/attenuation/min_distance = 1.0
 params/attenuation/max_distance = 2048.0

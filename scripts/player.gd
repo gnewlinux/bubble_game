@@ -26,15 +26,29 @@ var estava_chao = "false"
 var nova_anim = ""
 var animacao = ""
 var life = 3
-var contador = 0
+var contador = 0.1
+var contador_morte = 1
 var shape = 0
 var key = false
+var time = false
 
 
 func _fixed_process(delta):
 	if life <= 0:
-		get_node("anim_morte").play("die")
-		yield(get_node("anim_morte"), "finished")
+		contador_morte += contador_morte * delta
+		if contador_morte >= 1:
+			get_tree().reload_current_scene()
+			time = false
+	
+	if time == true:
+		contador += contador * delta
+		get_node("direita").set_collision_mask(0)
+		if contador >= 0.5:
+			get_node("direita").set_collision_mask(4)
+			print("virou")
+			contador = 0.1
+			time = false
+		
 	# Create forces
 	var force = Vector2(0, GRAVITY)
 	
@@ -46,7 +60,6 @@ func _fixed_process(delta):
 	if key == true:
 		get_tree().get_root().get_node("main/key_top/key").set_opacity(1)
 
-	
 	if (walk_left):
 		if (velocity.x <= WALK_MIN_SPEED and velocity.x > -WALK_MAX_SPEED):
 			force.x -= WALK_FORCE
@@ -182,10 +195,14 @@ func pula_morcego():
 	jumping = true
 	pass
 	
-	
+var segundos = 1
+var total = 1
+
 func dano(dan):
+	time = true
 	life -= dan
-	get_node("anim_morte").play("morrendo")
+	get_tree().get_root().get_node("main/anime_player").play("anime_player")
+	pula_dano()
 	pass
 	
 func die():
@@ -198,6 +215,7 @@ func _on_Area2D_body_enter( body ):
 
 
 func _on_kill_body_enter( body ):
+	print("morreu")
 	get_tree().reload_current_scene()
 	pass # replace with function body
 
@@ -210,5 +228,5 @@ func _on_pes_body_enter( body ):
 
 func _on_direita_body_enter( body ):
 	dano(1)
-	print("bateu")
+	pula_dano()
 	pass # replace with function body
