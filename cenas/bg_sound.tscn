@@ -5,7 +5,7 @@
 [sub_resource type="SampleLibrary" id=1]
 
 samples/bg = {
-"db": 0.0,
+"db": -30.0,
 "pitch": 1.0,
 "priority": 0,
 "sample": ExtResource( 1 )
@@ -21,7 +21,7 @@ script/source = "extends SamplePlayer2D
 
 func _ready():
 	print(get_tree().get_root().get_node(\".\"))
-	play(\"bg\")
+	#play(\"bg\")
 	pass
 "
 

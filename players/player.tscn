@@ -1,11 +1,12 @@
-[gd_scene load_steps=20 format=1]
+[gd_scene load_steps=22 format=1]
 
 [ext_resource path="res://scripts/player.gd" type="Script" id=1]
-[ext_resource path="res://imgs/dano.png" type="Texture" id=2]
-[ext_resource path="res://imgs/Sprite-0002.tex" type="Texture" id=3]
-[ext_resource path="res://sounds/jump.smp" type="Sample" id=4]
-[ext_resource path="res://sounds/Jump17.wav" type="Sample" id=5]
-[ext_resource path="res://sounds/step.smp" type="Sample" id=6]
+[ext_resource path="res://imgs/shooter.png" type="Texture" id=2]
+[ext_resource path="res://imgs/dano.png" type="Texture" id=3]
+[ext_resource path="res://imgs/Sprite-0002.tex" type="Texture" id=4]
+[ext_resource path="res://sounds/jump.smp" type="Sample" id=5]
+[ext_resource path="res://sounds/Jump17.wav" type="Sample" id=6]
+[ext_resource path="res://sounds/step.smp" type="Sample" id=7]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -17,7 +18,34 @@ extents = Vector2( 5.62117, 6.79441 )
 custom_solver_bias = 0.0
 extents = Vector2( 8.07733, 10 )
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="GDScript" id=3]
+
+script/source = "extends Particles2D
+
+var posx
+var posy
+
+func _ready():
+	set_process(true)
+	pass
+	
+func _process(delta):
+	posx = get_node(\".\").get_pos()
+	print(posx)
+	pass
+
+func vira(valor):
+	get_node(\".\").set_hidden(false)
+	get_node(\".\").set_param(PARAM_DIRECTION, valor)
+	pass
+
+func posicao(valor):
+	get_node(\".\").set_pos(Vector2(valor,8))
+
+func parar():
+	get_node(\".\").set_emitting(false)"
+
+[sub_resource type="Animation" id=4]
 
 length = 1.0
 loop = false
@@ -52,8 +80,18 @@ tracks/2/keys = {
 "update": 1,
 "values": [ false ]
 }
+tracks/3/type = "value"
+tracks/3/path = NodePath("particles:config/emitting")
+tracks/3/interp = 1
+tracks/3/imported = false
+tracks/3/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=5]
 
 length = 1.0
 loop = false
@@ -98,8 +136,18 @@ tracks/3/keys = {
 "update": 1,
 "values": [ false ]
 }
+tracks/4/type = "value"
+tracks/4/path = NodePath("particles:config/emitting")
+tracks/4/interp = 1
+tracks/4/imported = false
+tracks/4/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=6]
 
 length = 0.4
 loop = false
@@ -134,8 +182,18 @@ tracks/2/keys = {
 "update": 1,
 "values": [ false ]
 }
+tracks/3/type = "value"
+tracks/3/path = NodePath("particles:config/emitting")
+tracks/3/interp = 1
+tracks/3/imported = false
+tracks/3/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=7]
 
 length = 0.4
 loop = true
@@ -180,8 +238,18 @@ tracks/3/keys = {
 "update": 1,
 "values": [ false ]
 }
+tracks/4/type = "value"
+tracks/4/path = NodePath("particles:config/emitting")
+tracks/4/interp = 1
+tracks/4/imported = false
+tracks/4/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=8]
 
 length = 1.0
 loop = false
@@ -197,9 +265,8 @@ tracks/0/keys = {
 "values": [ Vector2( 0.9, 0.6 ), Vector2( 0.7, 0.7 ) ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=9]
 
-resource/name = "dano"
 length = 0.5
 loop = false
 step = 0.1
@@ -211,7 +278,7 @@ tracks/0/keys = {
 "times": FloatArray( 0, 0.1, 0.5 ),
 "transitions": FloatArray( 1, 1, 1 ),
 "update": 1,
-"values": [ ExtResource( 3 ), ExtResource( 2 ), ExtResource( 3 ) ]
+"values": [ ExtResource( 4 ), ExtResource( 3 ), ExtResource( 4 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("sprite:vframes")
@@ -244,7 +311,7 @@ tracks/3/keys = {
 "values": [ 0 ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=10]
 
 length = 1.0
 loop = false
@@ -260,7 +327,7 @@ tracks/0/keys = {
 "values": [ Vector2( 0.6, 0.9 ), Vector2( 0.7, 0.7 ) ]
 }
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=11]
 
 length = 2.0
 loop = false
@@ -286,7 +353,7 @@ tracks/1/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 0, 0, 1 ) ]
 }
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=12]
 
 length = 3.0
 loop = false
@@ -332,28 +399,28 @@ tracks/3/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="SampleLibrary" id=12]
+[sub_resource type="SampleLibrary" id=13]
 
 samples/jump = {
 "db": 0.0,
 "pitch": 1.0,
 "priority": 0,
-"sample": ExtResource( 4 )
+"sample": ExtResource( 5 )
 }
 samples/jump3 = {
 "db": 0.0,
 "pitch": 1.0,
 "priority": 0,
-"sample": ExtResource( 5 )
+"sample": ExtResource( 6 )
 }
 samples/step = {
 "db": -5.0,
 "pitch": 1.0,
 "priority": 0,
-"sample": ExtResource( 6 )
+"sample": ExtResource( 7 )
 }
 
-[sub_resource type="RectangleShape2D" id=13]
+[sub_resource type="RectangleShape2D" id=14]
 
 custom_solver_bias = 0.0
 extents = Vector2( 9.76364, 3.28437 )
@@ -411,18 +478,46 @@ drag_margin/top = 0.0
 drag_margin/right = 0.0
 drag_margin/bottom = 0.0
 
+[node name="particles" type="Particles2D" parent="."]
+
+transform/pos = Vector2( -8.48422, 9.17557 )
+transform/rot = -106.303
+config/amount = 1
+config/lifetime = 0.3
+config/time_scale = 0.93
+config/process_mode = 1
+config/explosiveness = 0.49
+config/texture = ExtResource( 2 )
+params/direction = 10.0
+params/spread = 100.0
+params/linear_velocity = 10.0
+params/spin_velocity = 5.0
+params/orbit_velocity = 0.0
+params/gravity_direction = 0.0
+params/gravity_strength = 10.0
+params/radial_accel = 0.0
+params/tangential_accel = 0.0
+params/damping = 0.0
+params/initial_angle = 0.0
+params/initial_size = 1.0
+params/final_size = 1.0
+params/hue_variation = 0.0
+params/anim_speed_scale = 1.0
+params/anim_initial_pos = 0.0
+script/script = SubResource( 3 )
+
 [node name="morte" type="Sprite" parent="."]
 
 visibility/visible = false
 transform/pos = Vector2( -0.0996094, 0.773659 )
 transform/scale = Vector2( 0.7, 0.7 )
-texture = ExtResource( 2 )
+texture = ExtResource( 3 )
 
 [node name="sprite" type="Sprite" parent="."]
 
 transform/pos = Vector2( -0.0996094, 10.2634 )
 transform/scale = Vector2( 0.9, 0.6 )
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 offset = Vector2( 0.0430952, -14.7612 )
 vframes = 2
 hframes = 3
@@ -448,10 +543,10 @@ type_mask = 15
 playback/process_mode = 1
 playback/default_blend_time = 0.0
 root/root = NodePath("..")
-anims/falling = SubResource( 3 )
-anims/jumping = SubResource( 4 )
-anims/stopped = SubResource( 5 )
-anims/walking = SubResource( 6 )
+anims/falling = SubResource( 4 )
+anims/jumping = SubResource( 5 )
+anims/stopped = SubResource( 6 )
+anims/walking = SubResource( 7 )
 playback/active = true
 playback/speed = 1.0
 blend_times = [  ]
@@ -462,9 +557,9 @@ autoplay = ""
 playback/process_mode = 1
 playback/default_blend_time = 0.0
 root/root = NodePath("..")
-anims/caiu = SubResource( 7 )
-anims/dano = SubResource( 8 )
-anims/pulou = SubResource( 9 )
+anims/caiu = SubResource( 8 )
+anims/dano = SubResource( 9 )
+anims/pulou = SubResource( 10 )
 playback/active = true
 playback/speed = 1.0
 blend_times = [  ]
@@ -475,8 +570,8 @@ autoplay = ""
 playback/process_mode = 1
 playback/default_blend_time = 0.0
 root/root = NodePath("..")
-anims/die = SubResource( 10 )
-anims/morrendo = SubResource( 11 )
+anims/die = SubResource( 11 )
+anims/morrendo = SubResource( 12 )
 playback/active = true
 playback/speed = 1.0
 blend_times = [  ]
@@ -490,13 +585,14 @@ params/attenuation/min_distance = 1.0
 params/attenuation/max_distance = 2048.0
 params/attenuation/distance_exp = 1.0
 config/polyphony = 1
-config/samples = SubResource( 12 )
+config/samples = SubResource( 13 )
 config/pitch_random = 0.0
 
 [node name="pes" type="Area2D" parent="."]
 
+editor/display_folded = true
 input/pickable = true
-shapes/0/shape = SubResource( 13 )
+shapes/0/shape = SubResource( 14 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, -0.000900269, 9.52343 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
@@ -509,7 +605,7 @@ collision/mask = 4
 [node name="shape" type="CollisionShape2D" parent="pes"]
 
 transform/pos = Vector2( -0.000900269, 9.52343 )
-shape = SubResource( 13 )
+shape = SubResource( 14 )
 trigger = false
 _update_shape_index = 0
 

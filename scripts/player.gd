@@ -61,10 +61,14 @@ func _fixed_process(delta):
 		get_tree().get_root().get_node("main/key_top/key").set_opacity(1)
 
 	if (walk_left):
+		get_node("particles").vira(200)
+		get_node("particles").posicao(8)
 		if (velocity.x <= WALK_MIN_SPEED and velocity.x > -WALK_MAX_SPEED):
 			force.x -= WALK_FORCE
 			stop = false
 	elif (walk_right):
+		get_node("particles").vira(20)
+		get_node("particles").posicao(-8)
 		if (velocity.x >= -WALK_MIN_SPEED and velocity.x < WALK_MAX_SPEED):
 			force.x += WALK_FORCE
 			stop = false
@@ -134,6 +138,7 @@ func _fixed_process(delta):
 		# Jump must also be allowed to happen if the character left the floor a little bit ago.
 		# Makes controls more snappy.
 		pula()
+		get_node("particles").parar()
 	
 	on_air_time += delta
 	prev_jump_pressed = jump
@@ -164,8 +169,10 @@ func _fixed_process(delta):
 			nova_anim = "stopped"
 	elif velocity.y < 0: # ta pulando
 		nova_anim = "jumping"
+		get_node("particles").set_hidden(true)
 	else: # velocity.y maior que 0
 		nova_anim = "falling"
+		get_node("particles").set_hidden(true)
 	
 	if animacao != nova_anim:
 		get_node("anim").play(nova_anim)
