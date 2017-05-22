@@ -1,23 +1,24 @@
-[gd_scene load_steps=29 format=1]
+[gd_scene load_steps=30 format=1]
 
 [ext_resource path="res://cenas/paralax.tscn" type="PackedScene" id=1]
 [ext_resource path="res://cenas/gui_mobile.tscn" type="PackedScene" id=2]
-[ext_resource path="res://cenas/shooter_big.tscn" type="PackedScene" id=3]
-[ext_resource path="res://titlesets/titleset_floresta.tres" type="TileSet" id=4]
-[ext_resource path="res://imgs/heart3.png" type="Texture" id=5]
-[ext_resource path="res://scripts/life.gd" type="Script" id=6]
-[ext_resource path="res://imgs/heart.png" type="Texture" id=7]
-[ext_resource path="res://imgs/heart1.png" type="Texture" id=8]
-[ext_resource path="res://imgs/heart2.png" type="Texture" id=9]
-[ext_resource path="res://cenas/key_top.tscn" type="PackedScene" id=10]
-[ext_resource path="res://cenas/rotor.tscn" type="PackedScene" id=11]
-[ext_resource path="res://cenas/rotor2.tscn" type="PackedScene" id=12]
-[ext_resource path="res://imgs/door.png" type="Texture" id=13]
-[ext_resource path="res://imgs/door_close.png" type="Texture" id=14]
-[ext_resource path="res://players/player.tscn" type="PackedScene" id=15]
-[ext_resource path="res://cenas/heart.tscn" type="PackedScene" id=16]
-[ext_resource path="res://cenas/key.tscn" type="PackedScene" id=17]
-[ext_resource path="res://cenas/anime_player.tscn" type="PackedScene" id=18]
+[ext_resource path="res://imgs/base_caverna.png" type="Texture" id=3]
+[ext_resource path="res://cenas/shooter_big.tscn" type="PackedScene" id=4]
+[ext_resource path="res://titlesets/titleset_floresta.tres" type="TileSet" id=5]
+[ext_resource path="res://imgs/heart3.png" type="Texture" id=6]
+[ext_resource path="res://scripts/life.gd" type="Script" id=7]
+[ext_resource path="res://imgs/heart.png" type="Texture" id=8]
+[ext_resource path="res://imgs/heart1.png" type="Texture" id=9]
+[ext_resource path="res://imgs/heart2.png" type="Texture" id=10]
+[ext_resource path="res://cenas/tocha1.tscn" type="PackedScene" id=11]
+[ext_resource path="res://cenas/key_top.tscn" type="PackedScene" id=12]
+[ext_resource path="res://cenas/rotor.tscn" type="PackedScene" id=13]
+[ext_resource path="res://cenas/rotor2.tscn" type="PackedScene" id=14]
+[ext_resource path="res://imgs/titles.tex" type="Texture" id=15]
+[ext_resource path="res://players/player.tscn" type="PackedScene" id=16]
+[ext_resource path="res://cenas/heart.tscn" type="PackedScene" id=17]
+[ext_resource path="res://cenas/key.tscn" type="PackedScene" id=18]
+[ext_resource path="res://cenas/anime_player.tscn" type="PackedScene" id=19]
 
 [sub_resource type="Animation" id=1]
 
@@ -33,7 +34,7 @@ tracks/0/keys = {
 "times": FloatArray( 0 ),
 "transitions": FloatArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 7 ) ]
+"values": [ ExtResource( 8 ) ]
 }
 
 [sub_resource type="Animation" id=2]
@@ -50,7 +51,7 @@ tracks/0/keys = {
 "times": FloatArray( 0 ),
 "transitions": FloatArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 8 ) ]
+"values": [ ExtResource( 9 ) ]
 }
 
 [sub_resource type="Animation" id=3]
@@ -67,7 +68,7 @@ tracks/0/keys = {
 "times": FloatArray( 0 ),
 "transitions": FloatArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 9 ) ]
+"values": [ ExtResource( 10 ) ]
 }
 
 [sub_resource type="Animation" id=4]
@@ -84,7 +85,7 @@ tracks/0/keys = {
 "times": FloatArray( 0 ),
 "transitions": FloatArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 5 ) ]
+"values": [ ExtResource( 6 ) ]
 }
 
 [sub_resource type="RectangleShape2D" id=5]
@@ -142,13 +143,419 @@ points = Vector2Array( 821, 271, 823, 513, 552, 318, 568, 267 )
 
 [node name="gui_mobile" parent="." instance=ExtResource( 2 )]
 
+[node name="bgs" type="Node" parent="."]
+
+editor/display_folded = true
+
+[node name="Sprite" type="Sprite" parent="bgs"]
+
+transform/pos = Vector2( 309, 141 )
+z/z = -2
+texture = ExtResource( 3 )
+region = true
+region_rect = Rect2( 0, 80, 160, 60 )
+
+[node name="Sprite4" type="Sprite" parent="bgs"]
+
+transform/pos = Vector2( 450, 141 )
+z/z = -2
+texture = ExtResource( 3 )
+region = true
+region_rect = Rect2( 0, 80, 160, 60 )
+
+[node name="Sprite1" type="Sprite" parent="bgs"]
+
+transform/pos = Vector2( 309, 84 )
+z/z = -2
+texture = ExtResource( 3 )
+region = true
+region_rect = Rect2( 0, 80, 160, 60 )
+
+[node name="Sprite4 2" type="Sprite" parent="bgs"]
+
+transform/pos = Vector2( 450, 84 )
+z/z = -2
+texture = ExtResource( 3 )
+region = true
+region_rect = Rect2( 0, 80, 160, 60 )
+
+[node name="Sprite2" type="Sprite" parent="bgs"]
+
+transform/pos = Vector2( 348, 41 )
+z/z = -2
+texture = ExtResource( 3 )
+region = true
+region_rect = Rect2( 0, 80, 160, 60 )
+
+[node name="Sprite3" type="Sprite" parent="bgs"]
+
+transform/pos = Vector2( 269, 103 )
+z/z = -2
+texture = ExtResource( 3 )
+region = true
+region_rect = Rect2( 0, 80, 160, 60 )
+
+[node name="Sprite5" type="Sprite" parent="bgs"]
+
+transform/pos = Vector2( 234, 141 )
+z/z = -2
+texture = ExtResource( 3 )
+region = true
+region_rect = Rect2( 0, 80, 160, 60 )
+
+[node name="Sprite6" type="Sprite" parent="bgs"]
+
+transform/pos = Vector2( 206, 173 )
+z/z = -2
+texture = ExtResource( 3 )
+region = true
+region_rect = Rect2( 0, 80, 160, 60 )
+
+[node name="Sprite8" type="Sprite" parent="bgs"]
+
+transform/pos = Vector2( 361, 173 )
+z/z = -2
+texture = ExtResource( 3 )
+region = true
+region_rect = Rect2( 0, 80, 160, 60 )
+
+[node name="Sprite9" type="Sprite" parent="bgs"]
+
+transform/pos = Vector2( 445, 188 )
+z/z = -2
+texture = ExtResource( 3 )
+region = true
+region_rect = Rect2( 0, 80, 160, 60 )
+
+[node name="Sprite12" type="Sprite" parent="bgs"]
+
+transform/pos = Vector2( 125, 208 )
+z/z = -2
+texture = ExtResource( 3 )
+region = true
+region_rect = Rect2( 160, 80, 160, 64 )
+
+[node name="Sprite13" type="Sprite" parent="bgs"]
+
+transform/pos = Vector2( 177, 261 )
+z/z = -2
+texture = ExtResource( 3 )
+region = true
+region_rect = Rect2( 160, 80, 160, 64 )
+
+[node name="Sprite14" type="Sprite" parent="bgs"]
+
+transform/pos = Vector2( 233, 317 )
+z/z = -2
+texture = ExtResource( 3 )
+region = true
+region_rect = Rect2( 160, 80, 160, 64 )
+
+[node name="Sprite8 2" type="Sprite" parent="bgs"]
+
+transform/pos = Vector2( 361, 234 )
+z/z = -2
+texture = ExtResource( 3 )
+region = true
+region_rect = Rect2( 0, 80, 160, 60 )
+
+[node name="Sprite85" type="Sprite" parent="bgs"]
+
+transform/pos = Vector2( 265, 224 )
+z/z = -2
+texture = ExtResource( 3 )
+region = true
+region_rect = Rect2( 0, 80, 160, 60 )
+
+[node name="Sprite86" type="Sprite" parent="bgs"]
+
+transform/pos = Vector2( 277, 272 )
+z/z = -2
+texture = ExtResource( 3 )
+region = true
+region_rect = Rect2( 0, 80, 160, 60 )
+
+[node name="Sprite84 2" type="Sprite" parent="bgs"]
+
+transform/pos = Vector2( 361, 286 )
+z/z = -2
+texture = ExtResource( 3 )
+region = true
+region_rect = Rect2( 0, 80, 160, 60 )
+
+[node name="Sprite843" type="Sprite" parent="bgs"]
+
+transform/pos = Vector2( 361, 286 )
+z/z = -2
+texture = ExtResource( 3 )
+region = true
+region_rect = Rect2( 0, 80, 160, 60 )
+
+[node name="Sprite83" type="Sprite" parent="bgs"]
+
+transform/pos = Vector2( 445, 234 )
+z/z = -2
+texture = ExtResource( 3 )
+region = true
+region_rect = Rect2( 0, 80, 160, 60 )
+
+[node name="Sprite84" type="Sprite" parent="bgs"]
+
+transform/pos = Vector2( 445, 286 )
+z/z = -2
+texture = ExtResource( 3 )
+region = true
+region_rect = Rect2( 0, 80, 160, 60 )
+
+[node name="Sprite4 4" type="Sprite" parent="bgs"]
+
+transform/pos = Vector2( 450, 26 )
+z/z = -2
+texture = ExtResource( 3 )
+region = true
+region_rect = Rect2( 0, 80, 160, 60 )
+
+[node name="Sprite4 3" type="Sprite" parent="bgs"]
+
+transform/pos = Vector2( 438, -18 )
+z/z = -2
+texture = ExtResource( 3 )
+region = true
+region_rect = Rect2( 0, 80, 160, 60 )
+
+[node name="Sprite44" type="Sprite" parent="bgs"]
+
+transform/pos = Vector2( 395, 15 )
+z/z = -2
+texture = ExtResource( 3 )
+region = true
+region_rect = Rect2( 0, 80, 160, 60 )
+
+[node name="Sprite50" type="Sprite" parent="bgs"]
+
+transform/pos = Vector2( 579, -18 )
+z/z = -2
+texture = ExtResource( 3 )
+region = true
+region_rect = Rect2( 0, 80, 160, 60 )
+
+[node name="Sprite56 3" type="Sprite" parent="bgs"]
+
+transform/pos = Vector2( 725, -18 )
+z/z = -2
+texture = ExtResource( 3 )
+region = true
+region_rect = Rect2( 0, 80, 160, 60 )
+
+[node name="Sprite564" type="Sprite" parent="bgs"]
+
+transform/pos = Vector2( 854, -18 )
+z/z = -2
+texture = ExtResource( 3 )
+region = true
+region_rect = Rect2( 0, 80, 160, 60 )
+
+[node name="Sprite51" type="Sprite" parent="bgs"]
+
+transform/pos = Vector2( 579, 39 )
+z/z = -2
+texture = ExtResource( 3 )
+region = true
+region_rect = Rect2( 0, 80, 160, 60 )
+
+[node name="Sprite56 5" type="Sprite" parent="bgs"]
+
+transform/pos = Vector2( 725, 39 )
+z/z = -2
+texture = ExtResource( 3 )
+region = true
+region_rect = Rect2( 0, 80, 160, 60 )
+
+[node name="Sprite567" type="Sprite" parent="bgs"]
+
+transform/pos = Vector2( 854, 39 )
+z/z = -2
+texture = ExtResource( 3 )
+region = true
+region_rect = Rect2( 0, 80, 160, 60 )
+
+[node name="Sprite52" type="Sprite" parent="bgs"]
+
+transform/pos = Vector2( 579, 89 )
+z/z = -2
+texture = ExtResource( 3 )
+region = true
+region_rect = Rect2( 0, 80, 160, 60 )
+
+[node name="Sprite56 2" type="Sprite" parent="bgs"]
+
+transform/pos = Vector2( 725, 89 )
+z/z = -2
+texture = ExtResource( 3 )
+region = true
+region_rect = Rect2( 0, 80, 160, 60 )
+
+[node name="Sprite563" type="Sprite" parent="bgs"]
+
+transform/pos = Vector2( 854, 89 )
+z/z = -2
+texture = ExtResource( 3 )
+region = true
+region_rect = Rect2( 0, 80, 160, 60 )
+
+[node name="Sprite53" type="Sprite" parent="bgs"]
+
+transform/pos = Vector2( 579, 140 )
+z/z = -2
+texture = ExtResource( 3 )
+region = true
+region_rect = Rect2( 0, 80, 160, 60 )
+
+[node name="Sprite56" type="Sprite" parent="bgs"]
+
+transform/pos = Vector2( 725, 140 )
+z/z = -2
+texture = ExtResource( 3 )
+region = true
+region_rect = Rect2( 0, 80, 160, 60 )
+
+[node name="Sprite59" type="Sprite" parent="bgs"]
+
+transform/pos = Vector2( 854, 140 )
+z/z = -2
+texture = ExtResource( 3 )
+region = true
+region_rect = Rect2( 0, 80, 160, 60 )
+
+[node name="Sprite54" type="Sprite" parent="bgs"]
+
+transform/pos = Vector2( 579, 189 )
+z/z = -2
+texture = ExtResource( 3 )
+region = true
+region_rect = Rect2( 0, 80, 160, 60 )
+
+[node name="Sprite56 6" type="Sprite" parent="bgs"]
+
+transform/pos = Vector2( 725, 189 )
+z/z = -2
+texture = ExtResource( 3 )
+region = true
+region_rect = Rect2( 0, 80, 160, 60 )
+
+[node name="Sprite567 2" type="Sprite" parent="bgs"]
+
+transform/pos = Vector2( 854, 189 )
+z/z = -2
+texture = ExtResource( 3 )
+region = true
+region_rect = Rect2( 0, 80, 160, 60 )
+
+[node name="Sprite55" type="Sprite" parent="bgs"]
+
+transform/pos = Vector2( 579, 231 )
+z/z = -2
+texture = ExtResource( 3 )
+region = true
+region_rect = Rect2( 0, 80, 160, 60 )
+
+[node name="Sprite57" type="Sprite" parent="bgs"]
+
+transform/pos = Vector2( 579, 283 )
+z/z = -2
+texture = ExtResource( 3 )
+region = true
+region_rect = Rect2( 0, 80, 160, 60 )
+
+[node name="Sprite58" type="Sprite" parent="bgs"]
+
+transform/pos = Vector2( 579, 283 )
+z/z = -2
+texture = ExtResource( 3 )
+region = true
+region_rect = Rect2( 0, 80, 160, 60 )
+
+[node name="Sprite56 4" type="Sprite" parent="bgs"]
+
+transform/pos = Vector2( 725, 231 )
+z/z = -2
+texture = ExtResource( 3 )
+region = true
+region_rect = Rect2( 0, 80, 160, 60 )
+
+[node name="Sprite567 3" type="Sprite" parent="bgs"]
+
+transform/pos = Vector2( 854, 231 )
+z/z = -2
+texture = ExtResource( 3 )
+region = true
+region_rect = Rect2( 0, 80, 160, 60 )
+
+[node name="Sprite565" type="Sprite" parent="bgs"]
+
+transform/pos = Vector2( 725, 283 )
+z/z = -2
+texture = ExtResource( 3 )
+region = true
+region_rect = Rect2( 0, 80, 160, 60 )
+
+[node name="Sprite566" type="Sprite" parent="bgs"]
+
+transform/pos = Vector2( 725, 283 )
+z/z = -2
+texture = ExtResource( 3 )
+region = true
+region_rect = Rect2( 0, 80, 160, 60 )
+
+[node name="Sprite45" type="Sprite" parent="bgs"]
+
+transform/pos = Vector2( 133, 111 )
+z/z = -2
+texture = ExtResource( 3 )
+region = true
+region_rect = Rect2( 0, 0, 80, 64 )
+
+[node name="Sprite46" type="Sprite" parent="bgs"]
+
+transform/pos = Vector2( 180, 78 )
+z/z = -2
+texture = ExtResource( 3 )
+region = true
+region_rect = Rect2( 0, 0, 80, 64 )
+
+[node name="Sprite47" type="Sprite" parent="bgs"]
+
+transform/pos = Vector2( 228, 45 )
+z/z = -2
+texture = ExtResource( 3 )
+region = true
+region_rect = Rect2( 0, 0, 80, 64 )
+
+[node name="Sprite48" type="Sprite" parent="bgs"]
+
+transform/pos = Vector2( 277, 9 )
+z/z = -2
+texture = ExtResource( 3 )
+region = true
+region_rect = Rect2( 0, 0, 80, 64 )
+
+[node name="Sprite49" type="Sprite" parent="bgs"]
+
+transform/pos = Vector2( 325, -21 )
+z/z = -2
+texture = ExtResource( 3 )
+region = true
+region_rect = Rect2( 0, 0, 80, 64 )
+
 [node name="shoters" type="Node" parent="."]
 
-[node name="shooter_big1" parent="shoters" instance=ExtResource( 3 )]
+editor/display_folded = true
+
+[node name="shooter_big1" parent="shoters" instance=ExtResource( 4 )]
 
 transform/pos = Vector2( -228, 152 )
 
-[node name="shooter_big2" parent="shoters" instance=ExtResource( 3 )]
+[node name="shooter_big2" parent="shoters" instance=ExtResource( 4 )]
 
 transform/pos = Vector2( -234, 72 )
 transform/rot = -179.983
@@ -156,7 +563,7 @@ transform/rot = -179.983
 [node name="titlemap_bg" type="TileMap" parent="shoters"]
 
 mode = 0
-tile_set = ExtResource( 4 )
+tile_set = ExtResource( 5 )
 cell/size = Vector2( 16, 16 )
 cell/quadrant_size = 16
 cell/custom_transform = Matrix32( 1, 0, 0, 1, 0, 0 )
@@ -169,7 +576,10 @@ collision/bounce = 0.0
 collision/layers = 2
 collision/mask = 1
 occluder/light_mask = 1
-tile_data = IntArray( 196596, 0, 196597, 27, 196598, 27, 196599, 28, 327661, 29, 327665, 29, 393227, 29, 393250, 0, 393251, 27, 393252, 27, 393253, 28, 524269, 29, 458771, 0, 458772, 28, 458776, 0, 458777, 28, 458781, 0, 458782, 28, 524301, 3, 524302, 38, 524303, 39, 655345, 29, 655349, 29, 655358, 29, 589825, 0, 589826, 27, 589827, 27, 589828, 27, 589829, 27, 589830, 27, 589831, 27, 589832, 27, 589833, 27, 589834, 28, 589837, 40, 589838, 41, 589839, 42, 655373, 43, 655374, 44, 655375, 45, 786427, 29, 851955, 29, 917496, 29, 1048565, 29 )
+tile_data = IntArray( 196596, 0, 196597, 27, 196598, 27, 196599, 28, 327661, 29, 327665, 29, 393227, 29, 393250, 0, 393251, 27, 393252, 27, 393253, 28, 524269, 29, 458771, 0, 458772, 28, 458776, 0, 458777, 28, 458781, 0, 458782, 28, 524301, 3, 524302, 38, 524303, 39, 655345, 29, 655349, 29, 655358, 29, 589825, 0, 589826, 38, 589827, 38, 589828, 38, 589829, 38, 589830, 38, 589831, 38, 589832, 38, 589833, 38, 589834, 39, 589837, 40, 589838, 41, 589839, 42, 655362, 43, 655363, 44, 655364, 44, 655365, 44, 655366, 41, 655367, 41, 655368, 41, 655369, 41, 655370, 41, 655373, 43, 655374, 44, 655375, 45, 786427, 29, 720902, 43, 720903, 41, 720904, 41, 720905, 41, 720906, 41, 851955, 29, 786439, 43, 786440, 41, 786441, 41, 786442, 41, 917496, 29, 851976, 43, 851977, 44, 851978, 41, 917514, 45, 1048565, 29 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="life" type="CanvasLayer" parent="."]
 
@@ -184,10 +594,10 @@ scale = Vector2( 1, 1 )
 editor/display_folded = true
 transform/pos = Vector2( 12.5981, 14.1873 )
 transform/scale = Vector2( 0.7, 0.7 )
-texture = ExtResource( 5 )
+texture = ExtResource( 6 )
 offset = Vector2( 23.1061, -0.382342 )
 region_rect = Rect2( -0.375, -0.375, 47.875, 16 )
-script/script = ExtResource( 6 )
+script/script = ExtResource( 7 )
 
 [node name="anim" type="AnimationPlayer" parent="life/sprite"]
 
@@ -203,7 +613,17 @@ playback/speed = 1.0
 blend_times = [  ]
 autoplay = ""
 
-[node name="key_top" parent="." instance=ExtResource( 10 )]
+[node name="tocha1" parent="." instance=ExtResource( 11 )]
+
+transform/pos = Vector2( 364, 54 )
+z/z = -1
+
+[node name="tocha2" parent="." instance=ExtResource( 11 )]
+
+transform/pos = Vector2( 577, 57 )
+z/z = -1
+
+[node name="key_top" parent="." instance=ExtResource( 12 )]
 
 [node name="hearts" type="Node" parent="."]
 
@@ -217,36 +637,34 @@ editor/display_folded = true
 
 editor/display_folded = true
 
-[node name="rotor1" parent="rotores" instance=ExtResource( 11 )]
+[node name="rotor1" parent="rotores" instance=ExtResource( 13 )]
 
 transform/pos = Vector2( 281, 156 )
 
-[node name="rotor2" parent="rotores" instance=ExtResource( 11 )]
+[node name="rotor2" parent="rotores" instance=ExtResource( 13 )]
 
 transform/pos = Vector2( 361, 80 )
 transform/rot = 179.737
 
-[node name="rotor3" parent="rotores" instance=ExtResource( 11 )]
+[node name="rotor3" parent="rotores" instance=ExtResource( 13 )]
 
 transform/pos = Vector2( 441, 158 )
 
-[node name="rotor4" parent="rotores" instance=ExtResource( 12 )]
+[node name="rotor4" parent="rotores" instance=ExtResource( 14 )]
 
 transform/pos = Vector2( 388.067, 43.0668 )
 
-[node name="rotor5" parent="rotores" instance=ExtResource( 12 )]
+[node name="rotor5" parent="rotores" instance=ExtResource( 14 )]
 
 transform/pos = Vector2( 342.067, 43.0668 )
 transform/rot = -179.88
 
 [node name="door" type="Area2D" parent="."]
 
-editor/display_folded = true
-transform/pos = Vector2( -152, 13 )
-transform/scale = Vector2( 0.6, 0.6 )
+transform/pos = Vector2( -154, 8 )
 input/pickable = true
 shapes/0/shape = SubResource( 5 )
-shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 25 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 22 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
@@ -256,27 +674,31 @@ script/script = SubResource( 6 )
 
 [node name="aberto" type="Sprite" parent="door"]
 
-texture = ExtResource( 13 )
+texture = ExtResource( 15 )
+region = true
+region_rect = Rect2( 464, 160, 48, 48 )
 
 [node name="fechado" type="Sprite" parent="door"]
 
-texture = ExtResource( 14 )
+texture = ExtResource( 15 )
+region = true
+region_rect = Rect2( 400, 160, 48, 48 )
 
 [node name="shape" type="CollisionShape2D" parent="door"]
 
-transform/pos = Vector2( 0, 25 )
+transform/pos = Vector2( 0, 22 )
 shape = SubResource( 5 )
 trigger = false
 _update_shape_index = 0
 
-[node name="player" parent="." instance=ExtResource( 15 )]
+[node name="player" parent="." instance=ExtResource( 16 )]
 
 transform/pos = Vector2( 44, 118 )
 
 [node name="tilte_top" type="TileMap" parent="."]
 
 mode = 0
-tile_set = ExtResource( 4 )
+tile_set = ExtResource( 5 )
 cell/size = Vector2( 16, 16 )
 cell/quadrant_size = 16
 cell/custom_transform = Matrix32( 1, 0, 0, 1, 0, 0 )
@@ -289,7 +711,10 @@ collision/bounce = 0.0
 collision/layers = 1
 collision/mask = 0
 occluder/light_mask = 1
-tile_data = IntArray( 131060, 46, 393222, 48, 393241, 46, 458765, 46, 524292, 46 )
+tile_data = IntArray( 131060, 46, 393241, 46, 458765, 46, 524292, 46 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="kill" type="Area2D" parent="."]
 
@@ -320,17 +745,24 @@ polygon = Vector2Array( -539, 266, -364, 266, -183, 413, -18, 323, 264, 319, 552
 shape_range = Vector2( 0, 3 )
 trigger = false
 
-[node name="heart" parent="." instance=ExtResource( 16 )]
+[node name="heart" parent="." instance=ExtResource( 17 )]
 
 transform/pos = Vector2( 564, 80 )
 
-[node name="key" parent="." instance=ExtResource( 17 )]
+[node name="key" parent="." instance=ExtResource( 18 )]
 
 transform/pos = Vector2( 592, 79 )
 
-[node name="anime_player" parent="." instance=ExtResource( 18 )]
+[node name="anime_player" parent="." instance=ExtResource( 19 )]
 
-[node name="anime_player 2" parent="." instance=ExtResource( 18 )]
+[node name="anime_player 2" parent="." instance=ExtResource( 19 )]
+
+[node name="Sprite" type="Sprite" parent="."]
+
+transform/pos = Vector2( 103, 130 )
+texture = ExtResource( 15 )
+region = true
+region_rect = Rect2( 416, 208, 32, 32 )
 
 [connection signal="body_enter" from="door" to="door" method="_on_door_body_enter"]
 

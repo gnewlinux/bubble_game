@@ -1,24 +1,23 @@
-[gd_scene load_steps=35 format=1]
+[gd_scene load_steps=34 format=1]
 
 [ext_resource path="res://cenas/paralax.tscn" type="PackedScene" id=1]
 [ext_resource path="res://cenas/gui_mobile.tscn" type="PackedScene" id=2]
 [ext_resource path="res://cenas/rotor.tscn" type="PackedScene" id=3]
 [ext_resource path="res://cenas/rotor_solo_grande.tscn" type="PackedScene" id=4]
 [ext_resource path="res://titlesets/titleset_floresta.tres" type="TileSet" id=5]
-[ext_resource path="res://imgs/heart3.png" type="Texture" id=6]
-[ext_resource path="res://scripts/life.gd" type="Script" id=7]
-[ext_resource path="res://imgs/heart.png" type="Texture" id=8]
-[ext_resource path="res://imgs/heart1.png" type="Texture" id=9]
-[ext_resource path="res://imgs/heart2.png" type="Texture" id=10]
-[ext_resource path="res://cenas/key_top.tscn" type="PackedScene" id=11]
-[ext_resource path="res://imgs/door.png" type="Texture" id=12]
-[ext_resource path="res://imgs/door_close.png" type="Texture" id=13]
-[ext_resource path="res://players/player.tscn" type="PackedScene" id=14]
-[ext_resource path="res://cenas/morcego.tscn" type="PackedScene" id=15]
-[ext_resource path="res://imgs/placa.png" type="Texture" id=16]
-[ext_resource path="res://imgs/placa_chave.png" type="Texture" id=17]
-[ext_resource path="res://cenas/key.tscn" type="PackedScene" id=18]
-[ext_resource path="res://cenas/anime_player.tscn" type="PackedScene" id=19]
+[ext_resource path="res://cenas/tocha.tscn" type="PackedScene" id=6]
+[ext_resource path="res://cenas/tocha1.tscn" type="PackedScene" id=7]
+[ext_resource path="res://imgs/heart3.png" type="Texture" id=8]
+[ext_resource path="res://scripts/life.gd" type="Script" id=9]
+[ext_resource path="res://imgs/heart.png" type="Texture" id=10]
+[ext_resource path="res://imgs/heart1.png" type="Texture" id=11]
+[ext_resource path="res://imgs/heart2.png" type="Texture" id=12]
+[ext_resource path="res://cenas/key_top.tscn" type="PackedScene" id=13]
+[ext_resource path="res://imgs/titles.tex" type="Texture" id=14]
+[ext_resource path="res://players/player.tscn" type="PackedScene" id=15]
+[ext_resource path="res://cenas/morcego.tscn" type="PackedScene" id=16]
+[ext_resource path="res://cenas/key.tscn" type="PackedScene" id=17]
+[ext_resource path="res://cenas/anime_player.tscn" type="PackedScene" id=18]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -117,7 +116,7 @@ tracks/0/keys = {
 "times": FloatArray( 0 ),
 "transitions": FloatArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 8 ) ]
+"values": [ ExtResource( 10 ) ]
 }
 
 [sub_resource type="Animation" id=6]
@@ -133,7 +132,7 @@ tracks/0/keys = {
 "times": FloatArray( 0 ),
 "transitions": FloatArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 9 ) ]
+"values": [ ExtResource( 11 ) ]
 }
 
 [sub_resource type="Animation" id=7]
@@ -149,7 +148,7 @@ tracks/0/keys = {
 "times": FloatArray( 0 ),
 "transitions": FloatArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 10 ) ]
+"values": [ ExtResource( 12 ) ]
 }
 
 [sub_resource type="Animation" id=8]
@@ -165,7 +164,7 @@ tracks/0/keys = {
 "times": FloatArray( 0 ),
 "transitions": FloatArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 6 ) ]
+"values": [ ExtResource( 8 ) ]
 }
 
 [sub_resource type="RectangleShape2D" id=9]
@@ -229,6 +228,8 @@ points = Vector2Array( -364, 266, -194, 312, -686, 506, -686, 279 )
 [node name="gui_mobile" parent="." instance=ExtResource( 2 )]
 
 [node name="rotores" type="Node" parent="."]
+
+editor/display_folded = true
 
 [node name="rotor1" parent="rotores" instance=ExtResource( 3 )]
 
@@ -298,6 +299,29 @@ autoplay = ""
 
 [node name="shoters" type="Node" parent="."]
 
+[node name="TileMap" type="TileMap" parent="shoters"]
+
+z/z = -5
+mode = 0
+tile_set = ExtResource( 5 )
+cell/size = Vector2( 16, 16 )
+cell/quadrant_size = 16
+cell/custom_transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+cell/half_offset = 2
+cell/tile_origin = 0
+cell/y_sort = false
+collision/use_kinematic = false
+collision/friction = 1.0
+collision/bounce = 0.0
+collision/layers = 1
+collision/mask = 1
+occluder/light_mask = 1
+tile_data = IntArray( 65564, 66, 65565, 67, 65566, 68, 65567, 69, 65568, 70, 65570, 87, 65571, 87, 65572, 86, 65573, 86, 65574, 78, 65575, 80, 65576, 81, 65577, 80, 65578, 80, 65579, 91, 65580, 90, 65581, 72, 131085, 66, 131086, 67, 131087, 68, 131088, 69, 131089, 70, 131099, 65, 131100, 94, 131101, 93, 131102, 92, 131103, 78, 131104, 86, 131105, 78, 131106, 78, 131107, 86, 131108, 81, 131109, 95, 131110, 87, 131111, 86, 131112, 86, 131113, 86, 131114, 80, 131115, 86, 131116, 87, 131117, 89, 131118, 72, 196620, 65, 196621, 94, 196622, 93, 196623, 92, 196624, 91, 196625, 90, 196626, 71, 196634, 64, 196635, 83, 196636, 84, 196637, 85, 196638, 86, 196639, 78, 196640, 80, 196641, 81, 196642, 87, 196643, 78, 196644, 86, 196645, 87, 196646, 80, 196647, 86, 196648, 78, 196649, 96, 196650, 97, 196651, 78, 196652, 81, 196653, 86, 196654, 89, 196655, 71, 262155, 64, 262156, 83, 262157, 84, 262158, 85, 262159, 95, 262160, 87, 262161, 86, 262162, 89, 262163, 72, 262169, 65, 262170, 82, 262171, 81, 262172, 80, 262173, 78, 262174, 86, 262175, 80, 262176, 86, 262177, 87, 262178, 86, 262179, 86, 262180, 87, 262181, 86, 262182, 87, 262183, 86, 262184, 80, 262185, 80, 262186, 78, 262187, 87, 262188, 79, 262189, 79, 262190, 79, 262191, 89, 262192, 72, 327690, 63, 327691, 82, 327692, 81, 327693, 80, 327694, 79, 327695, 86, 327696, 87, 327697, 86, 327698, 75, 327699, 74, 327700, 73, 327704, 64, 327705, 83, 327706, 80, 327707, 86, 327708, 87, 327709, 87, 327714, 87, 327715, 87, 327716, 96, 327717, 97, 327718, 87, 327719, 86, 327720, 87, 327721, 87, 327722, 80, 327723, 80, 327724, 87, 327725, 86, 327726, 79, 327727, 75, 327728, 74, 327729, 73, 393235, 63, 393239, 63, 393240, 82, 393241, 80, 393242, 86, 458769, 63, 458770, 63, 589823, 51, 524288, 52, 524289, 71 )
+
+[node name="tocha" parent="shoters" instance=ExtResource( 6 )]
+
+[node name="tocha1" parent="shoters" instance=ExtResource( 7 )]
+
 [node name="titlemap_bg" type="TileMap" parent="shoters"]
 
 transform/pos = Vector2( -16, 0 )
@@ -316,9 +340,6 @@ collision/layers = 2
 collision/mask = 1
 occluder/light_mask = 1
 tile_data = IntArray( -196595, 3, -196594, 38, -196593, 38, -196592, 38, -196591, 38, -196590, 38, -196589, 38, -196588, 38, -196587, 38, -196586, 38, -196585, 38, -196584, 38, -196583, 38, -196582, 38, -196581, 38, -196580, 38, -196579, 38, -196578, 38, -196577, 38, -196576, 38, -196575, 38, -196574, 38, -196573, 38, -196572, 38, -196571, 38, -196570, 38, -196569, 38, -196568, 38, -196567, 38, -196566, 38, -196565, 38, -196564, 38, -196563, 38, -196562, 38, -196561, 38, -196560, 38, -196559, 38, -196558, 38, -196557, 38, -196556, 38, -196555, 38, -196554, 38, -196553, 38, -196552, 38, -196551, 38, -196550, 38, -196549, 38, -196548, 38, -196547, 38, -196546, 38, -196545, 38, -196544, 38, -196543, 38, -196542, 38, -196541, 38, -196540, 38, -196539, 38, -196538, 38, -196537, 38, -131060, 3, -131059, 41, -131058, 41, -131057, 41, -131056, 41, -131055, 41, -131054, 41, -131053, 41, -131052, 41, -131051, 41, -131050, 41, -131049, 41, -131048, 41, -131047, 41, -131046, 41, -131045, 41, -131044, 41, -131043, 41, -131042, 41, -131041, 41, -131040, 41, -131039, 41, -131038, 41, -131037, 41, -131036, 41, -131035, 41, -131034, 41, -131033, 41, -131032, 41, -131031, 41, -131030, 41, -131029, 41, -131028, 41, -131027, 41, -131026, 41, -131025, 41, -131024, 41, -131023, 41, -131022, 41, -131021, 41, -131020, 41, -131019, 41, -131018, 41, -131017, 41, -131016, 41, -131015, 41, -131014, 41, -131013, 41, -131012, 41, -131011, 41, -131010, 41, -131009, 41, -131008, 41, -131007, 41, -131006, 41, -131005, 41, -131004, 41, -131003, 41, -131002, 41, -131001, 41, -65524, 40, -65523, 41, -65522, 41, -65521, 41, -65520, 41, -65519, 41, -65518, 41, -65517, 41, -65516, 41, -65515, 41, -65514, 41, -65513, 41, -65512, 41, -65511, 41, -65510, 41, -65509, 41, -65508, 41, -65507, 41, -65506, 41, -65505, 41, -65504, 41, -65503, 41, -65502, 41, -65501, 41, -65500, 41, -65499, 41, -65498, 41, -65497, 41, -65496, 41, -65495, 41, -65494, 41, -65493, 41, -65492, 41, -65491, 41, -65490, 41, -65489, 41, -65488, 41, -65487, 41, -65486, 41, -65485, 41, -65484, 41, -65483, 41, -65482, 41, -65481, 41, -65480, 41, -65479, 41, -65478, 41, -65477, 41, -65476, 41, -65475, 41, -65474, 41, -65473, 41, -65472, 41, -65471, 41, -65470, 41, -65469, 41, -65468, 41, -65467, 41, -65466, 41, -65465, 41, 11, 3, 12, 41, 13, 41, 14, 41, 15, 41, 16, 41, 17, 41, 18, 41, 19, 41, 20, 41, 21, 41, 22, 41, 23, 41, 24, 41, 25, 41, 26, 41, 27, 41, 28, 41, 29, 41, 30, 41, 31, 41, 32, 41, 33, 41, 34, 41, 35, 44, 36, 44, 37, 44, 38, 44, 39, 44, 40, 44, 41, 44, 42, 44, 43, 44, 44, 44, 45, 44, 46, 44, 47, 41, 48, 41, 49, 41, 50, 41, 51, 41, 52, 41, 53, 41, 54, 41, 55, 41, 56, 41, 57, 41, 58, 41, 59, 41, 60, 41, 61, 41, 62, 41, 63, 41, 64, 41, 65, 41, 66, 41, 67, 41, 68, 41, 69, 41, 70, 41, 71, 41, 65546, 0, 65547, 44, 65548, 44, 65549, 44, 65550, 44, 65551, 44, 65552, 44, 65553, 44, 65554, 44, 65555, 44, 65556, 44, 65557, 44, 65558, 44, 65559, 44, 65560, 44, 65561, 44, 65562, 44, 65563, 44, 65564, 44, 65565, 44, 65566, 44, 65567, 44, 65568, 44, 65569, 44, 65570, 44, 65583, 44, 65584, 44, 65585, 44, 65586, 44, 65587, 44, 65588, 44, 65589, 44, 65590, 44, 65591, 44, 65592, 44, 65593, 44, 65594, 44, 65595, 44, 65596, 44, 65597, 44, 65598, 44, 65599, 44, 65600, 44, 65601, 44, 65602, 44, 65603, 44, 65604, 44, 65605, 44, 65606, 44, 65607, 45, 327711, 3, 327712, 38, 327713, 38, 327714, 39, 393222, 29, 393226, 0, 393227, 38, 393228, 38, 393229, 38, 393230, 38, 393231, 38, 393232, 38, 393233, 38, 393234, 38, 393235, 38, 393236, 38, 393237, 38, 393238, 38, 393239, 38, 393240, 39, 393244, 3, 393245, 38, 393246, 38, 393247, 41, 393248, 41, 393249, 41, 393250, 41, 393251, 38, 393252, 38, 393253, 38, 393254, 38, 393255, 38, 393256, 38, 393257, 38, 393258, 38, 393259, 38, 393260, 38, 393261, 38, 393262, 38, 393263, 38, 393264, 38, 393265, 38, 393266, 38, 393267, 39, 393273, 0, 393274, 27, 393275, 27, 393276, 27, 393277, 28, 458763, 43, 458764, 44, 458765, 41, 458766, 41, 458767, 41, 458768, 41, 458769, 41, 458770, 41, 458771, 41, 458772, 41, 458773, 41, 458774, 41, 458775, 41, 458776, 41, 458777, 38, 458778, 38, 458779, 38, 458780, 41, 458781, 41, 458782, 41, 458783, 41, 458784, 41, 458785, 41, 458786, 41, 458787, 41, 458788, 41, 458789, 41, 458790, 41, 458791, 41, 458792, 41, 458793, 41, 458794, 41, 458795, 41, 458796, 41, 458797, 41, 458798, 41, 458799, 41, 458800, 41, 458801, 41, 458802, 41, 458803, 41, 458804, 39, 524301, 40, 524302, 41, 524303, 41, 524304, 41, 524305, 41, 524306, 36, 524307, 36, 524308, 41, 524309, 41, 524310, 41, 524311, 41, 524312, 41, 524313, 41, 524314, 41, 524315, 41, 524316, 41, 524317, 41, 524318, 41, 524319, 41, 524320, 41, 524321, 41, 524322, 41, 524323, 41, 524324, 41, 524325, 41, 524326, 41, 524327, 41, 524328, 41, 524329, 41, 524330, 41, 524331, 41, 524332, 41, 524333, 41, 524334, 41, 524335, 41, 524336, 41, 524337, 41, 524338, 41, 524339, 41, 524340, 42, 655359, 0, 589824, 27, 589825, 27, 589826, 27, 589827, 27, 589828, 28, 589836, 0, 589837, 41, 589838, 41, 589839, 41, 589840, 41, 589841, 41, 589842, 41, 589843, 41, 589844, 41, 589845, 41, 589846, 41, 589847, 41, 589848, 41, 589849, 41, 589850, 41, 589851, 41, 589852, 41, 589853, 41, 589854, 41, 589855, 41, 589856, 41, 589857, 41, 589858, 41, 589859, 41, 589860, 41, 589861, 41, 589862, 41, 589863, 41, 589864, 41, 589865, 41, 589866, 41, 589867, 41, 589868, 41, 589869, 41, 589870, 41, 589871, 41, 589872, 41, 589873, 41, 589874, 41, 589875, 41, 589876, 44, 589877, 28, 655373, 40, 655374, 41, 655375, 36, 655376, 36, 655377, 41, 655378, 41, 655379, 41, 655380, 41, 655381, 41, 655382, 41, 655383, 41, 655384, 41, 655385, 41, 655386, 41, 655387, 41, 655388, 41, 655389, 41, 655390, 41, 655391, 41, 655392, 41, 655393, 41, 655394, 41, 655395, 41, 655396, 41, 655397, 41, 655398, 41, 655399, 41, 655400, 41, 655401, 41, 655402, 41, 655403, 41, 655404, 41, 655405, 41, 655406, 41, 655407, 41, 655408, 41, 655409, 41, 655410, 41, 655411, 45, 720909, 43, 720910, 41, 720911, 41, 720912, 41, 720913, 41, 720914, 41, 720915, 41, 720916, 41, 720917, 41, 720918, 41, 720919, 41, 720920, 41, 720921, 41, 720922, 41, 720923, 41, 720924, 41, 720925, 41, 720926, 41, 720927, 41, 720928, 41, 720929, 41, 720930, 41, 720931, 41, 720932, 41, 720933, 41, 720934, 41, 720935, 41, 720936, 41, 720937, 41, 720938, 41, 720939, 41, 720940, 41, 720941, 41, 720942, 41, 720943, 41, 720944, 41, 720945, 41, 720946, 45, 720953, 29, 786446, 44, 786447, 44, 786448, 44, 786449, 44, 786450, 44, 786451, 44, 786452, 44, 786453, 44, 786454, 44, 786455, 44, 786456, 44, 786457, 44, 786458, 44, 786459, 44, 786460, 44, 786461, 44, 786462, 44, 786463, 44, 786464, 44, 786465, 44, 786466, 44, 786467, 44, 786468, 44, 786469, 44, 786470, 44, 786471, 44, 786472, 44, 786473, 44, 786474, 44, 786475, 44, 786476, 44, 786477, 44, 786478, 44, 786479, 44, 786480, 44, 786481, 45, 852029, 29 )
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="life" type="CanvasLayer" parent="."]
 
@@ -333,10 +354,10 @@ scale = Vector2( 1, 1 )
 editor/display_folded = true
 transform/pos = Vector2( 12.5981, 14.1873 )
 transform/scale = Vector2( 0.7, 0.7 )
-texture = ExtResource( 6 )
+texture = ExtResource( 8 )
 offset = Vector2( 23.1061, -0.382342 )
 region_rect = Rect2( -0.375, -0.375, 47.875, 16 )
-script/script = ExtResource( 7 )
+script/script = ExtResource( 9 )
 
 [node name="anim" type="AnimationPlayer" parent="life/sprite"]
 
@@ -352,7 +373,7 @@ playback/speed = 1.0
 blend_times = [  ]
 autoplay = ""
 
-[node name="key_top" parent="." instance=ExtResource( 11 )]
+[node name="key_top" parent="." instance=ExtResource( 13 )]
 
 [node name="hearts" type="Node" parent="."]
 
@@ -364,12 +385,10 @@ editor/display_folded = true
 
 [node name="door" type="Area2D" parent="."]
 
-editor/display_folded = true
-transform/pos = Vector2( 933, 77 )
-transform/scale = Vector2( 0.6, 0.6 )
+transform/pos = Vector2( 936, 72 )
 input/pickable = true
 shapes/0/shape = SubResource( 9 )
-shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 25 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 23 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
@@ -379,20 +398,24 @@ script/script = SubResource( 10 )
 
 [node name="aberto" type="Sprite" parent="door"]
 
-texture = ExtResource( 12 )
+texture = ExtResource( 14 )
+region = true
+region_rect = Rect2( 464, 160, 48, 48 )
 
 [node name="fechado" type="Sprite" parent="door"]
 
-texture = ExtResource( 13 )
+texture = ExtResource( 14 )
+region = true
+region_rect = Rect2( 400, 160, 48, 48 )
 
 [node name="shape" type="CollisionShape2D" parent="door"]
 
-transform/pos = Vector2( 0, 25 )
+transform/pos = Vector2( 0, 23 )
 shape = SubResource( 9 )
 trigger = false
 _update_shape_index = 0
 
-[node name="player" parent="." instance=ExtResource( 14 )]
+[node name="player" parent="." instance=ExtResource( 15 )]
 
 transform/pos = Vector2( 14, 123 )
 
@@ -413,7 +436,7 @@ collision/bounce = 0.0
 collision/layers = 0
 collision/mask = 0
 occluder/light_mask = 1
-tile_data = IntArray( -65525, 50, 327697, 46, 327719, 46, 327729, 46, 327740, 46, 393241, 46, 524288, 46, 524300, 50 )
+tile_data = IntArray( -65525, 50, 327697, 46, 327719, 46, 327729, 46, 327740, 46, 393241, 46, 524291, 46, 524300, 50 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -452,25 +475,29 @@ polygon = Vector2Array( -686, 279, -364, 266, -194, 312, -18, 323, 264, 319, 552
 shape_range = Vector2( 0, 4 )
 trigger = false
 
-[node name="morcego" parent="." instance=ExtResource( 15 )]
+[node name="morcego" parent="." instance=ExtResource( 16 )]
 
 transform/pos = Vector2( 263, 69 )
 
 [node name="Sprite" type="Sprite" parent="."]
 
 transform/pos = Vector2( 356, 81 )
-texture = ExtResource( 16 )
+texture = ExtResource( 14 )
+region = true
+region_rect = Rect2( 352, 208, 32, 32 )
 
 [node name="Sprite 2" type="Sprite" parent="."]
 
 transform/pos = Vector2( 810, 81 )
-texture = ExtResource( 17 )
+texture = ExtResource( 14 )
+region = true
+region_rect = Rect2( 384, 208, 32, 32 )
 
-[node name="key" parent="." instance=ExtResource( 18 )]
+[node name="key" parent="." instance=ExtResource( 17 )]
 
 transform/pos = Vector2( 968, 194 )
 
-[node name="anime_player" parent="." instance=ExtResource( 19 )]
+[node name="anime_player" parent="." instance=ExtResource( 18 )]
 
 [connection signal="body_enter" from="rotores/colisao rotores" to="rotores/colisao rotores" method="_on_colisao_rotores_body_enter"]
 

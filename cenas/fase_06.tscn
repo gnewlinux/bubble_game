@@ -9,15 +9,15 @@
 [ext_resource path="res://imgs/heart1.png" type="Texture" id=7]
 [ext_resource path="res://imgs/heart2.png" type="Texture" id=8]
 [ext_resource path="res://cenas/key_top.tscn" type="PackedScene" id=9]
-[ext_resource path="res://imgs/door.png" type="Texture" id=10]
-[ext_resource path="res://imgs/door_close.png" type="Texture" id=11]
-[ext_resource path="res://cenas/anime_player.tscn" type="PackedScene" id=12]
-[ext_resource path="res://players/player.tscn" type="PackedScene" id=13]
-[ext_resource path="res://cenas/heart.tscn" type="PackedScene" id=14]
-[ext_resource path="res://cenas/key.tscn" type="PackedScene" id=15]
-[ext_resource path="res://cenas/morcego.tscn" type="PackedScene" id=16]
-[ext_resource path="res://cenas/morcegov.tscn" type="PackedScene" id=17]
-[ext_resource path="res://cenas/rotor.tscn" type="PackedScene" id=18]
+[ext_resource path="res://imgs/titles.tex" type="Texture" id=10]
+[ext_resource path="res://cenas/anime_player.tscn" type="PackedScene" id=11]
+[ext_resource path="res://players/player.tscn" type="PackedScene" id=12]
+[ext_resource path="res://cenas/heart.tscn" type="PackedScene" id=13]
+[ext_resource path="res://cenas/key.tscn" type="PackedScene" id=14]
+[ext_resource path="res://cenas/morcego.tscn" type="PackedScene" id=15]
+[ext_resource path="res://cenas/morcegov.tscn" type="PackedScene" id=16]
+[ext_resource path="res://cenas/rotor.tscn" type="PackedScene" id=17]
+[ext_resource path="res://imgs/base_caverna.png" type="Texture" id=18]
 
 [sub_resource type="Animation" id=1]
 
@@ -87,7 +87,7 @@ tracks/0/keys = {
 "values": [ ExtResource( 4 ) ]
 }
 
-[sub_resource type="GDScript" id=6]
+[sub_resource type="GDScript" id=5]
 
 script/source = "extends Area2D
 
@@ -109,12 +109,12 @@ func _on_poison_body_exit( body ):
 	pass # replace with function body
 "
 
-[sub_resource type="RectangleShape2D" id=7]
+[sub_resource type="RectangleShape2D" id=6]
 
 custom_solver_bias = 0.0
 extents = Vector2( 6.66667, 3.33333 )
 
-[sub_resource type="GDScript" id=8]
+[sub_resource type="GDScript" id=7]
 
 script/source = "extends Area2D
 
@@ -138,22 +138,22 @@ func _on_door_body_enter( body ):
 	pass # replace with function body
 "
 
-[sub_resource type="ConvexPolygonShape2D" id=9]
+[sub_resource type="ConvexPolygonShape2D" id=8]
 
 custom_solver_bias = 0.0
 points = Vector2Array( -536, 511, -539, 266, -364, 266, -183, 413 )
 
-[sub_resource type="ConvexPolygonShape2D" id=10]
+[sub_resource type="ConvexPolygonShape2D" id=9]
 
 custom_solver_bias = 0.0
 points = Vector2Array( 823, 513, -536, 511, -183, 413 )
 
-[sub_resource type="ConvexPolygonShape2D" id=11]
+[sub_resource type="ConvexPolygonShape2D" id=10]
 
 custom_solver_bias = 0.0
 points = Vector2Array( 823, 513, -183, 413, -18, 323, 264, 319, 552, 318 )
 
-[sub_resource type="ConvexPolygonShape2D" id=12]
+[sub_resource type="ConvexPolygonShape2D" id=11]
 
 custom_solver_bias = 0.0
 points = Vector2Array( 821, 271, 823, 513, 552, 318, 568, 267 )
@@ -182,7 +182,7 @@ collision/bounce = 0.0
 collision/layers = 2
 collision/mask = 1
 occluder/light_mask = 1
-tile_data = IntArray( -262113, 41, -262112, 41, -262111, 41, -262110, 41, -262109, 41, -262108, 41, -262107, 41, -262106, 41, -262105, 41, -196578, 41, -196577, 41, -196576, 41, -196575, 41, -196574, 41, -196573, 41, -196572, 41, -196571, 41, -196570, 41, -131042, 41, -131041, 41, -131040, 41, -131039, 41, -131038, 41, -131037, 41, -131036, 41, -131035, 41, -65520, 41, -65513, 41, -65508, 41, -65507, 41, -65506, 41, -65505, 41, -65504, 41, -65503, 41, -65502, 41, 30, 41, 31, 41, 131084, 41, 327696, 41, 327703, 41, 524315, 41, 786429, 41, 786430, 41, 786431, 41, 720896, 41, 720897, 41, 720898, 41, 720899, 41, 720904, 41, 720905, 41, 720906, 41, 720907, 41, 720913, 41, 720920, 41 )
+tile_data = IntArray( -262113, 3, -262112, 38, -262111, 38, -262110, 38, -262109, 38, -262108, 38, -262107, 38, -262106, 38, -262105, 28, -196578, 3, -196577, 41, -196576, 41, -196575, 41, -196574, 41, -196573, 41, -196572, 41, -196571, 41, -196570, 45, -131042, 40, -131041, 41, -131040, 41, -131039, 41, -131038, 41, -131037, 44, -131036, 44, -131035, 45, -65520, 29, -65513, 29, -65508, 0, -65507, 27, -65506, 41, -65505, 41, -65504, 44, -65503, 44, -65502, 45, 30, 43, 31, 45, 131084, 29, 327696, 29, 327703, 29, 524315, 29, 786429, 0, 786430, 27, 786431, 27, 720896, 27, 720897, 27, 720898, 27, 720899, 28, 720904, 0, 720905, 27, 720906, 27, 720907, 28, 720913, 29, 720920, 29 )
 
 [node name="life" type="CanvasLayer" parent="."]
 
@@ -229,50 +229,52 @@ linear_damp = 0.1
 angular_damp = 1.0
 collision/layers = 2
 collision/mask = 0
-script/script = SubResource( 6 )
+script/script = SubResource( 5 )
 
 [node name="rotores" type="Node" parent="."]
 
 [node name="door" type="Area2D" parent="."]
 
-editor/display_folded = true
-transform/pos = Vector2( 579.729, -82.5596 )
-transform/scale = Vector2( 0.6, 0.6 )
+transform/pos = Vector2( 592, -88 )
 input/pickable = true
-shapes/0/shape = SubResource( 7 )
-shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 25 )
+shapes/0/shape = SubResource( 6 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 23 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
-script/script = SubResource( 8 )
+script/script = SubResource( 7 )
 
 [node name="aberto" type="Sprite" parent="door"]
 
 texture = ExtResource( 10 )
+region = true
+region_rect = Rect2( 464, 160, 48, 48 )
 
 [node name="fechado" type="Sprite" parent="door"]
 
-texture = ExtResource( 11 )
+texture = ExtResource( 10 )
+region = true
+region_rect = Rect2( 400, 160, 48, 48 )
 
 [node name="shape" type="CollisionShape2D" parent="door"]
 
-transform/pos = Vector2( 0, 25 )
-shape = SubResource( 7 )
+transform/pos = Vector2( 0, 23 )
+shape = SubResource( 6 )
 trigger = false
 _update_shape_index = 0
 
-[node name="anime_player" parent="." instance=ExtResource( 12 )]
+[node name="anime_player" parent="." instance=ExtResource( 11 )]
 
-[node name="player" parent="." instance=ExtResource( 13 )]
+[node name="player" parent="." instance=ExtResource( 12 )]
 
 transform/pos = Vector2( 8, 145 )
 
 [node name="tilte_top" type="TileMap" parent="."]
 
 mode = 0
-tile_set = null
+tile_set = ExtResource( 3 )
 cell/size = Vector2( 16, 16 )
 cell/quadrant_size = 16
 cell/custom_transform = Matrix32( 1, 0, 0, 1, 0, 0 )
@@ -285,22 +287,22 @@ collision/bounce = 0.0
 collision/layers = 1
 collision/mask = 0
 occluder/light_mask = 1
-tile_data = IntArray(  )
+tile_data = IntArray( -327641, 46, -131043, 46, 655362, 46 )
 
 [node name="kill" type="Area2D" parent="."]
 
 editor/display_folded = true
 input/pickable = true
-shapes/0/shape = SubResource( 9 )
+shapes/0/shape = SubResource( 8 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
-shapes/1/shape = SubResource( 10 )
+shapes/1/shape = SubResource( 9 )
 shapes/1/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/1/trigger = false
-shapes/2/shape = SubResource( 11 )
+shapes/2/shape = SubResource( 10 )
 shapes/2/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/2/trigger = false
-shapes/3/shape = SubResource( 12 )
+shapes/3/shape = SubResource( 11 )
 shapes/3/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/3/trigger = false
 gravity_vec = Vector2( 0, 1 )
@@ -316,25 +318,59 @@ polygon = Vector2Array( -539, 266, -364, 266, -183, 413, -18, 323, 264, 319, 552
 shape_range = Vector2( 0, 3 )
 trigger = false
 
-[node name="heart" parent="." instance=ExtResource( 14 )]
+[node name="heart" parent="." instance=ExtResource( 13 )]
 
 transform/pos = Vector2( 37.0296, -115.817 )
 
-[node name="key" parent="." instance=ExtResource( 15 )]
+[node name="key" parent="." instance=ExtResource( 14 )]
 
 transform/pos = Vector2( 199.897, 15.9214 )
 
-[node name="morcego" parent="." instance=ExtResource( 16 )]
+[node name="morcego" parent="." instance=ExtResource( 15 )]
 
 transform/pos = Vector2( 374.394, 157.265 )
 
-[node name="mocegov" parent="." instance=ExtResource( 17 )]
+[node name="mocegov" parent="." instance=ExtResource( 16 )]
 
 transform/pos = Vector2( 295.433, -39.2249 )
 
-[node name="rotor" parent="." instance=ExtResource( 18 )]
+[node name="rotor" parent="." instance=ExtResource( 17 )]
 
 transform/pos = Vector2( 95.9583, 222.891 )
+
+[node name="Sprite" type="Sprite" parent="."]
+
+transform/pos = Vector2( 161, 169 )
+z/z = -2
+texture = ExtResource( 18 )
+region = true
+region_rect = Rect2( 64, 0, 48, 16 )
+
+[node name="Sprite1" type="Sprite" parent="."]
+
+transform/pos = Vector2( 555, -76 )
+z/z = -2
+texture = ExtResource( 18 )
+region = true
+region_rect = Rect2( 32, 0, 112, 32 )
+
+[node name="Sprite2" type="Sprite" parent="."]
+
+transform/pos = Vector2( 6, 164 )
+transform/scale = Vector2( -1, 1 )
+z/z = -2
+texture = ExtResource( 18 )
+region = true
+region_rect = Rect2( 32, 0, 80, 32 )
+
+[node name="Sprite3" type="Sprite" parent="."]
+
+transform/pos = Vector2( -33, 169 )
+transform/scale = Vector2( -1, 1 )
+z/z = -2
+texture = ExtResource( 18 )
+region = true
+region_rect = Rect2( 112, 16, 32, 16 )
 
 [connection signal="body_enter" from="Danos/poison" to="Danos/poison" method="_on_Area2D_body_enter"]
 

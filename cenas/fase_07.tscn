@@ -9,14 +9,14 @@
 [ext_resource path="res://imgs/heart1.png" type="Texture" id=7]
 [ext_resource path="res://imgs/heart2.png" type="Texture" id=8]
 [ext_resource path="res://cenas/key_top.tscn" type="PackedScene" id=9]
-[ext_resource path="res://imgs/door.png" type="Texture" id=10]
-[ext_resource path="res://imgs/door_close.png" type="Texture" id=11]
-[ext_resource path="res://cenas/anime_player.tscn" type="PackedScene" id=12]
-[ext_resource path="res://players/player.tscn" type="PackedScene" id=13]
-[ext_resource path="res://cenas/heart.tscn" type="PackedScene" id=14]
-[ext_resource path="res://cenas/key.tscn" type="PackedScene" id=15]
-[ext_resource path="res://cenas/morcego.tscn" type="PackedScene" id=16]
-[ext_resource path="res://cenas/morcegov.tscn" type="PackedScene" id=17]
+[ext_resource path="res://imgs/titles.tex" type="Texture" id=10]
+[ext_resource path="res://cenas/anime_player.tscn" type="PackedScene" id=11]
+[ext_resource path="res://players/player.tscn" type="PackedScene" id=12]
+[ext_resource path="res://cenas/heart.tscn" type="PackedScene" id=13]
+[ext_resource path="res://cenas/key.tscn" type="PackedScene" id=14]
+[ext_resource path="res://cenas/morcego.tscn" type="PackedScene" id=15]
+[ext_resource path="res://cenas/morcegov.tscn" type="PackedScene" id=16]
+[ext_resource path="res://imgs/base_caverna.png" type="Texture" id=17]
 
 [sub_resource type="Animation" id=1]
 
@@ -170,8 +170,6 @@ points = Vector2Array( 821, 271, 823, 513, 552, 318, 568, 267 )
 
 [node name="shoters" type="Node" parent="."]
 
-editor/display_folded = true
-
 [node name="titlemap_bg" type="TileMap" parent="shoters"]
 
 mode = 0
@@ -188,7 +186,7 @@ collision/bounce = 0.0
 collision/layers = 2
 collision/mask = 1
 occluder/light_mask = 1
-tile_data = IntArray( -851970, 0, -851969, 27, -917504, 27, -917503, 28, -786428, 29, -655367, 0, -655366, 27, -655365, 27, -655364, 28, -589820, 0, -589819, 27, -589818, 27, -589817, 27, -393226, 0, -393225, 27, -393224, 28, -393206, 27, -262147, 0, -262146, 27, -262145, 27, -327680, 28, -196593, 27, -131064, 0, -131063, 27, -131062, 28, 262143, 0, 196608, 27, 196609, 28, 458759, 0, 458760, 27, 458761, 28, 720890, 27, 720891, 27, 720892, 38, 720893, 38, 720894, 38, 720895, 38, 655360, 38, 655361, 39, 655366, 3, 655367, 38, 655368, 38, 655369, 38, 655370, 38, 655371, 38, 655372, 27, 655373, 28, 786428, 43, 786429, 41, 786430, 41, 786431, 41, 720896, 41, 720897, 41, 720898, 39, 720901, 3, 720902, 41, 720903, 41, 720904, 41, 720905, 41, 720906, 41, 720907, 45, 851965, 43, 851966, 44, 851967, 41, 786432, 41, 786433, 41, 786434, 42, 786435, 50, 786436, 50, 786437, 40, 786438, 41, 786439, 41, 786440, 41, 786441, 41, 786442, 45, 917503, 43, 851968, 41, 851969, 41, 851970, 41, 851971, 41, 851972, 41, 851973, 41, 851974, 41, 851975, 41, 851976, 44, 851977, 45, 917504, 43, 917505, 44, 917506, 44, 917507, 44, 917508, 44, 917509, 44, 917510, 44, 917511, 45 )
+tile_data = IntArray( -851970, 0, -851969, 27, -917504, 27, -917503, 28, -786428, 29, -655367, 0, -655366, 27, -655365, 27, -655364, 28, -589820, 0, -589819, 27, -589818, 27, -589817, 27, -393226, 0, -393225, 27, -393224, 28, -393206, 27, -262147, 0, -262146, 27, -262145, 27, -327680, 28, -196593, 27, -131064, 0, -131063, 27, -131062, 28, 262143, 0, 196608, 27, 196609, 28, 458759, 0, 458760, 27, 458761, 28, 720890, 27, 720891, 27, 720892, 38, 720893, 38, 720894, 38, 720895, 38, 655360, 38, 655361, 39, 655366, 3, 655367, 38, 655368, 38, 655369, 38, 655370, 38, 655371, 38, 655372, 27, 655373, 28, 786428, 43, 786429, 41, 786430, 41, 786431, 41, 720896, 41, 720897, 41, 720898, 39, 720899, 50, 720900, 50, 720901, 3, 720902, 41, 720903, 41, 720904, 41, 720905, 41, 720906, 41, 720907, 45, 851965, 43, 851966, 44, 851967, 41, 786432, 41, 786433, 41, 786434, 41, 786435, 41, 786436, 41, 786437, 41, 786438, 41, 786439, 41, 786440, 41, 786441, 41, 786442, 45, 917503, 43, 851968, 41, 851969, 41, 851970, 41, 851971, 41, 851972, 41, 851973, 41, 851974, 41, 851975, 41, 851976, 44, 851977, 45, 917504, 43, 917505, 44, 917506, 44, 917507, 44, 917508, 44, 917509, 44, 917510, 44, 917511, 45 )
 
 [node name="life" type="CanvasLayer" parent="."]
 
@@ -230,13 +228,11 @@ editor/display_folded = true
 
 [node name="Danos" type="Node" parent="."]
 
-editor/display_folded = true
-
 [node name="poison" type="Area2D" parent="Danos"]
 
 input/pickable = true
 shapes/0/shape = SubResource( 5 )
-shapes/0/transform = Matrix32( 1, 0, 0, 1, 64, 201 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 64, 186 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
@@ -248,7 +244,7 @@ script/script = SubResource( 6 )
 
 [node name="shape" type="CollisionShape2D" parent="Danos/poison"]
 
-transform/pos = Vector2( 64, 201 )
+transform/pos = Vector2( 64, 186 )
 shape = SubResource( 5 )
 trigger = false
 _update_shape_index = 0
@@ -257,12 +253,10 @@ _update_shape_index = 0
 
 [node name="door" type="Area2D" parent="."]
 
-editor/display_folded = true
-transform/pos = Vector2( -16, 142 )
-transform/scale = Vector2( 0.6, 0.6 )
+transform/pos = Vector2( -29, 135 )
 input/pickable = true
 shapes/0/shape = SubResource( 7 )
-shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 25 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 23 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
@@ -273,21 +267,25 @@ script/script = SubResource( 8 )
 [node name="aberto" type="Sprite" parent="door"]
 
 texture = ExtResource( 10 )
+region = true
+region_rect = Rect2( 464, 160, 48, 48 )
 
 [node name="fechado" type="Sprite" parent="door"]
 
-texture = ExtResource( 11 )
+texture = ExtResource( 10 )
+region = true
+region_rect = Rect2( 400, 160, 48, 48 )
 
 [node name="shape" type="CollisionShape2D" parent="door"]
 
-transform/pos = Vector2( 0, 25 )
+transform/pos = Vector2( 0, 23 )
 shape = SubResource( 7 )
 trigger = false
 _update_shape_index = 0
 
-[node name="anime_player" parent="." instance=ExtResource( 12 )]
+[node name="anime_player" parent="." instance=ExtResource( 11 )]
 
-[node name="player" parent="." instance=ExtResource( 13 )]
+[node name="player" parent="." instance=ExtResource( 12 )]
 
 transform/pos = Vector2( 8, 145 )
 
@@ -338,37 +336,96 @@ polygon = Vector2Array( -539, 266, -364, 266, -183, 413, -18, 323, 264, 319, 552
 shape_range = Vector2( 0, 3 )
 trigger = false
 
-[node name="heart" parent="." instance=ExtResource( 14 )]
+[node name="heart" parent="." instance=ExtResource( 13 )]
 
 transform/pos = Vector2( 248, -64 )
 
-[node name="key" parent="." instance=ExtResource( 15 )]
+[node name="key" parent="." instance=ExtResource( 14 )]
 
 transform/pos = Vector2( 0, -251 )
 
-[node name="morcego" parent="." instance=ExtResource( 16 )]
+[node name="morcego" parent="." instance=ExtResource( 15 )]
 
 transform/pos = Vector2( 79, 89 )
 
-[node name="morcego1" parent="." instance=ExtResource( 16 )]
+[node name="morcego1" parent="." instance=ExtResource( 15 )]
 
 transform/pos = Vector2( -150, -144 )
 
-[node name="morcego2" parent="." instance=ExtResource( 16 )]
+[node name="morcego2" parent="." instance=ExtResource( 15 )]
 
 transform/pos = Vector2( 67, -43 )
 
-[node name="morcego4" parent="." instance=ExtResource( 16 )]
+[node name="morcego4" parent="." instance=ExtResource( 15 )]
 
 transform/pos = Vector2( 22, -252 )
 
-[node name="mocegov" parent="." instance=ExtResource( 17 )]
+[node name="mocegov" parent="." instance=ExtResource( 16 )]
 
 transform/pos = Vector2( -105, -104 )
 
-[node name="mocegov1" parent="." instance=ExtResource( 17 )]
+[node name="mocegov1" parent="." instance=ExtResource( 16 )]
 
 transform/pos = Vector2( 89, 22 )
+
+[node name="Sprite" type="Sprite" parent="."]
+
+transform/pos = Vector2( -71, 146 )
+z/z = -2
+texture = ExtResource( 17 )
+region = true
+region_rect = Rect2( 32, 0, 32, 32 )
+
+[node name="Sprite5" type="Sprite" parent="."]
+
+transform/pos = Vector2( -50, 153 )
+z/z = -2
+texture = ExtResource( 17 )
+region = true
+region_rect = Rect2( 112, 0, 32, 32 )
+
+[node name="Sprite1" type="Sprite" parent="."]
+
+transform/pos = Vector2( 181, 150 )
+transform/scale = Vector2( -1, 1 )
+z/z = -2
+texture = ExtResource( 17 )
+region = true
+region_rect = Rect2( 64, 0, 48, 32 )
+
+[node name="Sprite6" type="Sprite" parent="."]
+
+transform/pos = Vector2( 0, -230 )
+z/z = -2
+texture = ExtResource( 17 )
+region = true
+region_rect = Rect2( 64, 0, 48, 32 )
+
+[node name="Sprite2" type="Sprite" parent="."]
+
+transform/pos = Vector2( 147, -39 )
+transform/scale = Vector2( -1, 1 )
+z/z = -2
+texture = ExtResource( 17 )
+region = true
+region_rect = Rect2( 96, 0, 48, 16 )
+
+[node name="Sprite3" type="Sprite" parent="."]
+
+transform/pos = Vector2( -92, -183 )
+transform/scale = Vector2( -1, 1 )
+z/z = -2
+texture = ExtResource( 17 )
+region = true
+region_rect = Rect2( 48, 0, 16, 16 )
+
+[node name="Sprite4" type="Sprite" parent="."]
+
+transform/pos = Vector2( 144, 155 )
+z/z = -2
+texture = ExtResource( 17 )
+region = true
+region_rect = Rect2( 80, 0, 32, 32 )
 
 [connection signal="body_enter" from="Danos/poison" to="Danos/poison" method="_on_Area2D_body_enter"]
 

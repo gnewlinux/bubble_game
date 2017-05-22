@@ -2,18 +2,18 @@
 
 [ext_resource path="res://cenas/paralax.tscn" type="PackedScene" id=1]
 [ext_resource path="res://cenas/gui_mobile.tscn" type="PackedScene" id=2]
-[ext_resource path="res://cenas/shooter_big.tscn" type="PackedScene" id=3]
-[ext_resource path="res://titlesets/titleset_floresta.tres" type="TileSet" id=4]
+[ext_resource path="res://titlesets/titleset_floresta.tres" type="TileSet" id=3]
+[ext_resource path="res://cenas/shooter_big.tscn" type="PackedScene" id=4]
 [ext_resource path="res://imgs/heart3.png" type="Texture" id=5]
 [ext_resource path="res://scripts/life.gd" type="Script" id=6]
 [ext_resource path="res://imgs/heart.png" type="Texture" id=7]
 [ext_resource path="res://imgs/heart1.png" type="Texture" id=8]
 [ext_resource path="res://imgs/heart2.png" type="Texture" id=9]
 [ext_resource path="res://cenas/key_top.tscn" type="PackedScene" id=10]
-[ext_resource path="res://imgs/door.png" type="Texture" id=11]
-[ext_resource path="res://imgs/door_close.png" type="Texture" id=12]
-[ext_resource path="res://players/player.tscn" type="PackedScene" id=13]
-[ext_resource path="res://cenas/key.tscn" type="PackedScene" id=14]
+[ext_resource path="res://imgs/titles.tex" type="Texture" id=11]
+[ext_resource path="res://players/player.tscn" type="PackedScene" id=12]
+[ext_resource path="res://cenas/key.tscn" type="PackedScene" id=13]
+[ext_resource path="res://imgs/base_caverna.png" type="Texture" id=14]
 
 [sub_resource type="Animation" id=1]
 
@@ -142,18 +142,36 @@ func _on_base_body_enter( body ):
 
 [node name="gui_mobile" parent="." instance=ExtResource( 2 )]
 
+[node name="tilte_top" type="TileMap" parent="."]
+
+mode = 0
+tile_set = ExtResource( 3 )
+cell/size = Vector2( 16, 16 )
+cell/quadrant_size = 16
+cell/custom_transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+cell/half_offset = 2
+cell/tile_origin = 0
+cell/y_sort = false
+collision/use_kinematic = false
+collision/friction = 1.0
+collision/bounce = 0.0
+collision/layers = 1
+collision/mask = 0
+occluder/light_mask = 1
+tile_data = IntArray( 327687, 65, 327688, 53, 393222, 63, 393223, 82, 393224, 89, 393225, 72 )
+
 [node name="shoters" type="Node" parent="."]
 
 editor/display_folded = true
 
-[node name="shooter_big" parent="shoters" instance=ExtResource( 3 )]
+[node name="shooter_big" parent="shoters" instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 121, -110 )
 
 [node name="titlemap_bg" type="TileMap" parent="shoters"]
 
 mode = 0
-tile_set = ExtResource( 4 )
+tile_set = ExtResource( 3 )
 cell/size = Vector2( 16, 16 )
 cell/quadrant_size = 16
 cell/custom_transform = Matrix32( 1, 0, 0, 1, 0, 0 )
@@ -216,9 +234,7 @@ editor/display_folded = true
 
 [node name="door" type="Area2D" parent="."]
 
-editor/display_folded = true
-transform/pos = Vector2( 73, 94 )
-transform/scale = Vector2( 0.6, 0.6 )
+transform/pos = Vector2( 77, 89 )
 input/pickable = true
 shapes/0/shape = SubResource( 5 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 23.3333 )
@@ -232,10 +248,14 @@ script/script = SubResource( 6 )
 [node name="aberto" type="Sprite" parent="door"]
 
 texture = ExtResource( 11 )
+region = true
+region_rect = Rect2( 464, 160, 48, 48 )
 
 [node name="fechado" type="Sprite" parent="door"]
 
-texture = ExtResource( 12 )
+texture = ExtResource( 11 )
+region = true
+region_rect = Rect2( 400, 160, 48, 48 )
 
 [node name="shape" type="CollisionShape2D" parent="door"]
 
@@ -244,27 +264,9 @@ shape = SubResource( 5 )
 trigger = false
 _update_shape_index = 0
 
-[node name="player" parent="." instance=ExtResource( 13 )]
+[node name="player" parent="." instance=ExtResource( 12 )]
 
 transform/pos = Vector2( 99, 87 )
-
-[node name="tilte_top" type="TileMap" parent="."]
-
-mode = 0
-tile_set = ExtResource( 4 )
-cell/size = Vector2( 16, 16 )
-cell/quadrant_size = 16
-cell/custom_transform = Matrix32( 1, 0, 0, 1, 0, 0 )
-cell/half_offset = 2
-cell/tile_origin = 0
-cell/y_sort = false
-collision/use_kinematic = false
-collision/friction = 1.0
-collision/bounce = 0.0
-collision/layers = 1
-collision/mask = 0
-occluder/light_mask = 1
-tile_data = IntArray( 262153, 48 )
 
 [node name="base" type="Area2D" parent="."]
 
@@ -286,9 +288,17 @@ polygon = Vector2Array( -159, 170, 542, 172, 547, 265, -175, 239 )
 shape_range = Vector2( 0, 0 )
 trigger = false
 
-[node name="key" parent="." instance=ExtResource( 14 )]
+[node name="key" parent="." instance=ExtResource( 13 )]
 
 transform/pos = Vector2( 210, 99 )
+
+[node name="Sprite" type="Sprite" parent="."]
+
+transform/pos = Vector2( 155, 104 )
+z/z = -2
+texture = ExtResource( 14 )
+region = true
+region_rect = Rect2( 48, 0, 80, 16 )
 
 [connection signal="body_enter" from="door" to="door" method="_on_door_body_enter"]
 

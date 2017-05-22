@@ -3,12 +3,12 @@
 [ext_resource path="res://imgs/door.png" type="Texture" id=1]
 [ext_resource path="res://imgs/door_close.png" type="Texture" id=2]
 
-[sub_resource type="RectangleShape2D" id=9]
+[sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
-extents = Vector2( 4, 2 )
+extents = Vector2( 5, 5 )
 
-[sub_resource type="GDScript" id=10]
+[sub_resource type="GDScript" id=2]
 
 script/source = "extends Area2D
 
@@ -24,7 +24,7 @@ func _process(delta):
 
 func _on_door_body_enter( body ):
 	if get_tree().get_root().get_node(\"main/player\").key == true:
-		get_tree().change_scene(\"res://cenas/fase_02.tscn\")
+		get_tree().change_scene(\"res://cenas/fase_03.tscn\")
 	else:
 		print(\"fechado\")
 	
@@ -34,18 +34,17 @@ func _on_door_body_enter( body ):
 
 [node name="door" type="Area2D"]
 
-editor/display_folded = true
-transform/pos = Vector2( 132, 96 )
-transform/scale = Vector2( 0.5, 0.5 )
+transform/pos = Vector2( 474, 61 )
+transform/scale = Vector2( 0.6, 0.6 )
 input/pickable = true
-shapes/0/shape = SubResource( 9 )
-shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 26 )
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 25 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
-script/script = SubResource( 10 )
+script/script = SubResource( 2 )
 
 [node name="aberto" type="Sprite" parent="."]
 
@@ -55,10 +54,10 @@ texture = ExtResource( 1 )
 
 texture = ExtResource( 2 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="shape" type="CollisionShape2D" parent="."]
 
-transform/pos = Vector2( 0, 26 )
-shape = SubResource( 9 )
+transform/pos = Vector2( 0, 25 )
+shape = SubResource( 1 )
 trigger = false
 _update_shape_index = 0
 

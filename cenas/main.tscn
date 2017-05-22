@@ -17,9 +17,9 @@
 [ext_resource path="res://cenas/rotor.tscn" type="PackedScene" id=15]
 [ext_resource path="res://cenas/rotor2.tscn" type="PackedScene" id=16]
 [ext_resource path="res://cenas/key.tscn" type="PackedScene" id=17]
-[ext_resource path="res://imgs/door.png" type="Texture" id=18]
-[ext_resource path="res://imgs/door_close.png" type="Texture" id=19]
-[ext_resource path="res://players/player.tscn" type="PackedScene" id=20]
+[ext_resource path="res://imgs/titles.tex" type="Texture" id=18]
+[ext_resource path="res://players/player.tscn" type="PackedScene" id=19]
+[ext_resource path="res://imgs/base_caverna.png" type="Texture" id=20]
 
 [sub_resource type="Animation" id=1]
 
@@ -302,12 +302,10 @@ transform/pos = Vector2( 95, 98 )
 
 [node name="door" type="Area2D" parent="."]
 
-editor/display_folded = true
-transform/pos = Vector2( 126, 93 )
-transform/scale = Vector2( 0.6, 0.6 )
+transform/pos = Vector2( 118, 88 )
 input/pickable = true
 shapes/0/shape = SubResource( 7 )
-shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 26 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 22 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
@@ -318,19 +316,23 @@ script/script = SubResource( 8 )
 [node name="aberto" type="Sprite" parent="door"]
 
 texture = ExtResource( 18 )
+region = true
+region_rect = Rect2( 464, 160, 48, 48 )
 
 [node name="fechado" type="Sprite" parent="door"]
 
-texture = ExtResource( 19 )
+texture = ExtResource( 18 )
+region = true
+region_rect = Rect2( 400, 160, 48, 48 )
 
 [node name="shape" type="CollisionShape2D" parent="door"]
 
-transform/pos = Vector2( 0, 26 )
+transform/pos = Vector2( 0, 22 )
 shape = SubResource( 7 )
 trigger = false
 _update_shape_index = 0
 
-[node name="player" parent="." instance=ExtResource( 20 )]
+[node name="player" parent="." instance=ExtResource( 19 )]
 
 transform/pos = Vector2( 69, 92 )
 
@@ -371,6 +373,14 @@ script/script = SubResource( 10 )
 shape = SubResource( 9 )
 trigger = false
 _update_shape_index = 0
+
+[node name="Sprite" type="Sprite" parent="."]
+
+transform/pos = Vector2( 102, 104 )
+z/z = -2
+texture = ExtResource( 20 )
+region = true
+region_rect = Rect2( 48, 0, 80, 16 )
 
 [connection signal="body_enter" from="finish" to="player" method="_on_Area2D_body_enter"]
 

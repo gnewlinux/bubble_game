@@ -45,7 +45,6 @@ func _fixed_process(delta):
 		get_node("direita").set_collision_mask(0)
 		if contador >= 0.5:
 			get_node("direita").set_collision_mask(4)
-			print("virou")
 			contador = 0.1
 			time = false
 		
@@ -222,7 +221,6 @@ func _on_Area2D_body_enter( body ):
 
 
 func _on_kill_body_enter( body ):
-	print("morreu")
 	get_tree().reload_current_scene()
 	pass # replace with function body
 

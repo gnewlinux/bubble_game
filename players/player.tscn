@@ -31,7 +31,6 @@ func _ready():
 	
 func _process(delta):
 	posx = get_node(\".\").get_pos()
-	print(posx)
 	pass
 
 func vira(valor):
