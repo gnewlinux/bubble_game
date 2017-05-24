@@ -1,12 +1,13 @@
-[gd_scene load_steps=22 format=1]
+[gd_scene load_steps=24 format=1]
 
 [ext_resource path="res://scripts/player.gd" type="Script" id=1]
 [ext_resource path="res://imgs/parti.png" type="Texture" id=2]
 [ext_resource path="res://imgs/dano.png" type="Texture" id=3]
-[ext_resource path="res://imgs/Sprite-0002.tex" type="Texture" id=4]
-[ext_resource path="res://sounds/jump.smp" type="Sample" id=5]
-[ext_resource path="res://sounds/Jump17.wav" type="Sample" id=6]
-[ext_resource path="res://sounds/step.smp" type="Sample" id=7]
+[ext_resource path="res://imgs/sprite.png" type="Texture" id=4]
+[ext_resource path="res://imgs/Sprite-0002.tex" type="Texture" id=5]
+[ext_resource path="res://sounds/jump.smp" type="Sample" id=6]
+[ext_resource path="res://sounds/Jump17.wav" type="Sample" id=7]
+[ext_resource path="res://sounds/step.smp" type="Sample" id=8]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -277,7 +278,7 @@ tracks/0/keys = {
 "times": FloatArray( 0, 0.1, 0.5 ),
 "transitions": FloatArray( 1, 1, 1 ),
 "update": 1,
-"values": [ ExtResource( 4 ), ExtResource( 3 ), ExtResource( 4 ) ]
+"values": [ ExtResource( 5 ), ExtResource( 3 ), ExtResource( 5 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("sprite:vframes")
@@ -404,25 +405,42 @@ samples/jump = {
 "db": 0.0,
 "pitch": 1.0,
 "priority": 0,
-"sample": ExtResource( 5 )
+"sample": ExtResource( 6 )
 }
 samples/jump3 = {
 "db": 0.0,
 "pitch": 1.0,
 "priority": 0,
-"sample": ExtResource( 6 )
+"sample": ExtResource( 7 )
 }
 samples/step = {
 "db": -5.0,
 "pitch": 1.0,
 "priority": 0,
-"sample": ExtResource( 7 )
+"sample": ExtResource( 8 )
 }
 
 [sub_resource type="RectangleShape2D" id=14]
 
 custom_solver_bias = 0.0
 extents = Vector2( 9.76364, 3.28437 )
+
+[sub_resource type="Animation" id=15]
+
+resource/name = "shake"
+length = 1.0
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("camera:transform/pos")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = {
+"times": FloatArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": FloatArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -12.004, -9.40852 ), Vector2( 5.51534, 0.648872 ), Vector2( -11.0307, 6.48864 ), Vector2( 9.73297, -3.24432 ), Vector2( 0, 0 ) ]
+}
 
 [node name="player" type="KinematicBody2D"]
 
@@ -485,6 +503,7 @@ transform/scale = Vector2( 0.5, 0.5 )
 config/amount = 2
 config/lifetime = 1.0
 config/time_scale = 3.0
+config/emitting = false
 config/process_mode = 1
 config/explosiveness = 0.5
 config/texture = ExtResource( 2 )
@@ -508,7 +527,6 @@ script/script = SubResource( 3 )
 
 [node name="morte" type="Sprite" parent="."]
 
-visibility/visible = false
 transform/pos = Vector2( -0.0996094, 0.773659 )
 transform/scale = Vector2( 0.7, 0.7 )
 texture = ExtResource( 3 )
@@ -516,7 +534,7 @@ texture = ExtResource( 3 )
 [node name="sprite" type="Sprite" parent="."]
 
 transform/pos = Vector2( -0.0996094, 10.2634 )
-transform/scale = Vector2( 0.9, 0.6 )
+transform/scale = Vector2( 0.7, 0.7 )
 texture = ExtResource( 4 )
 offset = Vector2( 0.0430952, -14.7612 )
 vframes = 2
@@ -608,6 +626,17 @@ transform/pos = Vector2( -0.000900269, 9.52343 )
 shape = SubResource( 14 )
 trigger = false
 _update_shape_index = 0
+
+[node name="shake" type="AnimationPlayer" parent="."]
+
+playback/process_mode = 1
+playback/default_blend_time = 0.0
+root/root = NodePath("..")
+anims/shake = SubResource( 15 )
+playback/active = true
+playback/speed = 1.0
+blend_times = [  ]
+autoplay = ""
 
 [connection signal="body_enter" from="direita" to="." method="_on_direita_body_enter"]
 

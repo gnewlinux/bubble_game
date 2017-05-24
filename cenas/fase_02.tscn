@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=1]
+[gd_scene load_steps=23 format=1]
 
 [ext_resource path="res://cenas/paralax.tscn" type="PackedScene" id=1]
 [ext_resource path="res://cenas/gui_mobile.tscn" type="PackedScene" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://players/player.tscn" type="PackedScene" id=11]
 [ext_resource path="res://cenas/key.tscn" type="PackedScene" id=12]
 [ext_resource path="res://imgs/base_caverna.png" type="Texture" id=13]
+[ext_resource path="res://cenas/nuvem_01.tscn" type="PackedScene" id=14]
 
 [sub_resource type="Animation" id=1]
 
@@ -293,6 +294,10 @@ z/z = -2
 texture = ExtResource( 13 )
 region = true
 region_rect = Rect2( 32, 0, 112, 32 )
+
+[node name="nuvem01" parent="." instance=ExtResource( 14 )]
+
+transform/pos = Vector2( 68, 24 )
 
 [connection signal="body_enter" from="door" to="door" method="_on_door_body_enter"]
 

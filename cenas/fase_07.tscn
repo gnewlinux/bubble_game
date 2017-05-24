@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=1]
+[gd_scene load_steps=32 format=1]
 
 [ext_resource path="res://cenas/paralax.tscn" type="PackedScene" id=1]
 [ext_resource path="res://cenas/gui_mobile.tscn" type="PackedScene" id=2]
@@ -17,6 +17,8 @@
 [ext_resource path="res://cenas/morcego.tscn" type="PackedScene" id=15]
 [ext_resource path="res://cenas/morcegov.tscn" type="PackedScene" id=16]
 [ext_resource path="res://imgs/base_caverna.png" type="Texture" id=17]
+[ext_resource path="res://cenas/nuvem_01.tscn" type="PackedScene" id=18]
+[ext_resource path="res://cenas/nuvem_02.tscn" type="PackedScene" id=19]
 
 [sub_resource type="Animation" id=1]
 
@@ -134,7 +136,7 @@ func _process(delta):
 
 func _on_door_body_enter( body ):
 	if get_tree().get_root().get_node(\"main/player\").key == true:
-		get_tree().change_scene(\"res://cenas/cenateste.tscn\")
+		get_tree().change_scene(\"res://cenas/fase_08.tscn\")
 	else:
 		pass
 	
@@ -253,6 +255,7 @@ _update_shape_index = 0
 
 [node name="door" type="Area2D" parent="."]
 
+editor/display_folded = true
 transform/pos = Vector2( -29, 135 )
 input/pickable = true
 shapes/0/shape = SubResource( 7 )
@@ -426,6 +429,24 @@ z/z = -2
 texture = ExtResource( 17 )
 region = true
 region_rect = Rect2( 80, 0, 32, 32 )
+
+[node name="Node2D" parent="." instance=ExtResource( 18 )]
+
+transform/pos = Vector2( 55, 112 )
+
+[node name="Node2D1" parent="." instance=ExtResource( 18 )]
+
+transform/pos = Vector2( -269, -270 )
+
+[node name="Node2D2" parent="." instance=ExtResource( 18 )]
+
+transform/pos = Vector2( 378, 16 )
+transform/scale = Vector2( -1, 1 )
+
+[node name="nuvem02" parent="." instance=ExtResource( 19 )]
+
+transform/pos = Vector2( 427, -125 )
+transform/scale = Vector2( -1, 1 )
 
 [connection signal="body_enter" from="Danos/poison" to="Danos/poison" method="_on_Area2D_body_enter"]
 

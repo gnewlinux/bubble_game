@@ -85,7 +85,7 @@ tracks/6/keys = {
 "values": [  ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=3]
 
 resource/name = "respaw"
 length = 5.0
@@ -104,7 +104,7 @@ tracks/0/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=4]
 
 length = 0.6
 loop = true
@@ -170,7 +170,7 @@ tracks/5/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=5]
 
 length = 1.0
 loop = true
@@ -196,7 +196,7 @@ tracks/1/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=6]
 
 length = 1.0
 loop = true
@@ -252,8 +252,8 @@ playback/process_mode = 1
 playback/default_blend_time = 0.0
 root/root = NodePath("..")
 anims/morrendo = SubResource( 2 )
-anims/respaw = SubResource( 6 )
-anims/voando = SubResource( 3 )
+anims/respaw = SubResource( 3 )
+anims/voando = SubResource( 4 )
 playback/active = true
 playback/speed = 0.5
 blend_times = [  ]
@@ -271,8 +271,8 @@ _update_shape_index = 0
 playback/process_mode = 1
 playback/default_blend_time = 0.0
 root/root = NodePath("..")
-anims/virando = SubResource( 4 )
-anims/virando2 = SubResource( 5 )
+anims/virando = SubResource( 5 )
+anims/virando2 = SubResource( 6 )
 playback/active = true
 playback/speed = 1.0
 blend_times = [  ]

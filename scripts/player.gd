@@ -31,9 +31,18 @@ var contador_morte = 1
 var shape = 0
 var key = false
 var time = false
+var camera_on = false
+var camera
 
 
 func _fixed_process(delta):
+	if camera_on:
+		camera = get_node(".").get_pos().y
+		if (camera > 100):
+			get_node("camera").set_pos(Vector2(0,-40))
+		else:
+			get_node("camera").set_pos(Vector2(0,0))
+	
 	if life <= 0:
 		contador_morte += contador_morte * delta
 		if contador_morte >= 1:
@@ -235,3 +244,10 @@ func _on_direita_body_enter( body ):
 	dano(1)
 	pula_dano()
 	pass # replace with function body
+	
+func shake():
+	get_node("shake").play("shake")
+	pass
+	
+func segura_camera():
+	camera_on = true
