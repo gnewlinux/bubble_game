@@ -442,7 +442,6 @@ __meta__ = {
 
 [node name="kill" type="Area2D" parent="."]
 
-editor/display_folded = true
 transform/pos = Vector2( 305, -6 )
 input/pickable = true
 shapes/0/shape = SubResource( 11 )
@@ -514,5 +513,7 @@ transform/pos = Vector2( -4, 124 )
 [connection signal="body_enter" from="rotores/colisao rotores" to="rotores/colisao rotores" method="_on_colisao_rotores_body_enter"]
 
 [connection signal="body_enter" from="door" to="door" method="_on_door_body_enter"]
+
+[connection signal="body_enter" from="kill" to="player" method="_on_kill_body_enter"]
 
 

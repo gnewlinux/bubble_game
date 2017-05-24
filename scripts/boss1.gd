@@ -44,6 +44,8 @@ func anime1():
 	get_node("ataque1").play("ataque01")
 func anime02():
 	get_node("ataque2").play("ataque_gelo")
+	get_node("../rotores_direito/anim2").play("rotor2")
+	get_node("../rotores_esquerdo/anim2").play("rotor1")
 	
 func shake():
 	get_node("../anima_camera").play("camera01")

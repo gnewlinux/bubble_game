@@ -39,11 +39,11 @@ func _fixed_process(delta):
 		if contador_morte >= 1:
 			get_tree().reload_current_scene()
 			time = false
-	
+	print(contador)
 	if time == true:
 		contador += contador * delta
 		get_node("direita").set_collision_mask(0)
-		if contador >= 0.5:
+		if contador >= 5:
 			get_node("direita").set_collision_mask(4)
 			contador = 0.1
 			time = false

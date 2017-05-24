@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=1]
+[gd_scene load_steps=51 format=1]
 
 [ext_resource path="res://cenas/paralax.tscn" type="PackedScene" id=1]
 [ext_resource path="res://imgs/base_caverna.png" type="Texture" id=2]
@@ -97,6 +97,31 @@ tracks/0/keys = {
 custom_solver_bias = 0.0
 extents = Vector2( 15.9575, 2.26747 )
 
+[sub_resource type="CircleShape2D" id=25]
+
+custom_solver_bias = 0.0
+radius = 18.0
+
+[sub_resource type="GDScript" id=30]
+
+script/source = "extends Area2D
+
+# class member variables go here, for example:
+# var a = 2
+# var b = \"textvar\"
+
+func _ready():
+	# Called every time the node is added to the scene.
+	# Initialization here
+	pass
+
+
+func _on_rotores_esquerdo_body_enter( body ):
+	get_node(\"../player\").dano(1)
+	print(\"encostou\")
+	pass # replace with function body
+"
+
 [sub_resource type="Animation" id=10]
 
 resource/name = "anim_rotor"
@@ -112,6 +137,65 @@ tracks/0/keys = {
 "transitions": FloatArray( 1, 1 ),
 "update": 0,
 "values": [ 0.0, 360.0 ]
+}
+
+[sub_resource type="Animation" id=28]
+
+resource/name = "rotor1"
+length = 7.0
+loop = true
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:transform/pos")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = {
+"times": FloatArray( 0, 1, 3, 4, 5, 6 ),
+"transitions": FloatArray( 0.450625, 0.450625, 0.450625, 0.450625, 0.450625, 0.450625 ),
+"update": 0,
+"values": [ Vector2( 147, -64 ), Vector2( 147, 110 ), Vector2( 487, 110 ), Vector2( 487, -64 ), Vector2( 487, 110 ), Vector2( 149, 110 ) ]
+}
+
+[sub_resource type="CircleShape2D" id=26]
+
+custom_solver_bias = 0.0
+radius = 17.0
+
+[sub_resource type="GDScript" id=31]
+
+script/source = "extends Area2D
+
+# class member variables go here, for example:
+# var a = 2
+# var b = \"textvar\"
+
+func _ready():
+	# Called every time the node is added to the scene.
+	# Initialization here
+	pass
+
+
+func _on_rotores_direito_body_enter( body ):
+	get_node(\"../player\").dano(1)
+	print(\"encostou\")
+	pass # replace with function body
+"
+
+[sub_resource type="Animation" id=29]
+
+resource/name = "rotor2"
+length = 7.0
+loop = true
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:transform/pos")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = {
+"times": FloatArray( 0, 1, 3, 4, 5, 6 ),
+"transitions": FloatArray( 0.450625, 0.450625, 0.450625, 0.450625, 0.450625, 0.450625 ),
+"update": 0,
+"values": [ Vector2( 492, -64 ), Vector2( 492, 110 ), Vector2( 152, 110 ), Vector2( 152, -63 ), Vector2( 152, 110 ), Vector2( 492, 110 ) ]
 }
 
 [sub_resource type="RectangleShape2D" id=11]
@@ -187,10 +271,17 @@ tracks/0/keys = {
 custom_solver_bias = 0.0
 radius = 22.0907
 
+[sub_resource type="Animation" id=27]
+
+resource/name = "piscando"
+length = 3.0
+loop = false
+step = 0.1
+
 [sub_resource type="Animation" id=17]
 
 resource/name = "asas"
-length = 0.3
+length = 4.0
 loop = true
 step = 0.1
 tracks/0/type = "value"
@@ -198,10 +289,20 @@ tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
 tracks/0/imported = false
 tracks/0/keys = {
-"times": FloatArray( 0, 0.1, 0.2 ),
-"transitions": FloatArray( 1, 1, 1 ),
+"times": FloatArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2, 2.1, 2.2, 2.3, 2.4, 2.5, 2.6, 2.7, 2.8, 2.9, 3, 3.1, 3.2, 3.3, 3.4, 3.5, 3.6, 3.7, 3.8, 3.9 ),
+"transitions": FloatArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 0, 1, 2 ]
+"values": [ 0, 1, 2, 5, 0, 1, 2, 5, 0, 1, 2, 5, 0, 1, 2, 5, 0, 1, 2, 5, 0, 1, 2, 5, 0, 1, 2, 5, 0, 1, 2, 5, 0, 1, 2, 5, 0, 1, 2, 5 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite1:visibility/visible")
+tracks/1/interp = 1
+tracks/1/imported = false
+tracks/1/keys = {
+"times": FloatArray( 3, 3.2 ),
+"transitions": FloatArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
 }
 
 [sub_resource type="Animation" id=18]
@@ -229,6 +330,26 @@ tracks/1/keys = {
 "transitions": FloatArray( 1.86607, 0.535887 ),
 "update": 0,
 "values": [ Vector2( -3, 4 ), Vector2( -3, -4 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite1:transform/pos")
+tracks/2/interp = 1
+tracks/2/imported = false
+tracks/2/keys = {
+"times": FloatArray( 0, 0.5 ),
+"transitions": FloatArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, -7 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprite2:transform/pos")
+tracks/3/interp = 1
+tracks/3/imported = false
+tracks/3/keys = {
+"times": FloatArray( 0, 0.5 ),
+"transitions": FloatArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, -7 ) ]
 }
 
 [sub_resource type="Animation" id=24]
@@ -288,6 +409,26 @@ tracks/2/keys = {
 "method": "anime2"
 } ]
 }
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprite2:frame")
+tracks/3/interp = 1
+tracks/3/imported = false
+tracks/3/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 1,
+"values": [ 4 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Sprite2:visibility/visible")
+tracks/4/interp = 1
+tracks/4/imported = false
+tracks/4/keys = {
+"times": FloatArray( 0, 1.2 ),
+"transitions": FloatArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
 
 [sub_resource type="Animation" id=20]
 
@@ -327,6 +468,16 @@ tracks/2/keys = {
 "method": "anime02"
 } ]
 }
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprite2:visibility/visible")
+tracks/3/interp = 1
+tracks/3/imported = false
+tracks/3/keys = {
+"times": FloatArray( 0, 1.2 ),
+"transitions": FloatArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
 
 [sub_resource type="Animation" id=21]
 
@@ -340,7 +491,7 @@ tracks/0/interp = 1
 tracks/0/imported = false
 tracks/0/keys = {
 "times": FloatArray( 0, 1, 1.4, 1.6, 2.1, 2.5, 2.7, 5, 6, 7, 7.4, 7.6, 8.1, 8.5, 8.7, 11 ),
-"transitions": FloatArray( 1, 1, 3.24901, 1, 3.86374, 1, 1, 1, 1, 1, 3.24901, 1, 3.86374, 1, 1, 1 ),
+"transitions": FloatArray( 0.482968, 1, 3.24901, 1, 3.86374, 1, 1, 1, 0.378929, 1, 3.24901, 1, 3.86374, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 440, 25 ), Vector2( 329, 72 ), Vector2( 329, 72 ), Vector2( 329, -104 ), Vector2( 329, -104 ), Vector2( 329, 95 ), Vector2( 329, 95 ), Vector2( 440, 25 ), Vector2( 440, 25 ), Vector2( 329, 72 ), Vector2( 329, 72 ), Vector2( 329, -104 ), Vector2( 329, -104 ), Vector2( 329, 95 ), Vector2( 329, 95 ), Vector2( 440, 25 ) ]
 }
@@ -396,6 +547,16 @@ tracks/4/keys = {
 "method": "anime1"
 } ]
 }
+tracks/5/type = "value"
+tracks/5/path = NodePath("Sprite1:visibility/visible")
+tracks/5/interp = 1
+tracks/5/imported = false
+tracks/5/keys = {
+"times": FloatArray( 2.4, 2.5, 2.8, 8.4, 8.6, 9 ),
+"transitions": FloatArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false, false, true, false ]
+}
 
 [sub_resource type="Animation" id=22]
 
@@ -446,6 +607,8 @@ tracks/0/keys = {
 [node name="paralax" parent="." instance=ExtResource( 1 )]
 
 [node name="bgs" type="Node" parent="."]
+
+editor/display_folded = true
 
 [node name="Sprite4" type="Sprite" parent="bgs"]
 
@@ -681,6 +844,7 @@ transform/pos = Vector2( 304, -189 )
 [node name="player" parent="." instance=ExtResource( 15 )]
 
 transform/pos = Vector2( -38, 93 )
+collision/layers = 17
 
 [node name="tilte_top" type="TileMap" parent="."]
 
@@ -712,28 +876,33 @@ texture = ExtResource( 2 )
 region = true
 region_rect = Rect2( 48, 0, 80, 16 )
 
-[node name="rotores_cima" type="Area2D" parent="."]
+[node name="rotores_esquerdo" type="Area2D" parent="."]
 
 editor/display_folded = true
-transform/pos = Vector2( 149, -64 )
+transform/pos = Vector2( 147, -64 )
 z/z = -1
 input/pickable = true
+shapes/0/shape = SubResource( 25 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 3, 1 )
+shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
+collision/layers = 4
+collision/mask = 16
+script/script = SubResource( 30 )
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="rotor1" type="Sprite" parent="rotores_cima"]
+[node name="rotor1" type="Sprite" parent="rotores_esquerdo"]
 
 transform/pos = Vector2( 3, 1 )
-transform/rot = 360.0
 transform/scale = Vector2( 1.2, 1.2 )
 texture = ExtResource( 16 )
 
-[node name="anim" type="AnimationPlayer" parent="rotores_cima"]
+[node name="anim" type="AnimationPlayer" parent="rotores_esquerdo"]
 
 playback/process_mode = 1
 playback/default_blend_time = 0.0
@@ -744,28 +913,52 @@ playback/speed = 1.0
 blend_times = [  ]
 autoplay = "anim_rotor"
 
-[node name="rotores_cima1" type="Area2D" parent="."]
+[node name="shape" type="CollisionShape2D" parent="rotores_esquerdo"]
+
+transform/pos = Vector2( 3, 1 )
+shape = SubResource( 25 )
+trigger = false
+_update_shape_index = 0
+
+[node name="anim2" type="AnimationPlayer" parent="rotores_esquerdo"]
+
+playback/process_mode = 1
+playback/default_blend_time = 0.0
+root/root = NodePath("..")
+anims/rotor1 = SubResource( 28 )
+playback/active = true
+playback/speed = 0.7
+blend_times = [  ]
+autoplay = ""
+
+[node name="rotores_direito" type="Area2D" parent="."]
 
 editor/display_folded = true
 transform/pos = Vector2( 492, -64 )
 z/z = -1
 input/pickable = true
+shapes/0/shape = SubResource( 26 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, -3, 0 )
+shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
+collision/layers = 4
+collision/mask = 16
+script/script = SubResource( 31 )
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="rotor1" type="Sprite" parent="rotores_cima1"]
+[node name="rotor1" type="Sprite" parent="rotores_direito"]
 
 transform/pos = Vector2( -2, 1 )
 transform/rot = 360.0
 transform/scale = Vector2( 1.2, 1.2 )
 texture = ExtResource( 16 )
 
-[node name="anim" type="AnimationPlayer" parent="rotores_cima1"]
+[node name="anim" type="AnimationPlayer" parent="rotores_direito"]
 
 playback/process_mode = 1
 playback/default_blend_time = 0.0
@@ -775,6 +968,24 @@ playback/active = true
 playback/speed = 1.0
 blend_times = [  ]
 autoplay = "anim_rotor"
+
+[node name="shape" type="CollisionShape2D" parent="rotores_direito"]
+
+transform/pos = Vector2( -3, 0 )
+shape = SubResource( 26 )
+trigger = false
+_update_shape_index = 0
+
+[node name="anim2" type="AnimationPlayer" parent="rotores_direito"]
+
+playback/process_mode = 1
+playback/default_blend_time = 0.0
+root/root = NodePath("..")
+anims/rotor2 = SubResource( 29 )
+playback/active = true
+playback/speed = 0.7
+blend_times = [  ]
+autoplay = ""
 
 [node name="fechar_barreira" type="Area2D" parent="."]
 
@@ -902,6 +1113,25 @@ __meta__ = {
 texture = ExtResource( 19 )
 vframes = 2
 hframes = 3
+frame = 2
+region_rect = Rect2( 0, 0, 112, 64 )
+
+[node name="Sprite1" type="Sprite" parent="boss"]
+
+visibility/visible = false
+texture = ExtResource( 19 )
+vframes = 2
+hframes = 3
+frame = 3
+region_rect = Rect2( 0, 0, 112, 64 )
+
+[node name="Sprite2" type="Sprite" parent="boss"]
+
+visibility/visible = false
+texture = ExtResource( 19 )
+vframes = 2
+hframes = 3
+frame = 4
 region_rect = Rect2( 0, 0, 112, 64 )
 
 [node name="shape" type="CollisionShape2D" parent="boss"]
@@ -911,6 +1141,17 @@ shape = SubResource( 16 )
 trigger = false
 _update_shape_index = 0
 
+[node name="piscando" type="AnimationPlayer" parent="boss"]
+
+playback/process_mode = 1
+playback/default_blend_time = 0.0
+root/root = NodePath("..")
+anims/piscando = SubResource( 27 )
+playback/active = true
+playback/speed = 1.0
+blend_times = [  ]
+autoplay = ""
+
 [node name="animacao_asas" type="AnimationPlayer" parent="boss"]
 
 playback/process_mode = 1
@@ -918,7 +1159,7 @@ playback/default_blend_time = 0.0
 root/root = NodePath("..")
 anims/asas = SubResource( 17 )
 playback/active = true
-playback/speed = 0.5
+playback/speed = 0.7
 blend_times = [  ]
 autoplay = "asas"
 
@@ -1043,6 +1284,10 @@ transform/scale = Vector2( -1, 1 )
 [connection signal="body_enter" from="Danos/poison" to="Danos/poison" method="_on_Area2D_body_enter"]
 
 [connection signal="body_exit" from="Danos/poison" to="Danos/poison" method="_on_poison_body_exit"]
+
+[connection signal="body_enter" from="rotores_esquerdo" to="rotores_esquerdo" method="_on_rotores_esquerdo_body_enter"]
+
+[connection signal="body_enter" from="rotores_direito" to="rotores_direito" method="_on_rotores_direito_body_enter"]
 
 [connection signal="body_enter" from="fechar_barreira" to="fechar_barreira" method="_on_fechar_barreira_body_enter"]
 
