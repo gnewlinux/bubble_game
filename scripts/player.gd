@@ -31,17 +31,8 @@ var contador_morte = 1
 var shape = 0
 var key = false
 var time = false
-var camera_on = false
-var camera
-
 
 func _fixed_process(delta):
-	if camera_on:
-		camera = get_node(".").get_pos().y
-		if (camera > 100):
-			get_node("camera").set_pos(Vector2(0,-40))
-		else:
-			get_node("camera").set_pos(Vector2(0,0))
 	
 	if life <= 0:
 		contador_morte += contador_morte * delta
@@ -250,4 +241,5 @@ func shake():
 	pass
 	
 func segura_camera():
-	camera_on = true
+	get_tree().get_root().get_node("main/camera_parada").make_current()
+	get_tree().get_root().get_node("main/anima_camera").play("camera")

@@ -14,12 +14,12 @@
 [ext_resource path="res://imgs/heart2.png" type="Texture" id=12]
 [ext_resource path="res://cenas/key_top.tscn" type="PackedScene" id=13]
 [ext_resource path="res://imgs/titles.tex" type="Texture" id=14]
-[ext_resource path="res://players/player.tscn" type="PackedScene" id=15]
-[ext_resource path="res://cenas/morcego.tscn" type="PackedScene" id=16]
-[ext_resource path="res://cenas/key.tscn" type="PackedScene" id=17]
-[ext_resource path="res://cenas/anime_player.tscn" type="PackedScene" id=18]
-[ext_resource path="res://cenas/nuvem_01.tscn" type="PackedScene" id=19]
-[ext_resource path="res://cenas/nuvem_02.tscn" type="PackedScene" id=20]
+[ext_resource path="res://cenas/morcego.tscn" type="PackedScene" id=15]
+[ext_resource path="res://cenas/key.tscn" type="PackedScene" id=16]
+[ext_resource path="res://cenas/anime_player.tscn" type="PackedScene" id=17]
+[ext_resource path="res://cenas/nuvem_01.tscn" type="PackedScene" id=18]
+[ext_resource path="res://cenas/nuvem_02.tscn" type="PackedScene" id=19]
+[ext_resource path="res://players/player.tscn" type="PackedScene" id=20]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -418,11 +418,6 @@ shape = SubResource( 9 )
 trigger = false
 _update_shape_index = 0
 
-[node name="player" parent="." instance=ExtResource( 15 )]
-
-visibility/opacity = 0.0
-transform/pos = Vector2( 14, 123 )
-
 [node name="titlemap_btop" type="TileMap" parent="."]
 
 transform/pos = Vector2( -16, 0 )
@@ -479,7 +474,7 @@ polygon = Vector2Array( -686, 279, -364, 266, -194, 312, -18, 323, 264, 319, 552
 shape_range = Vector2( 0, 4 )
 trigger = false
 
-[node name="morcego" parent="." instance=ExtResource( 16 )]
+[node name="morcego" parent="." instance=ExtResource( 15 )]
 
 transform/pos = Vector2( 263, 69 )
 
@@ -497,25 +492,27 @@ texture = ExtResource( 14 )
 region = true
 region_rect = Rect2( 384, 208, 32, 32 )
 
-[node name="key" parent="." instance=ExtResource( 17 )]
+[node name="key" parent="." instance=ExtResource( 16 )]
 
 transform/pos = Vector2( 968, 194 )
 
-[node name="anime_player" parent="." instance=ExtResource( 18 )]
+[node name="anime_player" parent="." instance=ExtResource( 17 )]
 
-[node name="nuvem01" parent="." instance=ExtResource( 19 )]
+[node name="nuvem01" parent="." instance=ExtResource( 18 )]
 
 transform/pos = Vector2( -62, 51 )
 
-[node name="nuvem02" parent="." instance=ExtResource( 20 )]
+[node name="nuvem02" parent="." instance=ExtResource( 19 )]
 
 transform/pos = Vector2( 1210, 167 )
 transform/scale = Vector2( -1, 1 )
 
+[node name="player" parent="." instance=ExtResource( 20 )]
+
+transform/pos = Vector2( -4, 124 )
+
 [connection signal="body_enter" from="rotores/colisao rotores" to="rotores/colisao rotores" method="_on_colisao_rotores_body_enter"]
 
 [connection signal="body_enter" from="door" to="door" method="_on_door_body_enter"]
-
-[connection signal="body_enter" from="kill" to="player" method="_on_kill_body_enter"]
 
 

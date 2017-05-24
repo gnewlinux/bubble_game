@@ -45,7 +45,7 @@ playback/default_blend_time = 0.0
 root/root = NodePath("..")
 anims/nuvem02 = SubResource( 1 )
 playback/active = true
-playback/speed = 1.0
+playback/speed = 0.6
 blend_times = [  ]
 autoplay = "nuvem02"
 

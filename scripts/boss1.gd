@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
 var gelo
-export(int, 1, 30) var vida = 1
+var vida = 1
 var vivo = true
 var intervalo = 1
 var ultimo_toque = 0
@@ -30,12 +30,21 @@ func _on_Timer_timeout():
 
 
 func _on_Area2D_body_enter( body ):
-	get_tree().get_root().get_node("main/player").dano(1)
+	print("tocou")	
 	pass # replace with function body
 	
 func dano(qtde):
-	
-	
 	queue_free()
 	
 	pass
+	
+func anime2():
+	get_node("ataque1").play("ataque02")
+func anime1():
+	get_node("ataque1").play("ataque01")
+func anime02():
+	get_node("ataque2").play("ataque_gelo")
+	
+func shake():
+	get_node("../anima_camera").play("camera01")
+	print("shake")
